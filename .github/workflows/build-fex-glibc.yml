@@ -1,0 +1,86 @@
+name: build-fex-glibc
+
+on:
+  workflow_dispatch:
+    inputs:
+      fex_ref:
+        description: 'FEX git ref/tag/commit (e.g. main or FEX-2508)'
+        required: true
+        default: 'main'
+      jobs:
+        description: 'Parallel build jobs'
+        required: true
+        default: '4'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 180
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            git \
+            cmake \
+            ninja-build \
+            clang \
+            lld \
+            rsync \
+            zstd \
+            tar
+
+      - name: Build FEX (glibc)
+        run: |
+          set -o pipefail
+          chmod +x ./scripts/build-fex-glibc-rootfs.sh
+          ./scripts/build-fex-glibc-rootfs.sh \
+            --workdir "$GITHUB_WORKSPACE/build/fex" \
+            --ref "${{ inputs.fex_ref }}" \
+            --jobs "${{ inputs.jobs }}" \
+            --log-file "$GITHUB_WORKSPACE/build/fex/out/build.log" \
+            --clean
+
+      - name: Collect metadata
+        id: meta
+        if: success()
+        run: |
+          SAFE_REF="${{ inputs.fex_ref }}"
+          SAFE_REF="${SAFE_REF//\//-}"
+          ARCHIVE="$GITHUB_WORKSPACE/build/fex/out/fex-glibc-${SAFE_REF}.tar.zst"
+
+          if [[ ! -f "$ARCHIVE" ]]; then
+            echo "Archive not found: $ARCHIVE" >&2
+            exit 1
+          fi
+
+          echo "archive=$ARCHIVE" >> "$GITHUB_OUTPUT"
+          echo "artifact_name=fex-glibc-${SAFE_REF}" >> "$GITHUB_OUTPUT"
+
+      - name: Upload build artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.meta.outputs.artifact_name }}
+          path: ${{ steps.meta.outputs.archive }}
+          if-no-files-found: error
+          compression-level: 0
+
+      - name: Upload build logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fex-glibc-build-logs
+          path: |
+            ${{ github.workspace }}/build/fex/out/build.log
+            ${{ github.workspace }}/build/fex/build/CMakeCache.txt
+            ${{ github.workspace }}/build/fex/build/CMakeFiles/CMakeError.log
+            ${{ github.workspace }}/build/fex/build/CMakeFiles/CMakeOutput.log
+          if-no-files-found: warn
