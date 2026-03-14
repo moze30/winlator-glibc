@@ -35,6 +35,8 @@ public class Container {
     public static final byte STARTUP_SELECTION_NORMAL = 0;
     public static final byte STARTUP_SELECTION_ESSENTIAL = 1;
     public static final byte STARTUP_SELECTION_AGGRESSIVE = 2;
+    public static final byte WINE_MODE_NORMAL = 0;
+    public static final byte WINE_MODE_FEX = 1;
     public static final byte MAX_DRIVE_LETTERS = 8;
     public final int id;
     private String name;
@@ -49,6 +51,7 @@ public class Container {
     private String wineVersion = WineInfo.MAIN_WINE_VERSION.identifier();
     private boolean showFPS;
     private boolean wow64Mode = true;
+    private byte wineMode = WINE_MODE_NORMAL;
     private byte startupSelection = STARTUP_SELECTION_ESSENTIAL;
     private String cpuList;
     private String cpuListWoW64;
@@ -179,6 +182,14 @@ public class Container {
 
     public void setWoW64Mode(boolean wow64Mode) {
         this.wow64Mode = wow64Mode;
+    }
+
+    public byte getWineMode() {
+        return wineMode;
+    }
+
+    public void setWineMode(byte wineMode) {
+        this.wineMode = wineMode;
     }
 
     public byte getStartupSelection() {
@@ -363,6 +374,7 @@ public class Container {
             data.put("showFPS", showFPS);
             data.put("inputType", inputType);
             data.put("wow64Mode", wow64Mode);
+            data.put("wineMode", wineMode);
             data.put("startupSelection", startupSelection);
             data.put("box86Preset", box86Preset);
             data.put("box64Preset", box64Preset);
@@ -426,6 +438,9 @@ public class Container {
                     break;
                 case "wow64Mode" :
                     setWoW64Mode(data.getBoolean(key));
+                    break;
+                case "wineMode" :
+                    setWineMode((byte)data.getInt(key));
                     break;
                 case "startupSelection" :
                     setStartupSelection((byte)data.getInt(key));
