@@ -29,7 +29,11 @@ public class GuestProgramLauncherComponent extends EnvironmentComponent {
     private Callback<Integer> terminationCallback;
     private static final Object lock = new Object();
     private boolean wow64Mode = true;
+    private byte wineMode = 0;
     private String logFilePath;
+
+    public static final byte WINE_MODE_NORMAL = 0;
+    public static final byte WINE_MODE_FEX = 1;
 
     @Override
     public void start() {
@@ -72,6 +76,14 @@ public class GuestProgramLauncherComponent extends EnvironmentComponent {
 
     public void setWoW64Mode(boolean wow64Mode) {
         this.wow64Mode = wow64Mode;
+    }
+
+    public byte getWineMode() {
+        return wineMode;
+    }
+
+    public void setWineMode(byte wineMode) {
+        this.wineMode = wineMode;
     }
 
     public String[] getBindingPaths() {
@@ -157,7 +169,13 @@ public class GuestProgramLauncherComponent extends EnvironmentComponent {
             for (String path : bindingPaths) command += " --bind="+(new File(path)).getAbsolutePath();
         }
 
-        command += " /usr/bin/env "+envVars.toEscapedString()+" box64 "+guestExecutable;
+        // Add HODLL environment variable for fex mode
+        String wineEnvPrefix = "";
+        if (wineMode == WINE_MODE_FEX) {
+            wineEnvPrefix = " HODLL=libwow64fex.dll";
+        }
+
+        command += " /usr/bin/env "+envVars.toEscapedString()+wineEnvPrefix+" box64 "+guestExecutable;
 
         envVars.clear();
         envVars.put("PROOT_TMP_DIR", tmpDir);

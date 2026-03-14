@@ -152,6 +152,12 @@ public class GlibcProgramLauncherComponent extends GuestProgramLauncherComponent
 
         String command = rootDir.getPath() + "/usr/local/bin/box64 ";
 
+        // Add HODLL environment variable for fex mode
+        byte wineMode = getWineMode();
+        if (wineMode == WINE_MODE_FEX) {
+            envVars.put("HODLL", "libwow64fex.dll");
+        }
+
         command += guestExecutable;
 
         return ProcessHelper.exec(command, envVars.toStringArray(), rootDir, (status) -> {
