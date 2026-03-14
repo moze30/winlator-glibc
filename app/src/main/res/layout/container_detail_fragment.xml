@@ -576,6 +576,18 @@
                             android:id="@+id/SStartupSelection"
                             android:entries="@array/startup_selection_entries" />
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/wine_mode"
+                            android:layout_marginTop="8dp" />
+
+                        <Spinner
+                            style="@style/ComboBox"
+                            android:layout_width="match_parent"
+                            android:id="@+id/SWineMode"
+                            android:entries="@array/wine_mode_entries" />
+
                         <CheckBox
                             android:id="@+id/CBWoW64Mode"
                             android:layout_width="wrap_content"
