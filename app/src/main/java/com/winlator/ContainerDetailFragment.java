@@ -216,6 +216,10 @@ public class ContainerDetailFragment extends Fragment {
         byte previousStartupSelection = isEditMode() ? container.getStartupSelection() : -1;
         sStartupSelection.setSelection(previousStartupSelection != -1 ? previousStartupSelection : Container.STARTUP_SELECTION_ESSENTIAL);
 
+        final Spinner sWineMode = view.findViewById(R.id.SWineMode);
+        byte previousWineMode = isEditMode() ? container.getWineMode() : -1;
+        sWineMode.setSelection(previousWineMode != -1 ? previousWineMode : Container.WINE_MODE_NORMAL);
+
         final Spinner sBox86Preset = view.findViewById(R.id.SBox86Preset);
         Box86_64PresetManager.loadSpinner("box86", sBox86Preset, isEditMode() ? container.getBox86Preset() : preferences.getString("box86_preset", Box86_64Preset.COMPATIBILITY));
 
@@ -271,6 +275,7 @@ public class ContainerDetailFragment extends Fragment {
                 String cpuListWoW64 = cpuListViewWoW64.getCheckedCPUListAsString();
                 boolean wow64Mode = cbWoW64Mode.isChecked() /* && cbWoW64Mode.isEnabled() */ ;
                 byte startupSelection = (byte)sStartupSelection.getSelectedItemPosition();
+                byte wineMode = (byte)sWineMode.getSelectedItemPosition();
                 String box86Preset = Box86_64PresetManager.getSpinnerSelectedId(sBox86Preset);
                 String box64Preset = Box86_64PresetManager.getSpinnerSelectedId(sBox64Preset);
                 String desktopTheme = getDesktopTheme(view);
@@ -298,6 +303,7 @@ public class ContainerDetailFragment extends Fragment {
                     container.setShowFPS(showFPS);
                     container.setInputType(finalInputType);
                     container.setWoW64Mode(wow64Mode);
+                    container.setWineMode(wineMode);
                     container.setStartupSelection(startupSelection);
                     container.setBox86Preset(box86Preset);
                     container.setBox64Preset(box64Preset);
@@ -327,6 +333,7 @@ public class ContainerDetailFragment extends Fragment {
                     data.put("showFPS", showFPS);
                     data.put("inputType", finalInputType);
                     data.put("wow64Mode", wow64Mode);
+                    data.put("wineMode", wineMode);
                     data.put("startupSelection", startupSelection);
                     data.put("box86Preset", box86Preset);
                     data.put("box64Preset", box64Preset);
