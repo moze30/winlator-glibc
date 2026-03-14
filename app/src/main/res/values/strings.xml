@@ -327,6 +327,9 @@
     <string name="startup_normal">Normal (Load all services)</string>
     <string name="startup_essential">Essential (Load only essential services)</string>
     <string name="startup_aggressive">Aggressive (Stop services on startup)</string>
+    <string name="wine_mode">Wine Mode</string>
+    <string name="wine_mode_normal">Normal (box64 wine)</string>
+    <string name="wine_mode_fex">FEX (HODLL=libwow64fex.dll wine)</string>
     <string name="lc_all" translatable="false">LC_ALL</string>
     <string name="help_trigger_mode"><![CDATA[
         This option depends on the <i><b>Physical Controller</b></i> you are using.<br/><br/>
