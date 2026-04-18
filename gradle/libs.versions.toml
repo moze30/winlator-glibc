@@ -1,6 +1,6 @@
 [versions]
 agp = "8.4.2"
-commonsCompress = "1.28"
+commonsCompress = "1.28.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
