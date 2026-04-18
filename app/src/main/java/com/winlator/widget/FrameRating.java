@@ -6,20 +6,24 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.winlator.R;
 import com.winlator.core.CPUStatus;
+import com.winlator.core.GPUInformation;
+import com.winlator.core.PersistentShell;
 import com.winlator.core.StringUtils;
 
 import java.util.Locale;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class FrameRating extends FrameLayout {
     private long lastTime = 0;
@@ -35,8 +39,13 @@ public class FrameRating extends FrameLayout {
     private int lastMemUsage = 0;
     private long lastUsedMem = 0;
     private long lastTotalMem = 0;
+    private String lastGpuUsage = "";
     private Timer timer;
     private final Handler handler = new Handler(Looper.getMainLooper());
+    private final PersistentShell shell = new PersistentShell();
+    private int gpuType = -1;
+    private final Pattern PATTERN = Pattern.compile("^\\s*(\\d+)\\s+(\\d+)\\s*$");
+
 
     public FrameRating(Context context) {
         this(context, null);
@@ -66,6 +75,13 @@ public class FrameRating extends FrameLayout {
         tvRAM.setText("0MB");
 
         setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+        String renderer = GPUInformation.getRenderer(context).toLowerCase(Locale.ROOT);
+        if (renderer.contains("adreno")) {
+            gpuType = 1;
+        } else if (renderer.contains("mali")) {
+            gpuType = 2;
+        }
     }
 
     @Override
@@ -82,6 +98,8 @@ public class FrameRating extends FrameLayout {
 
     private void startTimer() {
         stopTimer();
+        shell.initShell();
+
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -97,14 +115,11 @@ public class FrameRating extends FrameLayout {
                         StringUtils.formatBytes(lastUsedMem, false),
                         StringUtils.formatBytes(lastTotalMem, true));
                     tvRAM.setText(ramText);
-                    
-                    // 伪GPU占用推算：基于CPU负载和内存使用，并增加情绪价值抖动
-                    int baseGpu = (int) (lastCpuUsage * 1.1f + lastMemUsage * 0.15f);
-                    int fakeGpuUsage = Math.min(99, Math.max(5, baseGpu + random.nextInt(15) - 7));
-                    tvGPU.setText(String.format(Locale.ENGLISH, "%d%%", fakeGpuUsage));
+                    tvGPU.setText(lastGpuUsage);
+                    tvFPS.setText(String.format(Locale.ENGLISH, "%.1f", lastFPS));
                 });
             }
-        }, 0, 1000);
+        }, 0, 2000);
     }
 
     private void stopTimer() {
@@ -112,6 +127,7 @@ public class FrameRating extends FrameLayout {
             timer.cancel();
             timer = null;
         }
+        shell.destroy();
     }
 
     public void update() {
@@ -119,7 +135,6 @@ public class FrameRating extends FrameLayout {
         long time = SystemClock.elapsedRealtime();
         if (time >= lastTime + 1000) {
             lastFPS = ((float)(frameCount * 1000) / (time - lastTime));
-            handler.post(() -> tvFPS.setText(String.format(Locale.ENGLISH, "%.1f", lastFPS)));
             lastTime = time;
             frameCount = 0;
         }
@@ -131,7 +146,7 @@ public class FrameRating extends FrameLayout {
             short[] clockSpeeds = CPUStatus.getCurrentClockSpeeds();
             int totalClockSpeed = 0;
             short maxClockSpeed = 0;
-            if (clockSpeeds != null && clockSpeeds.length > 0) {
+            if (clockSpeeds.length > 0) {
                 for (int i = 0; i < clockSpeeds.length; i++) {
                     short clockSpeed = CPUStatus.getMaxClockSpeed(i);
                     totalClockSpeed += clockSpeeds[i];
@@ -150,5 +165,36 @@ public class FrameRating extends FrameLayout {
             lastUsedMem = memoryInfo.totalMem - memoryInfo.availMem;
             lastMemUsage = (int) (((double) lastUsedMem / memoryInfo.totalMem) * 100.0f);
         } catch (Exception e) {}
+
+        // gpu 使用率
+        try {
+            if (gpuType == 1) {
+                String output = shell.execCommand("cat /sys/class/kgsl/kgsl-3d0/gpubusy").trim();
+                Matcher matcher = PATTERN.matcher(output);
+                String numStr1, numStr2;
+                if (matcher.matches() && (numStr1 = matcher.group(1)) != null && (numStr2 = matcher.group(2)) != null) {
+                    int num1 = Integer.parseInt(numStr1);
+                    int num2 = Integer.parseInt(numStr2);
+                    int gpuUse = 0;
+                    if (num2 != 0)
+                        gpuUse = num1 * 100 / num2;
+                    lastGpuUsage = gpuUse + "%";
+                } else {
+                    Log.d("TAG", "gpuUse cat 返回: " + output);
+                    lastGpuUsage = "N/A";
+                }
+            } else if (gpuType == 2) {
+                String output = shell.execCommand("cat /sys/module/mali_kbase/parameters/mali_gpu_utilization").trim();
+                if (output.matches("\\d+")) {
+                    lastGpuUsage = Integer.parseInt(output) + "%";
+                } else {
+                    Log.d("TAG", "gpuUse cat 返回: " + output);
+                    lastGpuUsage = "N/A";
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            lastGpuUsage = "ERR";
+        }
     }
 }
