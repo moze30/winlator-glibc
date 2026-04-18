@@ -1,14 +1,14 @@
 [versions]
 agp = "8.4.2"
-commonsCompress = "1.21"
+commonsCompress = "1.28"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
 preference = "1.2.1"
-xz = "1.7"
-zstdJni = "1.5.2-3"
+xz = "1.12"
+zstdJni = "1.5.7-7"
 
 [libraries]
 commons-compress = { module = "org.apache.commons:commons-compress", version.ref = "commonsCompress" }
