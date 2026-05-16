@@ -1,9 +1,9 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
 import android.util.SparseArray;
 
-import com.winlator.xserver.events.Event;
-import com.winlator.xserver.events.PropertyNotify;
+import com.winlator.glibc.xserver.events.Event;
+import com.winlator.glibc.xserver.events.PropertyNotify;
 
 import java.util.ArrayList;
 import java.util.Collections;

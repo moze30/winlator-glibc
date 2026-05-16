@@ -1,4 +1,4 @@
-package com.winlator;
+package com.winlator.glibc;
 
 import android.app.Activity;
 import android.content.Context;
@@ -29,16 +29,16 @@ import androidx.core.widget.ImageViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
-import com.winlator.core.AppUtils;
-import com.winlator.core.Callback;
-import com.winlator.core.FileUtils;
-import com.winlator.core.HttpUtils;
-import com.winlator.inputcontrols.ControlsProfile;
-import com.winlator.inputcontrols.ExternalController;
-import com.winlator.inputcontrols.InputControlsManager;
-import com.winlator.math.Mathf;
-import com.winlator.contentdialog.ContentDialog;
-import com.winlator.widget.InputControlsView;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.Callback;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.core.HttpUtils;
+import com.winlator.glibc.inputcontrols.ControlsProfile;
+import com.winlator.glibc.inputcontrols.ExternalController;
+import com.winlator.glibc.inputcontrols.InputControlsManager;
+import com.winlator.glibc.math.Mathf;
+import com.winlator.glibc.contentdialog.ContentDialog;
+import com.winlator.glibc.widget.InputControlsView;
 
 import org.json.JSONException;
 import org.json.JSONObject;

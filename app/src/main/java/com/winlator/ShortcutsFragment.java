@@ -1,4 +1,4 @@
-package com.winlator;
+package com.winlator.glibc;
 
 import static androidx.core.content.ContextCompat.getSystemService;
 
@@ -27,11 +27,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.winlator.container.ContainerManager;
-import com.winlator.container.Shortcut;
-import com.winlator.contentdialog.ContentDialog;
-import com.winlator.contentdialog.ShortcutSettingsDialog;
-import com.winlator.core.AppUtils;
+import com.winlator.glibc.container.ContainerManager;
+import com.winlator.glibc.container.Shortcut;
+import com.winlator.glibc.contentdialog.ContentDialog;
+import com.winlator.glibc.contentdialog.ShortcutSettingsDialog;
+import com.winlator.glibc.core.AppUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;

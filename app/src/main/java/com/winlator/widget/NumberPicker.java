@@ -1,4 +1,4 @@
-package com.winlator.widget;
+package com.winlator.glibc.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 
-import com.winlator.R;
-import com.winlator.math.Mathf;
+import com.winlator.glibc.R;
+import com.winlator.glibc.math.Mathf;
 
 public class NumberPicker extends FrameLayout implements View.OnTouchListener {
     private int value = 0;

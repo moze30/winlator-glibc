@@ -1,7 +1,7 @@
-package com.winlator.alsaserver;
+package com.winlator.glibc.alsaserver;
 
-import com.winlator.xconnector.Client;
-import com.winlator.xconnector.ConnectionHandler;
+import com.winlator.glibc.xconnector.Client;
+import com.winlator.glibc.xconnector.ConnectionHandler;
 
 public class ALSAClientConnectionHandler implements ConnectionHandler {
     @Override

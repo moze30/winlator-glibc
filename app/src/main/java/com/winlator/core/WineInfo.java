@@ -1,4 +1,4 @@
-package com.winlator.core;
+package com.winlator.glibc.core;
 
 import android.content.Context;
 import android.os.Parcel;
@@ -7,9 +7,9 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.winlator.contents.ContentProfile;
-import com.winlator.contents.ContentsManager;
-import com.winlator.xenvironment.ImageFs;
+import com.winlator.glibc.contents.ContentProfile;
+import com.winlator.glibc.contents.ContentsManager;
+import com.winlator.glibc.xenvironment.ImageFs;
 
 import java.io.File;
 import java.util.regex.Matcher;

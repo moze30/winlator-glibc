@@ -1,4 +1,4 @@
-package com.winlator.contents;
+package com.winlator.glibc.contents;
 
 import java.io.BufferedReader;
 import java.io.File;

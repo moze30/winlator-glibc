@@ -1,10 +1,10 @@
-package com.winlator.sysvshm;
+package com.winlator.glibc.sysvshm;
 
 import android.os.SharedMemory;
 import android.system.ErrnoException;
 import android.util.SparseArray;
 
-import com.winlator.xconnector.XConnectorEpoll;
+import com.winlator.glibc.xconnector.XConnectorEpoll;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

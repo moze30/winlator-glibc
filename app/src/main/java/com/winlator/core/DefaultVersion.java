@@ -1,4 +1,4 @@
-package com.winlator.core;
+package com.winlator.glibc.core;
 
 public abstract class DefaultVersion {
     public static final String BOX64 = "0.4.1";

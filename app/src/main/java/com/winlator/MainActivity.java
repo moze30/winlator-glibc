@@ -1,4 +1,4 @@
-package com.winlator;
+package com.winlator.glibc;
 
 import android.Manifest;
 import android.app.Activity;
@@ -26,10 +26,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.navigation.NavigationView;
-import com.winlator.contentdialog.ContentDialog;
-import com.winlator.core.Callback;
-import com.winlator.core.PreloaderDialog;
-import com.winlator.xenvironment.ImageFsInstaller;
+import com.winlator.glibc.contentdialog.ContentDialog;
+import com.winlator.glibc.core.Callback;
+import com.winlator.glibc.core.PreloaderDialog;
+import com.winlator.glibc.xenvironment.ImageFsInstaller;
 
 import java.util.List;
 

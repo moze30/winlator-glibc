@@ -1,4 +1,4 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
 public abstract class IDGenerator {
     private static int id = 0;

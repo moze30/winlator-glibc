@@ -1,4 +1,4 @@
-package com.winlator.winhandler;
+package com.winlator.glibc.winhandler;
 
 abstract class RequestCodes {
     public static final byte EXIT = 0;

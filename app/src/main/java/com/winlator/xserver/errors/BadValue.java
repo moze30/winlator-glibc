@@ -1,4 +1,4 @@
-package com.winlator.xserver.errors;
+package com.winlator.glibc.xserver.errors;
 
 public class BadValue extends XRequestError {
     public BadValue(int data) {

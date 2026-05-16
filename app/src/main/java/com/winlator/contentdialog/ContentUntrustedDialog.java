@@ -1,4 +1,4 @@
-package com.winlator.contentdialog;
+package com.winlator.glibc.contentdialog;
 
 import android.content.Context;
 import android.widget.TextView;
@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.winlator.R;
-import com.winlator.contents.ContentProfile;
+import com.winlator.glibc.R;
+import com.winlator.glibc.contents.ContentProfile;
 
 import java.util.List;
 

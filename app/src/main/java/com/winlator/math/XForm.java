@@ -1,4 +1,4 @@
-package com.winlator.math;
+package com.winlator.glibc.math;
 
 public class XForm {
     private static final float[] tmpXForm = XForm.getInstance();

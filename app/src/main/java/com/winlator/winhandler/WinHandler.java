@@ -1,4 +1,4 @@
-package com.winlator.winhandler;
+package com.winlator.glibc.winhandler;
 
 import android.content.SharedPreferences;
 import android.view.KeyEvent;
@@ -6,11 +6,11 @@ import android.view.MotionEvent;
 
 import androidx.preference.PreferenceManager;
 
-import com.winlator.XServerDisplayActivity;
-import com.winlator.core.StringUtils;
-import com.winlator.inputcontrols.ControlsProfile;
-import com.winlator.inputcontrols.ExternalController;
-import com.winlator.xserver.XServer;
+import com.winlator.glibc.XServerDisplayActivity;
+import com.winlator.glibc.core.StringUtils;
+import com.winlator.glibc.inputcontrols.ControlsProfile;
+import com.winlator.glibc.inputcontrols.ExternalController;
+import com.winlator.glibc.xserver.XServer;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

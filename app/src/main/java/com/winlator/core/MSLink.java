@@ -1,4 +1,4 @@
-package com.winlator.core;
+package com.winlator.glibc.core;
 
 import java.io.File;
 import java.io.FileOutputStream;

@@ -1,4 +1,4 @@
-package com.winlator.xenvironment;
+package com.winlator.glibc.xenvironment;
 
 public abstract class EnvironmentComponent {
     protected XEnvironment environment;

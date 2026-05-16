@@ -1,9 +1,9 @@
-package com.winlator.xserver.events;
+package com.winlator.glibc.xserver.events;
 
-import com.winlator.xconnector.XOutputStream;
-import com.winlator.xconnector.XStreamLock;
-import com.winlator.xserver.Window;
-import com.winlator.xserver.extensions.PresentExtension;
+import com.winlator.glibc.xconnector.XOutputStream;
+import com.winlator.glibc.xconnector.XStreamLock;
+import com.winlator.glibc.xserver.Window;
+import com.winlator.glibc.xserver.extensions.PresentExtension;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package com.winlator.core;
+package com.winlator.glibc.core;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -6,7 +6,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.winlator.R;
+import com.winlator.glibc.R;
 
 public class PreloaderDialog {
     private final Activity activity;

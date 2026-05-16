@@ -1,4 +1,4 @@
-package com.winlator.core;
+package com.winlator.glibc.core;
 
 import android.app.Activity;
 import android.content.Context;
@@ -31,10 +31,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.tabs.TabLayout;
-import com.winlator.R;
+import com.winlator.glibc.R;
 import com.termux.x11.MainActivity;
-import com.winlator.XServerDisplayActivity;
-import com.winlator.XrActivity;
+import com.winlator.glibc.XServerDisplayActivity;
+import com.winlator.glibc.XrActivity;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

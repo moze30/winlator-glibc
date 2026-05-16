@@ -1,9 +1,9 @@
-package com.winlator.inputcontrols;
+package com.winlator.glibc.inputcontrols;
 
 import android.graphics.Rect;
 
-import com.winlator.widget.InputControlsView;
-import com.winlator.widget.TouchpadView;
+import com.winlator.glibc.widget.InputControlsView;
+import com.winlator.glibc.widget.TouchpadView;
 
 import java.util.Timer;
 import java.util.TimerTask;

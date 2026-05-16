@@ -1,10 +1,10 @@
-package com.winlator.xenvironment;
+package com.winlator.glibc.xenvironment;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.winlator.core.FileUtils;
+import com.winlator.glibc.core.FileUtils;
 
 import java.io.File;
 import java.io.IOException;

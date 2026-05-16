@@ -1,4 +1,4 @@
-package com.winlator.core;
+package com.winlator.glibc.core;
 
 public abstract class CPUStatus {
     public static short[] getCurrentClockSpeeds() {

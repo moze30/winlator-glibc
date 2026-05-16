@@ -1,7 +1,7 @@
-package com.winlator.xserver.events;
+package com.winlator.glibc.xserver.events;
 
-import com.winlator.xserver.Bitmask;
-import com.winlator.xserver.Window;
+import com.winlator.glibc.xserver.Bitmask;
+import com.winlator.glibc.xserver.Window;
 
 public class EnterNotify extends PointerWindowEvent {
     public EnterNotify(Detail detail, Window root, Window event, Window child, short rootX, short rootY, short eventX, short eventY, Bitmask state, Mode mode, boolean sameScreenAndFocus) {

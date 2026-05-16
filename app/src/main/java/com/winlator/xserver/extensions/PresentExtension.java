@@ -1,28 +1,28 @@
-package com.winlator.xserver.extensions;
+package com.winlator.glibc.xserver.extensions;
 
-import static com.winlator.xserver.XClientRequestHandler.RESPONSE_CODE_SUCCESS;
+import static com.winlator.glibc.xserver.XClientRequestHandler.RESPONSE_CODE_SUCCESS;
 
 import android.util.SparseArray;
 
-import com.winlator.renderer.GPUImage;
-import com.winlator.renderer.Texture;
-import com.winlator.xconnector.XInputStream;
-import com.winlator.xconnector.XOutputStream;
-import com.winlator.xconnector.XStreamLock;
-import com.winlator.xserver.Bitmask;
-import com.winlator.xserver.Drawable;
-import com.winlator.xserver.Pixmap;
-import com.winlator.xserver.Window;
-import com.winlator.xserver.XClient;
-import com.winlator.xserver.XLock;
-import com.winlator.xserver.XServer;
-import com.winlator.xserver.errors.BadImplementation;
-import com.winlator.xserver.errors.BadMatch;
-import com.winlator.xserver.errors.BadPixmap;
-import com.winlator.xserver.errors.BadWindow;
-import com.winlator.xserver.errors.XRequestError;
-import com.winlator.xserver.events.PresentCompleteNotify;
-import com.winlator.xserver.events.PresentIdleNotify;
+import com.winlator.glibc.renderer.GPUImage;
+import com.winlator.glibc.renderer.Texture;
+import com.winlator.glibc.xconnector.XInputStream;
+import com.winlator.glibc.xconnector.XOutputStream;
+import com.winlator.glibc.xconnector.XStreamLock;
+import com.winlator.glibc.xserver.Bitmask;
+import com.winlator.glibc.xserver.Drawable;
+import com.winlator.glibc.xserver.Pixmap;
+import com.winlator.glibc.xserver.Window;
+import com.winlator.glibc.xserver.XClient;
+import com.winlator.glibc.xserver.XLock;
+import com.winlator.glibc.xserver.XServer;
+import com.winlator.glibc.xserver.errors.BadImplementation;
+import com.winlator.glibc.xserver.errors.BadMatch;
+import com.winlator.glibc.xserver.errors.BadPixmap;
+import com.winlator.glibc.xserver.errors.BadWindow;
+import com.winlator.glibc.xserver.errors.XRequestError;
+import com.winlator.glibc.xserver.events.PresentCompleteNotify;
+import com.winlator.glibc.xserver.events.PresentIdleNotify;
 
 import java.io.IOException;
 

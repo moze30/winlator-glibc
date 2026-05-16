@@ -1,4 +1,4 @@
-package com.winlator.box64;
+package com.winlator.glibc.box64;
 
 import androidx.annotation.NonNull;
 

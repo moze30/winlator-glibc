@@ -1,12 +1,12 @@
-package com.winlator.contentdialog;
+package com.winlator.glibc.contentdialog;
 
 import android.content.Context;
 import android.view.Menu;
 import android.widget.EditText;
 import android.widget.PopupMenu;
 
-import com.winlator.R;
-import com.winlator.widget.EnvVarsView;
+import com.winlator.glibc.R;
+import com.winlator.glibc.widget.EnvVarsView;
 
 public class AddEnvVarDialog extends ContentDialog {
     public AddEnvVarDialog(final Context context, final EnvVarsView envVarsView) {

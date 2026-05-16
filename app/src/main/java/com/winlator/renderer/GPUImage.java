@@ -1,8 +1,8 @@
-package com.winlator.renderer;
+package com.winlator.glibc.renderer;
 
 import androidx.annotation.Keep;
 
-import com.winlator.xserver.Drawable;
+import com.winlator.glibc.xserver.Drawable;
 
 import java.nio.ByteBuffer;
 

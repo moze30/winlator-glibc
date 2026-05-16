@@ -1,4 +1,4 @@
-package com.winlator.contentdialog;
+package com.winlator.glibc.contentdialog;
 
 import android.view.View;
 import android.widget.AdapterView;
@@ -6,11 +6,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import com.winlator.R;
-import com.winlator.box64.rc.RCFile;
-import com.winlator.box64.rc.RCGroup;
-import com.winlator.box64.rc.RCManager;
-import com.winlator.core.Callback;
+import com.winlator.glibc.R;
+import com.winlator.glibc.box64.rc.RCFile;
+import com.winlator.glibc.box64.rc.RCGroup;
+import com.winlator.glibc.box64.rc.RCManager;
+import com.winlator.glibc.core.Callback;
 
 import java.util.ArrayList;
 import java.util.List;

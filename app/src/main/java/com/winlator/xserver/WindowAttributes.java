@@ -1,6 +1,6 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
-import com.winlator.xconnector.XInputStream;
+import com.winlator.glibc.xconnector.XInputStream;
 
 public class WindowAttributes {
     public static final int FLAG_BACKGROUND_PIXMAP = 1<<0;

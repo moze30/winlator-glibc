@@ -1,4 +1,4 @@
-package com.winlator.box64.rc;
+package com.winlator.glibc.box64.rc;
 
 import android.content.Context;
 import android.media.MediaScannerConnection;
@@ -8,9 +8,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.winlator.R;
-import com.winlator.core.Callback;
-import com.winlator.core.FileUtils;
+import com.winlator.glibc.R;
+import com.winlator.glibc.core.Callback;
+import com.winlator.glibc.core.FileUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;

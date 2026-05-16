@@ -1,6 +1,6 @@
-package com.winlator.xconnector;
+package com.winlator.glibc.xconnector;
 
-import com.winlator.xserver.XServer;
+import com.winlator.glibc.xserver.XServer;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

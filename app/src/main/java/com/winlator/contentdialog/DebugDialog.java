@@ -1,4 +1,4 @@
-package com.winlator.contentdialog;
+package com.winlator.glibc.contentdialog;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,11 +8,11 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
-import com.winlator.R;
-import com.winlator.core.AppUtils;
-import com.winlator.core.Callback;
-import com.winlator.core.UnitUtils;
-import com.winlator.widget.LogView;
+import com.winlator.glibc.R;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.Callback;
+import com.winlator.glibc.core.UnitUtils;
+import com.winlator.glibc.widget.LogView;
 
 public class DebugDialog extends ContentDialog implements Callback<String> {
     private final LogView logView;

@@ -1,9 +1,9 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
 import androidx.annotation.NonNull;
 
-import com.winlator.core.ArrayUtils;
-import com.winlator.core.StringUtils;
+import com.winlator.glibc.core.ArrayUtils;
+import com.winlator.glibc.core.StringUtils;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

@@ -1,12 +1,12 @@
-package com.winlator.contents;
+package com.winlator.glibc.contents;
 
 import android.content.Context;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
-import com.winlator.core.FileUtils;
-import com.winlator.core.TarCompressorUtils;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.core.TarCompressorUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;

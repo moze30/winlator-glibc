@@ -1,16 +1,16 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
 import android.util.SparseArray;
 
-import com.winlator.core.CursorLocker;
-import com.winlator.renderer.GLRenderer;
-import com.winlator.winhandler.WinHandler;
-import com.winlator.xserver.extensions.BigReqExtension;
-import com.winlator.xserver.extensions.DRI3Extension;
-import com.winlator.xserver.extensions.Extension;
-import com.winlator.xserver.extensions.MITSHMExtension;
-import com.winlator.xserver.extensions.PresentExtension;
-import com.winlator.xserver.extensions.SyncExtension;
+import com.winlator.glibc.core.CursorLocker;
+import com.winlator.glibc.renderer.GLRenderer;
+import com.winlator.glibc.winhandler.WinHandler;
+import com.winlator.glibc.xserver.extensions.BigReqExtension;
+import com.winlator.glibc.xserver.extensions.DRI3Extension;
+import com.winlator.glibc.xserver.extensions.Extension;
+import com.winlator.glibc.xserver.extensions.MITSHMExtension;
+import com.winlator.glibc.xserver.extensions.PresentExtension;
+import com.winlator.glibc.xserver.extensions.SyncExtension;
 
 import java.nio.charset.Charset;
 import java.util.EnumMap;

@@ -1,4 +1,4 @@
-package com.winlator.inputcontrols;
+package com.winlator.glibc.inputcontrols;
 
 import android.view.KeyEvent;
 import android.view.MotionEvent;

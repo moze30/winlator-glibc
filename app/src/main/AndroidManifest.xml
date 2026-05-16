@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.winlator">
+    package="com.winlator.glibc">
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -101,11 +101,11 @@
             android:excludeFromRecents="true"
             android:exported="true"
             android:noHistory="true"
-            android:taskAffinity="com.winlator.MTDataFilesWakeUp" />
+            android:taskAffinity="com.winlator.glibc.MTDataFilesWakeUp" />
 
         <provider
             android:name="bin.mt.file.content.MTDataFilesProvider"
-            android:authorities="com.winlator.MTDataFilesProvider"
+            android:authorities="com.winlator.glibc.MTDataFilesProvider"
             android:exported="true"
             android:grantUriPermissions="true"
             android:permission="android.permission.MANAGE_DOCUMENTS">

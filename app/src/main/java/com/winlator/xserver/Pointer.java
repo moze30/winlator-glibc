@@ -1,6 +1,6 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
-import com.winlator.math.Mathf;
+import com.winlator.glibc.math.Mathf;
 
 import java.util.ArrayList;
 

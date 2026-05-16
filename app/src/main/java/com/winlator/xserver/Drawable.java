@@ -1,11 +1,11 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
 import android.graphics.Bitmap;
 
-import com.winlator.core.Callback;
-import com.winlator.math.Mathf;
-import com.winlator.renderer.GPUImage;
-import com.winlator.renderer.Texture;
+import com.winlator.glibc.core.Callback;
+import com.winlator.glibc.math.Mathf;
+import com.winlator.glibc.renderer.GPUImage;
+import com.winlator.glibc.renderer.Texture;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

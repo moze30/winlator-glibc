@@ -1,6 +1,6 @@
-package com.winlator.winhandler;
+package com.winlator.glibc.winhandler;
 
-import com.winlator.core.StringUtils;
+import com.winlator.glibc.core.StringUtils;
 
 import java.util.ArrayList;
 

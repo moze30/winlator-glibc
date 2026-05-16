@@ -1,20 +1,20 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
 import android.util.SparseArray;
 
-import com.winlator.xconnector.XInputStream;
-import com.winlator.xserver.errors.BadIdChoice;
-import com.winlator.xserver.errors.BadMatch;
-import com.winlator.xserver.errors.XRequestError;
-import com.winlator.xserver.events.ConfigureNotify;
-import com.winlator.xserver.events.ConfigureRequest;
-import com.winlator.xserver.events.DestroyNotify;
-import com.winlator.xserver.events.Event;
-import com.winlator.xserver.events.Expose;
-import com.winlator.xserver.events.MapNotify;
-import com.winlator.xserver.events.MapRequest;
-import com.winlator.xserver.events.ResizeRequest;
-import com.winlator.xserver.events.UnmapNotify;
+import com.winlator.glibc.xconnector.XInputStream;
+import com.winlator.glibc.xserver.errors.BadIdChoice;
+import com.winlator.glibc.xserver.errors.BadMatch;
+import com.winlator.glibc.xserver.errors.XRequestError;
+import com.winlator.glibc.xserver.events.ConfigureNotify;
+import com.winlator.glibc.xserver.events.ConfigureRequest;
+import com.winlator.glibc.xserver.events.DestroyNotify;
+import com.winlator.glibc.xserver.events.Event;
+import com.winlator.glibc.xserver.events.Expose;
+import com.winlator.glibc.xserver.events.MapNotify;
+import com.winlator.glibc.xserver.events.MapRequest;
+import com.winlator.glibc.xserver.events.ResizeRequest;
+import com.winlator.glibc.xserver.events.UnmapNotify;
 
 import java.util.ArrayList;
 import java.util.List;

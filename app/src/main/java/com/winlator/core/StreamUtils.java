@@ -1,4 +1,4 @@
-package com.winlator.core;
+package com.winlator.glibc.core;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

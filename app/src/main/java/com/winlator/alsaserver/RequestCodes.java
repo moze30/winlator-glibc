@@ -1,4 +1,4 @@
-package com.winlator.alsaserver;
+package com.winlator.glibc.alsaserver;
 
 public abstract class RequestCodes {
     public static final byte CLOSE = 0;

@@ -1,8 +1,8 @@
-package com.winlator.xserverbridge;
+package com.winlator.glibc.xserverbridge;
 
-import com.winlator.winhandler.WinHandler;
-import com.winlator.xserver.Pointer;
-import com.winlator.xserver.XKeycode;
+import com.winlator.glibc.winhandler.WinHandler;
+import com.winlator.glibc.xserver.Pointer;
+import com.winlator.glibc.xserver.XKeycode;
 
 /**
  * 提供函数用于外界与 xserver 的基本交互

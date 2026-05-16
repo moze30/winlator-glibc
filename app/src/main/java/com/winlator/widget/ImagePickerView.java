@@ -1,4 +1,4 @@
-package com.winlator.widget;
+package com.winlator.glibc.widget;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,14 +22,14 @@ import android.widget.PopupWindow;
 
 import androidx.annotation.Nullable;
 
-import com.winlator.MainActivity;
-import com.winlator.R;
-import com.winlator.core.AppUtils;
-import com.winlator.core.FileUtils;
-import com.winlator.core.ImageUtils;
-import com.winlator.core.UnitUtils;
-import com.winlator.core.WineThemeManager;
-import com.winlator.xenvironment.ImageFs;
+import com.winlator.glibc.MainActivity;
+import com.winlator.glibc.R;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.core.ImageUtils;
+import com.winlator.glibc.core.UnitUtils;
+import com.winlator.glibc.core.WineThemeManager;
+import com.winlator.glibc.xenvironment.ImageFs;
 
 import java.io.File;
 import java.io.IOException;

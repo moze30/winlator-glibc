@@ -1,4 +1,4 @@
-package com.winlator.winhandler;
+package com.winlator.glibc.winhandler;
 
 import android.app.ActivityManager;
 import android.content.Context;
@@ -13,18 +13,18 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import com.winlator.R;
-import com.winlator.XServerDisplayActivity;
-import com.winlator.contentdialog.ContentDialog;
-import com.winlator.core.CPUStatus;
-import com.winlator.core.FileUtils;
-import com.winlator.core.ProcessHelper;
-import com.winlator.core.StringUtils;
-import com.winlator.widget.CPUListView;
-import com.winlator.xenvironment.ImageFs;
-import com.winlator.xserver.Window;
-import com.winlator.xserver.XLock;
-import com.winlator.xserver.XServer;
+import com.winlator.glibc.R;
+import com.winlator.glibc.XServerDisplayActivity;
+import com.winlator.glibc.contentdialog.ContentDialog;
+import com.winlator.glibc.core.CPUStatus;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.core.ProcessHelper;
+import com.winlator.glibc.core.StringUtils;
+import com.winlator.glibc.widget.CPUListView;
+import com.winlator.glibc.xenvironment.ImageFs;
+import com.winlator.glibc.xserver.Window;
+import com.winlator.glibc.xserver.XLock;
+import com.winlator.glibc.xserver.XServer;
 
 import java.io.File;
 import java.util.Timer;

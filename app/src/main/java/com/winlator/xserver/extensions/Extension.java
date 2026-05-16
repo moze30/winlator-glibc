@@ -1,9 +1,9 @@
-package com.winlator.xserver.extensions;
+package com.winlator.glibc.xserver.extensions;
 
-import com.winlator.xconnector.XInputStream;
-import com.winlator.xconnector.XOutputStream;
-import com.winlator.xserver.XClient;
-import com.winlator.xserver.errors.XRequestError;
+import com.winlator.glibc.xconnector.XInputStream;
+import com.winlator.glibc.xconnector.XOutputStream;
+import com.winlator.glibc.xserver.XClient;
+import com.winlator.glibc.xserver.errors.XRequestError;
 
 import java.io.IOException;
 

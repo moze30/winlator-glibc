@@ -1,11 +1,11 @@
-package com.winlator.inputcontrols;
+package com.winlator.glibc.inputcontrols;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.winlator.core.FileUtils;
-import com.winlator.widget.InputControlsView;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.widget.InputControlsView;
 
 import org.json.JSONArray;
 import org.json.JSONException;

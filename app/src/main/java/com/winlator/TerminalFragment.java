@@ -1,4 +1,4 @@
-package com.winlator;
+package com.winlator.glibc;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -224,7 +224,7 @@ public class TerminalFragment extends Fragment {
                 pb.redirectErrorStream(true);
                 
                 // Set working directory
-                File imageFsDir = new File("/data/data/com.winlator/files/imagefs");
+                File imageFsDir = new File("/data/data/com.winlator.glibc/files/imagefs");
                 if (imageFsDir.exists() && imageFsDir.isDirectory()) {
                     pb.directory(imageFsDir);
                 }
@@ -233,9 +233,9 @@ public class TerminalFragment extends Fragment {
                 java.util.Map<String, String> env = pb.environment();
                 env.remove("LD_PRELOAD");
                 
-                File xuserDir = new File("/data/data/com.winlator/files/imagefs/home/xuser");
+                File xuserDir = new File("/data/data/com.winlator.glibc/files/imagefs/home/xuser");
                 if (xuserDir.exists() && xuserDir.isDirectory()) {
-                    env.put("HOME", "/data/data/com.winlator/files/imagefs/home/xuser");
+                    env.put("HOME", "/data/data/com.winlator.glibc/files/imagefs/home/xuser");
                 }
                 
                 currentProcess = pb.start();

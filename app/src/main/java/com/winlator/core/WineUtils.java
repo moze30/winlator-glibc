@@ -1,13 +1,13 @@
-package com.winlator.core;
+package com.winlator.glibc.core;
 
 import android.content.Context;
 import android.net.Uri;
 
-import com.winlator.container.Container;
-import com.winlator.contents.ContentsManager;
-import com.winlator.xenvironment.ImageFs;
-import com.winlator.xenvironment.XEnvironment;
-import com.winlator.xenvironment.components.GlibcProgramLauncherComponent;
+import com.winlator.glibc.container.Container;
+import com.winlator.glibc.contents.ContentsManager;
+import com.winlator.glibc.xenvironment.ImageFs;
+import com.winlator.glibc.xenvironment.XEnvironment;
+import com.winlator.glibc.xenvironment.components.GlibcProgramLauncherComponent;
 
 import org.json.JSONArray;
 import org.json.JSONException;

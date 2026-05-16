@@ -1,10 +1,10 @@
-package com.winlator.renderer;
+package com.winlator.glibc.renderer;
 
 import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 
-import com.winlator.XrActivity;
-import com.winlator.xserver.Drawable;
+import com.winlator.glibc.XrActivity;
+import com.winlator.glibc.xserver.Drawable;
 
 import java.nio.ByteBuffer;
 

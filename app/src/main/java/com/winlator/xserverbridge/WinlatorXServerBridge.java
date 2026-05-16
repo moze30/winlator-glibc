@@ -1,10 +1,10 @@
-package com.winlator.xserverbridge;
+package com.winlator.glibc.xserverbridge;
 
-import com.winlator.winhandler.MouseEventFlags;
-import com.winlator.winhandler.WinHandler;
-import com.winlator.xserver.Pointer;
-import com.winlator.xserver.XKeycode;
-import com.winlator.xserver.XServer;
+import com.winlator.glibc.winhandler.MouseEventFlags;
+import com.winlator.glibc.winhandler.WinHandler;
+import com.winlator.glibc.xserver.Pointer;
+import com.winlator.glibc.xserver.XKeycode;
+import com.winlator.glibc.xserver.XServer;
 
 public class WinlatorXServerBridge implements IXServerBridge {
     private final XServer xServer;

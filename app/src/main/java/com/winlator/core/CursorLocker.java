@@ -1,7 +1,7 @@
-package com.winlator.core;
+package com.winlator.glibc.core;
 
-import com.winlator.math.Mathf;
-import com.winlator.xserver.XServer;
+import com.winlator.glibc.math.Mathf;
+import com.winlator.glibc.xserver.XServer;
 
 import java.util.Timer;
 import java.util.TimerTask;

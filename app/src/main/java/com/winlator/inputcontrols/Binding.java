@@ -1,9 +1,9 @@
-package com.winlator.inputcontrols;
+package com.winlator.glibc.inputcontrols;
 
 import androidx.annotation.NonNull;
 
-import com.winlator.xserver.Pointer;
-import com.winlator.xserver.XKeycode;
+import com.winlator.glibc.xserver.Pointer;
+import com.winlator.glibc.xserver.XKeycode;
 
 import java.util.ArrayList;
 

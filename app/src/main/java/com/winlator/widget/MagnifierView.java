@@ -1,4 +1,4 @@
-package com.winlator.widget;
+package com.winlator.glibc.widget;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,10 +14,10 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.preference.PreferenceManager;
 
-import com.winlator.R;
-import com.winlator.core.Callback;
-import com.winlator.core.UnitUtils;
-import com.winlator.math.Mathf;
+import com.winlator.glibc.R;
+import com.winlator.glibc.core.Callback;
+import com.winlator.glibc.core.UnitUtils;
+import com.winlator.glibc.math.Mathf;
 
 public class MagnifierView extends FrameLayout {
     private final SharedPreferences preferences;

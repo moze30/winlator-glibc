@@ -1,8 +1,8 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
 import android.util.SparseArray;
 
-import com.winlator.xconnector.XInputStream;
+import com.winlator.glibc.xconnector.XInputStream;
 
 public class GraphicsContextManager extends XResourceManager {
     private final SparseArray<GraphicsContext> graphicsContexts = new SparseArray<>();

@@ -1,4 +1,4 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
 import android.view.KeyEvent;
 
@@ -6,7 +6,7 @@ import androidx.collection.ArraySet;
 
 import com.ewt45.winlator.E02_KeyInput;
 
-import com.winlator.inputcontrols.ExternalController;
+import com.winlator.glibc.inputcontrols.ExternalController;
 
 import java.util.ArrayList;
 

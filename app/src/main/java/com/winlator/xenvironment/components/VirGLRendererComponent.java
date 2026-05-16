@@ -1,17 +1,17 @@
-package com.winlator.xenvironment.components;
+package com.winlator.glibc.xenvironment.components;
 
 import androidx.annotation.Keep;
 
-import com.winlator.renderer.GLRenderer;
-import com.winlator.renderer.Texture;
-import com.winlator.xconnector.Client;
-import com.winlator.xconnector.ConnectionHandler;
-import com.winlator.xconnector.RequestHandler;
-import com.winlator.xconnector.UnixSocketConfig;
-import com.winlator.xconnector.XConnectorEpoll;
-import com.winlator.xenvironment.EnvironmentComponent;
-import com.winlator.xserver.Drawable;
-import com.winlator.xserver.XServer;
+import com.winlator.glibc.renderer.GLRenderer;
+import com.winlator.glibc.renderer.Texture;
+import com.winlator.glibc.xconnector.Client;
+import com.winlator.glibc.xconnector.ConnectionHandler;
+import com.winlator.glibc.xconnector.RequestHandler;
+import com.winlator.glibc.xconnector.UnixSocketConfig;
+import com.winlator.glibc.xconnector.XConnectorEpoll;
+import com.winlator.glibc.xenvironment.EnvironmentComponent;
+import com.winlator.glibc.xserver.Drawable;
+import com.winlator.glibc.xserver.XServer;
 
 import java.io.IOException;
 

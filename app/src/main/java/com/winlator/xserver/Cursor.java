@@ -1,4 +1,4 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
 public class Cursor extends XResource {
     public final int hotSpotX;

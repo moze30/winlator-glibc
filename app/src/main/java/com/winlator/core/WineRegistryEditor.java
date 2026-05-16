@@ -1,6 +1,6 @@
-package com.winlator.core;
+package com.winlator.glibc.core;
 
-import com.winlator.math.Mathf;
+import com.winlator.glibc.math.Mathf;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -1,13 +1,13 @@
-package com.winlator.xserver.requests;
+package com.winlator.glibc.xserver.requests;
 
-import com.winlator.xconnector.XInputStream;
-import com.winlator.xconnector.XOutputStream;
-import com.winlator.xserver.Drawable;
-import com.winlator.xserver.Pixmap;
-import com.winlator.xserver.XClient;
-import com.winlator.xserver.errors.BadDrawable;
-import com.winlator.xserver.errors.BadIdChoice;
-import com.winlator.xserver.errors.XRequestError;
+import com.winlator.glibc.xconnector.XInputStream;
+import com.winlator.glibc.xconnector.XOutputStream;
+import com.winlator.glibc.xserver.Drawable;
+import com.winlator.glibc.xserver.Pixmap;
+import com.winlator.glibc.xserver.XClient;
+import com.winlator.glibc.xserver.errors.BadDrawable;
+import com.winlator.glibc.xserver.errors.BadIdChoice;
+import com.winlator.glibc.xserver.errors.XRequestError;
 
 public abstract class PixmapRequests {
     public static void createPixmap(XClient client, XInputStream inputStream, XOutputStream outputStream) throws XRequestError {

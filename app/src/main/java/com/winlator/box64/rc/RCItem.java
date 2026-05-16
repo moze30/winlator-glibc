@@ -1,4 +1,4 @@
-package com.winlator.box64.rc;
+package com.winlator.glibc.box64.rc;
 
 import java.util.Map;
 import java.util.TreeMap;

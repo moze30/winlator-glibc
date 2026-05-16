@@ -1,8 +1,8 @@
-package com.winlator.core;
+package com.winlator.glibc.core;
 
 import android.content.Context;
 
-import com.winlator.container.Container;
+import com.winlator.glibc.container.Container;
 
 import org.json.JSONArray;
 import org.json.JSONException;

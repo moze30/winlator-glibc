@@ -1,4 +1,4 @@
-package com.winlator;
+package com.winlator.glibc;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
@@ -15,13 +15,13 @@ import android.widget.EditText;
 
 import androidx.preference.PreferenceManager;
 
-import com.winlator.container.Container;
-import com.winlator.core.AppUtils;
-import com.winlator.xserver.Keyboard;
-import com.winlator.xserver.Pointer;
-import com.winlator.xserver.XKeycode;
-import com.winlator.xserver.XLock;
-import com.winlator.xserver.XServer;
+import com.winlator.glibc.container.Container;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.xserver.Keyboard;
+import com.winlator.glibc.xserver.Pointer;
+import com.winlator.glibc.xserver.XKeycode;
+import com.winlator.glibc.xserver.XLock;
+import com.winlator.glibc.xserver.XServer;
 
 /*
     WinlatorXR implementation by lvonasek (https://github.com/lvonasek)

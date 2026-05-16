@@ -1,13 +1,13 @@
-package com.winlator.xenvironment.components;
+package com.winlator.glibc.xenvironment.components;
 
 import android.content.Context;
 import android.os.Process;
 
-import com.winlator.core.AppUtils;
-import com.winlator.core.FileUtils;
-import com.winlator.core.ProcessHelper;
-import com.winlator.xconnector.UnixSocketConfig;
-import com.winlator.xenvironment.EnvironmentComponent;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.core.ProcessHelper;
+import com.winlator.glibc.xconnector.UnixSocketConfig;
+import com.winlator.glibc.xenvironment.EnvironmentComponent;
 
 import java.io.File;
 import java.util.ArrayList;

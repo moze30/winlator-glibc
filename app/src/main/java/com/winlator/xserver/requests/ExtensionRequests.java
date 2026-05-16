@@ -1,13 +1,13 @@
-package com.winlator.xserver.requests;
+package com.winlator.glibc.xserver.requests;
 
-import static com.winlator.xserver.XClientRequestHandler.RESPONSE_CODE_SUCCESS;
+import static com.winlator.glibc.xserver.XClientRequestHandler.RESPONSE_CODE_SUCCESS;
 
-import com.winlator.xconnector.XInputStream;
-import com.winlator.xconnector.XOutputStream;
-import com.winlator.xconnector.XStreamLock;
-import com.winlator.xserver.XClient;
-import com.winlator.xserver.errors.XRequestError;
-import com.winlator.xserver.extensions.Extension;
+import com.winlator.glibc.xconnector.XInputStream;
+import com.winlator.glibc.xconnector.XOutputStream;
+import com.winlator.glibc.xconnector.XStreamLock;
+import com.winlator.glibc.xserver.XClient;
+import com.winlator.glibc.xserver.errors.XRequestError;
+import com.winlator.glibc.xserver.extensions.Extension;
 
 import java.io.IOException;
 

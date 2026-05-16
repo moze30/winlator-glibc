@@ -1,4 +1,4 @@
-package com.winlator.midi;
+package com.winlator.glibc.midi;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
