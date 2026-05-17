@@ -335,7 +335,7 @@ public abstract class AppUtils {
             return;
         }
 
-        Class<?> xserverCls = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("use_tx11", false)
+        Class<?> xserverCls = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("use_tx11", true)
                 ? MainActivity.class : XServerDisplayActivity.class;
         Intent intent = new Intent(context, xserverCls);
         intent.putExtra("container_id", containerId);
