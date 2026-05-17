@@ -49,19 +49,19 @@ AHardwareBuffer* createHardwareBuffer(int width, int height) {
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_winlator_renderer_GPUImage_createHardwareBuffer(JNIEnv *env, jclass obj, jshort width,
+Java_com_winlator_glibc_renderer_GPUImage_createHardwareBuffer(JNIEnv *env, jclass obj, jshort width,
                                                          jshort height) {
     return (jlong)createHardwareBuffer(width, height);
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_winlator_renderer_GPUImage_createImageKHR(JNIEnv *env, jclass obj,
+Java_com_winlator_glibc_renderer_GPUImage_createImageKHR(JNIEnv *env, jclass obj,
                                                    jlong hardwareBufferPtr, jint textureId) {
     return (jlong)createImageKHR((AHardwareBuffer*)hardwareBufferPtr, textureId);
 }
 
 JNIEXPORT void JNICALL
-Java_com_winlator_renderer_GPUImage_destroyHardwareBuffer(JNIEnv *env, jclass obj,
+Java_com_winlator_glibc_renderer_GPUImage_destroyHardwareBuffer(JNIEnv *env, jclass obj,
                                                           jlong hardwareBufferPtr) {
     AHardwareBuffer* hardwareBuffer = (AHardwareBuffer*)hardwareBufferPtr;
     if (hardwareBuffer) {
@@ -71,7 +71,7 @@ Java_com_winlator_renderer_GPUImage_destroyHardwareBuffer(JNIEnv *env, jclass ob
 }
 
 JNIEXPORT jobject JNICALL
-Java_com_winlator_renderer_GPUImage_lockHardwareBuffer(JNIEnv *env, jclass obj,
+Java_com_winlator_glibc_renderer_GPUImage_lockHardwareBuffer(JNIEnv *env, jclass obj,
                                                        jlong hardwareBufferPtr) {
     AHardwareBuffer* hardwareBuffer = (AHardwareBuffer*)hardwareBufferPtr;
     void *virtualAddr;
@@ -89,7 +89,7 @@ Java_com_winlator_renderer_GPUImage_lockHardwareBuffer(JNIEnv *env, jclass obj,
 }
 
 JNIEXPORT void JNICALL
-Java_com_winlator_renderer_GPUImage_destroyImageKHR(JNIEnv *env, jclass obj, jlong imageKHRPtr) {
+Java_com_winlator_glibc_renderer_GPUImage_destroyImageKHR(JNIEnv *env, jclass obj, jlong imageKHRPtr) {
     EGLImageKHR imageKHR = (EGLImageKHR)imageKHRPtr;
     if (imageKHR) {
         EGLDisplay eglDisplay = eglGetDisplay(EGL_DEFAULT_DISPLAY);
