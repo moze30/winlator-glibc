@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/columns" />
 
-            <com.winlator.widget.NumberPicker
+            <com.winlator.glibc.widget.NumberPicker
                 android:id="@+id/NPColumns"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

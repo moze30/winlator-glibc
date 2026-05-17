@@ -299,13 +299,13 @@
                                 android:layout_weight="1"
                                 android:entries="@array/desktop_background_type_entries" />
 
-                            <com.winlator.widget.ColorPickerView
+                            <com.winlator.glibc.widget.ColorPickerView
                                 android:id="@+id/CPVDesktopBackgroundColor"
                                 android:layout_width="84dp"
                                 android:layout_height="wrap_content"
                                 android:visibility="gone" />
 
-                            <com.winlator.widget.ImagePickerView
+                            <com.winlator.glibc.widget.ImagePickerView
                                 android:id="@+id/IPVDesktopBackgroundImage"
                                 android:layout_width="84dp"
                                 android:layout_height="wrap_content"
@@ -472,7 +472,7 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
-                <com.winlator.widget.EnvVarsView
+                <com.winlator.glibc.widget.EnvVarsView
                     android:id="@+id/EnvVarsView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -736,7 +736,7 @@
                     android:text="@string/processor_affinity"
                     android:layout_marginTop="8dp" />
 
-                <com.winlator.widget.CPUListView
+                <com.winlator.glibc.widget.CPUListView
                     android:id="@+id/CPUListView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
