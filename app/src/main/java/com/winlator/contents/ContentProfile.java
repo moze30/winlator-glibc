@@ -1,4 +1,4 @@
-package com.winlator.contents;
+package com.winlator.glibc.contents;
 
 import androidx.annotation.NonNull;
 
@@ -21,6 +21,7 @@ public class ContentProfile {
         CONTENT_TYPE_WINE("Wine"),
         CONTENT_TYPE_TURNIP("Turnip"),
         CONTENT_TYPE_VIRGL("VirGL"),
+        CONTENT_TYPE_FREEDRENO("Freedreno"),
         CONTENT_TYPE_DXVK("DXVK"),
         CONTENT_TYPE_VKD3D("VKD3D"),
         CONTENT_TYPE_BOX64("Box64"),

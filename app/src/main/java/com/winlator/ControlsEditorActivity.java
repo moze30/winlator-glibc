@@ -1,4 +1,4 @@
-package com.winlator;
+package com.winlator.glibc;
 
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -19,16 +19,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.winlator.inputcontrols.Binding;
-import com.winlator.inputcontrols.ControlElement;
-import com.winlator.inputcontrols.ControlsProfile;
-import com.winlator.inputcontrols.InputControlsManager;
-import com.winlator.math.Mathf;
-import com.winlator.core.AppUtils;
-import com.winlator.core.FileUtils;
-import com.winlator.core.UnitUtils;
-import com.winlator.widget.InputControlsView;
-import com.winlator.widget.NumberPicker;
+import com.winlator.glibc.inputcontrols.Binding;
+import com.winlator.glibc.inputcontrols.ControlElement;
+import com.winlator.glibc.inputcontrols.ControlsProfile;
+import com.winlator.glibc.inputcontrols.InputControlsManager;
+import com.winlator.glibc.math.Mathf;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.core.UnitUtils;
+import com.winlator.glibc.widget.InputControlsView;
+import com.winlator.glibc.widget.NumberPicker;
 
 import java.io.IOException;
 import java.io.InputStream;

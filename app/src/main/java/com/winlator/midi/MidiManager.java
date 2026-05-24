@@ -1,12 +1,12 @@
-package com.winlator.midi;
+package com.winlator.glibc.midi;
 
 import android.content.Context;
 import android.net.Uri;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.winlator.R;
-import com.winlator.core.FileUtils;
+import com.winlator.glibc.R;
+import com.winlator.glibc.core.FileUtils;
 
 import java.io.File;
 import java.io.IOException;

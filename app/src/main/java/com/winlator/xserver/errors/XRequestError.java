@@ -1,10 +1,10 @@
-package com.winlator.xserver.errors;
+package com.winlator.glibc.xserver.errors;
 
-import static com.winlator.xserver.XClientRequestHandler.RESPONSE_CODE_ERROR;
+import static com.winlator.glibc.xserver.XClientRequestHandler.RESPONSE_CODE_ERROR;
 
-import com.winlator.xconnector.XOutputStream;
-import com.winlator.xconnector.XStreamLock;
-import com.winlator.xserver.XClient;
+import com.winlator.glibc.xconnector.XOutputStream;
+import com.winlator.glibc.xconnector.XStreamLock;
+import com.winlator.glibc.xserver.XClient;
 
 import java.io.IOException;
 

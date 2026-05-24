@@ -1,4 +1,4 @@
-package com.winlator.widget;
+package com.winlator.glibc.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -25,18 +25,18 @@ import android.widget.FrameLayout;
 
 import androidx.preference.PreferenceManager;
 
-import com.winlator.R;
-import com.winlator.inputcontrols.Binding;
-import com.winlator.inputcontrols.ControlElement;
-import com.winlator.inputcontrols.ControlsProfile;
-import com.winlator.inputcontrols.ExternalController;
-import com.winlator.inputcontrols.ExternalControllerBinding;
-import com.winlator.inputcontrols.GamepadState;
-import com.winlator.math.Mathf;
-import com.winlator.winhandler.WinHandler;
-import com.winlator.xserver.Pointer;
-import com.winlator.xserver.XServer;
-import com.winlator.xserverbridge.IXServerBridge;
+import com.winlator.glibc.R;
+import com.winlator.glibc.inputcontrols.Binding;
+import com.winlator.glibc.inputcontrols.ControlElement;
+import com.winlator.glibc.inputcontrols.ControlsProfile;
+import com.winlator.glibc.inputcontrols.ExternalController;
+import com.winlator.glibc.inputcontrols.ExternalControllerBinding;
+import com.winlator.glibc.inputcontrols.GamepadState;
+import com.winlator.glibc.math.Mathf;
+import com.winlator.glibc.winhandler.WinHandler;
+import com.winlator.glibc.xserver.Pointer;
+import com.winlator.glibc.xserver.XServer;
+import com.winlator.glibc.xserverbridge.IXServerBridge;
 
 import java.io.IOException;
 import java.io.InputStream;

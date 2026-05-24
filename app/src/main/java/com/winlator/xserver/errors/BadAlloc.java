@@ -1,4 +1,4 @@
-package com.winlator.xserver.errors;
+package com.winlator.glibc.xserver.errors;
 
 public class BadAlloc extends XRequestError {
     public BadAlloc() {

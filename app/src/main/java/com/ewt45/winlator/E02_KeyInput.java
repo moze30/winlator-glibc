@@ -1,6 +1,6 @@
 package com.ewt45.winlator;
 import android.view.*;
-import com.winlator.xserver.*;
+import com.winlator.glibc.xserver.*;
 import java.util.concurrent.atomic.*;
 
 public class E02_KeyInput {

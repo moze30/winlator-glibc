@@ -1,4 +1,4 @@
-package com.winlator.contentdialog;
+package com.winlator.glibc.contentdialog;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -15,8 +15,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.google.android.material.navigation.NavigationView;
-import com.winlator.R;
-import com.winlator.XServerDisplayActivity;
+import com.winlator.glibc.R;
+import com.winlator.glibc.XServerDisplayActivity;
 
 public class NavigationDialog extends ContentDialog {
 

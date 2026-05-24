@@ -1,17 +1,17 @@
-package com.winlator.xserver.requests;
+package com.winlator.glibc.xserver.requests;
 
-import static com.winlator.xserver.XClientRequestHandler.RESPONSE_CODE_SUCCESS;
+import static com.winlator.glibc.xserver.XClientRequestHandler.RESPONSE_CODE_SUCCESS;
 
-import com.winlator.xconnector.XInputStream;
-import com.winlator.xconnector.XOutputStream;
-import com.winlator.xconnector.XStreamLock;
-import com.winlator.xserver.Drawable;
-import com.winlator.xserver.GraphicsContext;
-import com.winlator.xserver.XClient;
-import com.winlator.xserver.errors.BadDrawable;
-import com.winlator.xserver.errors.BadGraphicsContext;
-import com.winlator.xserver.errors.BadMatch;
-import com.winlator.xserver.errors.XRequestError;
+import com.winlator.glibc.xconnector.XInputStream;
+import com.winlator.glibc.xconnector.XOutputStream;
+import com.winlator.glibc.xconnector.XStreamLock;
+import com.winlator.glibc.xserver.Drawable;
+import com.winlator.glibc.xserver.GraphicsContext;
+import com.winlator.glibc.xserver.XClient;
+import com.winlator.glibc.xserver.errors.BadDrawable;
+import com.winlator.glibc.xserver.errors.BadGraphicsContext;
+import com.winlator.glibc.xserver.errors.BadMatch;
+import com.winlator.glibc.xserver.errors.XRequestError;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

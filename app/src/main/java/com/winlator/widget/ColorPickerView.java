@@ -1,4 +1,4 @@
-package com.winlator.widget;
+package com.winlator.glibc.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -18,9 +18,9 @@ import android.widget.PopupWindow;
 
 import androidx.annotation.Nullable;
 
-import com.winlator.R;
-import com.winlator.core.AppUtils;
-import com.winlator.core.UnitUtils;
+import com.winlator.glibc.R;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.UnitUtils;
 
 import java.util.Locale;
 

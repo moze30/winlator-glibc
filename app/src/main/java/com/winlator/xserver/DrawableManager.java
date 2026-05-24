@@ -1,9 +1,9 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
 import android.util.SparseArray;
 
-import com.winlator.core.Callback;
-import com.winlator.renderer.Texture;
+import com.winlator.glibc.core.Callback;
+import com.winlator.glibc.renderer.Texture;
 
 public class DrawableManager extends XResourceManager implements XResourceManager.OnResourceLifecycleListener {
     private final XServer xServer;

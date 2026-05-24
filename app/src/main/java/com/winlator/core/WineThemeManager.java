@@ -1,4 +1,4 @@
-package com.winlator.core;
+package com.winlator.glibc.core;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,9 +10,9 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.DisplayMetrics;
 
-import com.winlator.R;
-import com.winlator.xenvironment.ImageFs;
-import com.winlator.xserver.ScreenInfo;
+import com.winlator.glibc.R;
+import com.winlator.glibc.xenvironment.ImageFs;
+import com.winlator.glibc.xserver.ScreenInfo;
 
 import java.io.File;
 

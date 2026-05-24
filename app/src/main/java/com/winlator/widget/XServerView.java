@@ -1,4 +1,4 @@
-package com.winlator.widget;
+package com.winlator.glibc.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -6,8 +6,8 @@ import android.opengl.GLSurfaceView;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.winlator.renderer.GLRenderer;
-import com.winlator.xserver.XServer;
+import com.winlator.glibc.renderer.GLRenderer;
+import com.winlator.glibc.xserver.XServer;
 
 @SuppressLint("ViewConstructor")
 public class XServerView extends GLSurfaceView {

@@ -1,6 +1,6 @@
-package com.winlator.winhandler;
+package com.winlator.glibc.winhandler;
 
-import com.winlator.xserver.Pointer;
+import com.winlator.glibc.xserver.Pointer;
 
 public abstract class MouseEventFlags {
     public static final int MOVE = 0x0001;

@@ -1,4 +1,4 @@
-package com.winlator.widget;
+package com.winlator.glibc.widget;
 
 import android.content.Context;
 import android.util.ArraySet;
@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.ListPopupWindow;
 
-import com.winlator.core.UnitUtils;
+import com.winlator.glibc.core.UnitUtils;
 
 import java.util.Collections;
 

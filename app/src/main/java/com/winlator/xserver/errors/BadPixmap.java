@@ -1,4 +1,4 @@
-package com.winlator.xserver.errors;
+package com.winlator.glibc.xserver.errors;
 
 public class BadPixmap extends XRequestError {
     public BadPixmap(int id) {

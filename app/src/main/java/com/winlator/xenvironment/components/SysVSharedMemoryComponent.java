@@ -1,13 +1,13 @@
-package com.winlator.xenvironment.components;
+package com.winlator.glibc.xenvironment.components;
 
-import com.winlator.sysvshm.SysVSHMConnectionHandler;
-import com.winlator.sysvshm.SysVSHMRequestHandler;
-import com.winlator.sysvshm.SysVSharedMemory;
-import com.winlator.xconnector.UnixSocketConfig;
-import com.winlator.xconnector.XConnectorEpoll;
-import com.winlator.xenvironment.EnvironmentComponent;
-import com.winlator.xserver.SHMSegmentManager;
-import com.winlator.xserver.XServer;
+import com.winlator.glibc.sysvshm.SysVSHMConnectionHandler;
+import com.winlator.glibc.sysvshm.SysVSHMRequestHandler;
+import com.winlator.glibc.sysvshm.SysVSharedMemory;
+import com.winlator.glibc.xconnector.UnixSocketConfig;
+import com.winlator.glibc.xconnector.XConnectorEpoll;
+import com.winlator.glibc.xenvironment.EnvironmentComponent;
+import com.winlator.glibc.xserver.SHMSegmentManager;
+import com.winlator.glibc.xserver.XServer;
 
 public class SysVSharedMemoryComponent extends EnvironmentComponent {
     private XConnectorEpoll connector;

@@ -1,4 +1,4 @@
-package com.winlator.widget;
+package com.winlator.glibc.widget;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -11,15 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.winlator.R;
-import com.winlator.core.AppUtils;
-import com.winlator.xserverbridge.IXServerBridge;
-import com.winlator.math.Mathf;
-import com.winlator.math.XForm;
-import com.winlator.renderer.ViewTransformation;
-import com.winlator.winhandler.MouseEventFlags;
-import com.winlator.winhandler.WinHandler;
-import com.winlator.xserver.Pointer;
+import com.winlator.glibc.R;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.xserverbridge.IXServerBridge;
+import com.winlator.glibc.math.Mathf;
+import com.winlator.glibc.math.XForm;
+import com.winlator.glibc.renderer.ViewTransformation;
+import com.winlator.glibc.winhandler.MouseEventFlags;
+import com.winlator.glibc.winhandler.WinHandler;
+import com.winlator.glibc.xserver.Pointer;
 
 public class TouchpadView extends View implements View.OnCapturedPointerListener {
     private static final int EFFECTIVE_TOUCH_DISTANCE = 20;

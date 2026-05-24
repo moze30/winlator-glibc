@@ -1,17 +1,17 @@
-package com.winlator.container;
+package com.winlator.glibc.container;
 
 import android.os.Environment;
 
-import com.winlator.XrActivity;
-import com.winlator.box64.Box64Preset;
-import com.winlator.fex.FEXPreset;
-import com.winlator.core.EnvVars;
-import com.winlator.core.FileUtils;
-import com.winlator.core.KeyValueSet;
-import com.winlator.core.WineInfo;
-import com.winlator.core.WineThemeManager;
-import com.winlator.winhandler.WinHandler;
-import com.winlator.xenvironment.ImageFs;
+import com.winlator.glibc.XrActivity;
+import com.winlator.glibc.box64.Box64Preset;
+import com.winlator.glibc.fex.FEXPreset;
+import com.winlator.glibc.core.EnvVars;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.core.KeyValueSet;
+import com.winlator.glibc.core.WineInfo;
+import com.winlator.glibc.core.WineThemeManager;
+import com.winlator.glibc.winhandler.WinHandler;
+import com.winlator.glibc.xenvironment.ImageFs;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,7 +33,7 @@ public class Container {
     public static final String DEFAULT_FEX_VERSION = "FEX-2603";
     public static final String DEFAULT_WINCOMPONENTS = "direct3d=1,directsound=1,directmusic=0,directshow=0,directplay=0,vcrun2010=1,wmdecoder=1";
     public static final String FALLBACK_WINCOMPONENTS = "direct3d=0,directsound=0,directmusic=0,directshow=0,directplay=0,vcrun2010=0,wmdecoder=0";
-    public static final String DEFAULT_DRIVES = "D:"+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+"E:/data/data/com.winlator/storage";
+    public static final String DEFAULT_DRIVES = "D:"+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+"E:/data/data/com.winlator.glibc/storage";
     public static final byte STARTUP_SELECTION_NORMAL = 0;
     public static final byte STARTUP_SELECTION_ESSENTIAL = 1;
     public static final byte STARTUP_SELECTION_AGGRESSIVE = 2;
@@ -499,10 +499,7 @@ public class Container {
 
             if (data.has("graphicsDriver")) {
                 String graphicsDriver = data.getString("graphicsDriver");
-                if (graphicsDriver.equals("turnip-zink")) {
-                    data.put("graphicsDriver", "turnip");
-                }
-                else if (graphicsDriver.equals("llvmpipe")) {
+                if (graphicsDriver.equals("llvmpipe")) {
                     data.put("graphicsDriver", "virgl");
                 }
             }

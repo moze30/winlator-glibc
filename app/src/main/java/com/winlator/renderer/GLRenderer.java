@@ -1,4 +1,4 @@
-package com.winlator.renderer;
+package com.winlator.glibc.renderer;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -6,23 +6,23 @@ import android.graphics.BitmapFactory;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 
-import com.winlator.R;
-import com.winlator.XrActivity;
-import com.winlator.math.Mathf;
-import com.winlator.math.XForm;
-import com.winlator.renderer.material.CursorMaterial;
-import com.winlator.renderer.material.ShaderMaterial;
-import com.winlator.renderer.material.WindowMaterial;
-import com.winlator.widget.XServerView;
-import com.winlator.xserver.Bitmask;
-import com.winlator.xserver.Cursor;
-import com.winlator.xserver.Drawable;
-import com.winlator.xserver.Pointer;
-import com.winlator.xserver.Window;
-import com.winlator.xserver.WindowAttributes;
-import com.winlator.xserver.WindowManager;
-import com.winlator.xserver.XLock;
-import com.winlator.xserver.XServer;
+import com.winlator.glibc.R;
+import com.winlator.glibc.XrActivity;
+import com.winlator.glibc.math.Mathf;
+import com.winlator.glibc.math.XForm;
+import com.winlator.glibc.renderer.material.CursorMaterial;
+import com.winlator.glibc.renderer.material.ShaderMaterial;
+import com.winlator.glibc.renderer.material.WindowMaterial;
+import com.winlator.glibc.widget.XServerView;
+import com.winlator.glibc.xserver.Bitmask;
+import com.winlator.glibc.xserver.Cursor;
+import com.winlator.glibc.xserver.Drawable;
+import com.winlator.glibc.xserver.Pointer;
+import com.winlator.glibc.xserver.Window;
+import com.winlator.glibc.xserver.WindowAttributes;
+import com.winlator.glibc.xserver.WindowManager;
+import com.winlator.glibc.xserver.XLock;
+import com.winlator.glibc.xserver.XServer;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
 public abstract class ClientOpcodes {
     public static final byte CREATE_WINDOW = 1;

@@ -1,20 +1,20 @@
-package com.winlator.xenvironment;
+package com.winlator.glibc.xenvironment;
 
 import android.content.Context;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.winlator.MainActivity;
-import com.winlator.R;
-import com.winlator.SettingsFragment;
-import com.winlator.container.Container;
-import com.winlator.container.ContainerManager;
-import com.winlator.core.AppUtils;
-import com.winlator.core.DownloadProgressDialog;
-import com.winlator.core.FileUtils;
-import com.winlator.core.PreloaderDialog;
-import com.winlator.core.TarCompressorUtils;
-import com.winlator.core.WineInfo;
+import com.winlator.glibc.MainActivity;
+import com.winlator.glibc.R;
+import com.winlator.glibc.SettingsFragment;
+import com.winlator.glibc.container.Container;
+import com.winlator.glibc.container.ContainerManager;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.DownloadProgressDialog;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.core.PreloaderDialog;
+import com.winlator.glibc.core.TarCompressorUtils;
+import com.winlator.glibc.core.WineInfo;
 
 import org.json.JSONArray;
 import org.json.JSONException;

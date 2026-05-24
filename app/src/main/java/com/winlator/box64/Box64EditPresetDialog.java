@@ -1,4 +1,4 @@
-package com.winlator.box64;
+package com.winlator.glibc.box64;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,13 +12,13 @@ import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 
-import com.winlator.R;
-import com.winlator.contentdialog.ContentDialog;
-import com.winlator.core.AppUtils;
-import com.winlator.core.ArrayUtils;
-import com.winlator.core.EnvVars;
-import com.winlator.core.FileUtils;
-import com.winlator.core.StringUtils;
+import com.winlator.glibc.R;
+import com.winlator.glibc.contentdialog.ContentDialog;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.ArrayUtils;
+import com.winlator.glibc.core.EnvVars;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.core.StringUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;

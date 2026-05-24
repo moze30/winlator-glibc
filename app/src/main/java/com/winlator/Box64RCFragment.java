@@ -1,4 +1,4 @@
-package com.winlator;
+package com.winlator.glibc;
 
 import android.app.Activity;
 import android.content.Context;
@@ -31,16 +31,16 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.winlator.box64.rc.RCField;
-import com.winlator.box64.rc.RCGroup;
-import com.winlator.box64.rc.RCItem;
-import com.winlator.box64.rc.RCManager;
-import com.winlator.box64.rc.RCFile;
-import com.winlator.contentdialog.ContentDialog;
-import com.winlator.contentdialog.ImportGroupDialog;
-import com.winlator.core.AppUtils;
-import com.winlator.core.Callback;
-import com.winlator.core.FileUtils;
+import com.winlator.glibc.box64.rc.RCField;
+import com.winlator.glibc.box64.rc.RCGroup;
+import com.winlator.glibc.box64.rc.RCItem;
+import com.winlator.glibc.box64.rc.RCManager;
+import com.winlator.glibc.box64.rc.RCFile;
+import com.winlator.glibc.contentdialog.ContentDialog;
+import com.winlator.glibc.contentdialog.ImportGroupDialog;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.Callback;
+import com.winlator.glibc.core.FileUtils;
 
 import org.json.JSONObject;
 

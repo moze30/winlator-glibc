@@ -1,15 +1,15 @@
-package com.winlator.xserver.extensions;
+package com.winlator.glibc.xserver.extensions;
 
 import android.util.SparseBooleanArray;
 
-import com.winlator.xconnector.XInputStream;
-import com.winlator.xconnector.XOutputStream;
-import com.winlator.xserver.XClient;
-import com.winlator.xserver.errors.BadFence;
-import com.winlator.xserver.errors.BadIdChoice;
-import com.winlator.xserver.errors.BadImplementation;
-import com.winlator.xserver.errors.BadMatch;
-import com.winlator.xserver.errors.XRequestError;
+import com.winlator.glibc.xconnector.XInputStream;
+import com.winlator.glibc.xconnector.XOutputStream;
+import com.winlator.glibc.xserver.XClient;
+import com.winlator.glibc.xserver.errors.BadFence;
+import com.winlator.glibc.xserver.errors.BadIdChoice;
+import com.winlator.glibc.xserver.errors.BadImplementation;
+import com.winlator.glibc.xserver.errors.BadMatch;
+import com.winlator.glibc.xserver.errors.XRequestError;
 
 import java.io.IOException;
 

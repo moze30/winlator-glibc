@@ -1,4 +1,4 @@
-package com.winlator.core;
+package com.winlator.glibc.core;
 
 import android.os.Process;
 import android.util.Log;

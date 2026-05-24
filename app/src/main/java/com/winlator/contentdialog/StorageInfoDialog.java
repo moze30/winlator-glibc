@@ -1,4 +1,4 @@
-package com.winlator.contentdialog;
+package com.winlator.glibc.contentdialog;
 
 import android.app.Activity;
 import android.widget.TextView;
@@ -6,11 +6,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.google.android.material.progressindicator.CircularProgressIndicator;
-import com.winlator.R;
-import com.winlator.container.Container;
-import com.winlator.core.Callback;
-import com.winlator.core.FileUtils;
-import com.winlator.core.StringUtils;
+import com.winlator.glibc.R;
+import com.winlator.glibc.container.Container;
+import com.winlator.glibc.core.Callback;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.core.StringUtils;
 
 import java.io.File;
 import java.util.concurrent.atomic.AtomicLong;

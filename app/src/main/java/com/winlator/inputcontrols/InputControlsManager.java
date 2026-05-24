@@ -1,4 +1,4 @@
-package com.winlator.inputcontrols;
+package com.winlator.glibc.inputcontrols;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,8 +9,8 @@ import android.util.JsonReader;
 
 import androidx.preference.PreferenceManager;
 
-import com.winlator.core.AppUtils;
-import com.winlator.core.FileUtils;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.FileUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,4 +1,4 @@
-package com.winlator.widget;
+package com.winlator.glibc.widget;
 
 import android.content.Context;
 import android.text.InputType;
@@ -18,10 +18,10 @@ import android.widget.ToggleButton;
 
 import androidx.annotation.Nullable;
 
-import com.winlator.R;
-import com.winlator.core.AppUtils;
-import com.winlator.core.EnvVars;
-import com.winlator.core.UnitUtils;
+import com.winlator.glibc.R;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.EnvVars;
+import com.winlator.glibc.core.UnitUtils;
 
 import java.util.Arrays;
 

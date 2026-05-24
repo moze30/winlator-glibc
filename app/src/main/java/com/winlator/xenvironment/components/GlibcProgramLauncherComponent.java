@@ -1,4 +1,4 @@
-package com.winlator.xenvironment.components;
+package com.winlator.glibc.xenvironment.components;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,20 +7,20 @@ import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
-import com.winlator.box64.Box64Preset;
-import com.winlator.box64.Box64PresetManager;
-import com.winlator.contents.ContentProfile;
-import com.winlator.contents.ContentsManager;
-import com.winlator.core.Callback;
-import com.winlator.core.DefaultVersion;
-import com.winlator.core.EnvVars;
-import com.winlator.core.ProcessHelper;
-import com.winlator.core.TarCompressorUtils;
-import com.winlator.core.WineInfo;
-import com.winlator.fex.FEXPresetManager;
-import com.winlator.xconnector.UnixSocketConfig;
-import com.winlator.xenvironment.EnvironmentComponent;
-import com.winlator.xenvironment.ImageFs;
+import com.winlator.glibc.box64.Box64Preset;
+import com.winlator.glibc.box64.Box64PresetManager;
+import com.winlator.glibc.contents.ContentProfile;
+import com.winlator.glibc.contents.ContentsManager;
+import com.winlator.glibc.core.Callback;
+import com.winlator.glibc.core.DefaultVersion;
+import com.winlator.glibc.core.EnvVars;
+import com.winlator.glibc.core.ProcessHelper;
+import com.winlator.glibc.core.TarCompressorUtils;
+import com.winlator.glibc.core.WineInfo;
+import com.winlator.glibc.fex.FEXPresetManager;
+import com.winlator.glibc.xconnector.UnixSocketConfig;
+import com.winlator.glibc.xenvironment.EnvironmentComponent;
+import com.winlator.glibc.xenvironment.ImageFs;
 
 import java.io.File;
 

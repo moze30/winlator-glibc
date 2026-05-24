@@ -1,4 +1,4 @@
-package com.winlator;
+package com.winlator.glibc;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -26,66 +26,66 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.navigation.NavigationView;
-import com.winlator.box64.rc.RCFile;
-import com.winlator.box64.rc.RCManager;
-import com.winlator.container.Container;
-import com.winlator.container.ContainerManager;
-import com.winlator.container.Shortcut;
-import com.winlator.contentdialog.ContentDialog;
-import com.winlator.contentdialog.DXVKConfigDialog;
-import com.winlator.contentdialog.DebugDialog;
-import com.winlator.contentdialog.NavigationDialog;
-import com.winlator.contents.ContentProfile;
-import com.winlator.contents.ContentsManager;
-import com.winlator.core.AppUtils;
-import com.winlator.core.Callback;
-import com.winlator.core.DefaultVersion;
-import com.winlator.core.EnvVars;
-import com.winlator.core.FileUtils;
-import com.winlator.core.GPUInformation;
-import com.winlator.core.KeyValueSet;
-import com.winlator.core.OnExtractFileListener;
-import com.winlator.core.PreloaderDialog;
-import com.winlator.core.ProcessHelper;
-import com.winlator.core.StringUtils;
-import com.winlator.core.TarCompressorUtils;
-import com.winlator.core.WineInfo;
-import com.winlator.core.WineRegistryEditor;
-import com.winlator.core.WineStartMenuCreator;
-import com.winlator.core.WineThemeManager;
-import com.winlator.core.WineUtils;
-import com.winlator.inputcontrols.ControlsProfile;
-import com.winlator.inputcontrols.ExternalController;
-import com.winlator.inputcontrols.InputControlsManager;
-import com.winlator.math.Mathf;
-import com.winlator.midi.MidiHandler;
-import com.winlator.midi.MidiManager;
-import com.winlator.renderer.GLRenderer;
-import com.winlator.widget.FrameRating;
-import com.winlator.widget.InputControlsView;
-import com.winlator.widget.MagnifierView;
-import com.winlator.widget.TouchpadView;
-import com.winlator.widget.XServerView;
-import com.winlator.winhandler.TaskManagerDialog;
-import com.winlator.winhandler.WinHandler;
-import com.winlator.xconnector.UnixSocketConfig;
-import com.winlator.xenvironment.EnvironmentComponent;
-import com.winlator.xenvironment.ImageFs;
-import com.winlator.xenvironment.XEnvironment;
-import com.winlator.xenvironment.components.ALSAServerComponent;
-import com.winlator.xenvironment.components.GlibcProgramLauncherComponent;
-import com.winlator.xenvironment.components.NetworkInfoUpdateComponent;
-import com.winlator.xenvironment.components.PulseAudioComponent;
-import com.winlator.xenvironment.components.SysVSharedMemoryComponent;
-import com.winlator.xenvironment.components.VirGLRendererComponent;
-import com.winlator.xenvironment.components.XServerComponent;
-import com.winlator.xserver.Property;
-import com.winlator.xserver.ScreenInfo;
-import com.winlator.xserver.Window;
-import com.winlator.xserver.WindowManager;
-import com.winlator.xserver.XServer;
-import com.winlator.xserverbridge.IXServerBridge;
-import com.winlator.xserverbridge.WinlatorXServerBridge;
+import com.winlator.glibc.box64.rc.RCFile;
+import com.winlator.glibc.box64.rc.RCManager;
+import com.winlator.glibc.container.Container;
+import com.winlator.glibc.container.ContainerManager;
+import com.winlator.glibc.container.Shortcut;
+import com.winlator.glibc.contentdialog.ContentDialog;
+import com.winlator.glibc.contentdialog.DXVKConfigDialog;
+import com.winlator.glibc.contentdialog.DebugDialog;
+import com.winlator.glibc.contentdialog.NavigationDialog;
+import com.winlator.glibc.contents.ContentProfile;
+import com.winlator.glibc.contents.ContentsManager;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.Callback;
+import com.winlator.glibc.core.DefaultVersion;
+import com.winlator.glibc.core.EnvVars;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.core.GPUInformation;
+import com.winlator.glibc.core.KeyValueSet;
+import com.winlator.glibc.core.OnExtractFileListener;
+import com.winlator.glibc.core.PreloaderDialog;
+import com.winlator.glibc.core.ProcessHelper;
+import com.winlator.glibc.core.StringUtils;
+import com.winlator.glibc.core.TarCompressorUtils;
+import com.winlator.glibc.core.WineInfo;
+import com.winlator.glibc.core.WineRegistryEditor;
+import com.winlator.glibc.core.WineStartMenuCreator;
+import com.winlator.glibc.core.WineThemeManager;
+import com.winlator.glibc.core.WineUtils;
+import com.winlator.glibc.inputcontrols.ControlsProfile;
+import com.winlator.glibc.inputcontrols.ExternalController;
+import com.winlator.glibc.inputcontrols.InputControlsManager;
+import com.winlator.glibc.math.Mathf;
+import com.winlator.glibc.midi.MidiHandler;
+import com.winlator.glibc.midi.MidiManager;
+import com.winlator.glibc.renderer.GLRenderer;
+import com.winlator.glibc.widget.FrameRating;
+import com.winlator.glibc.widget.InputControlsView;
+import com.winlator.glibc.widget.MagnifierView;
+import com.winlator.glibc.widget.TouchpadView;
+import com.winlator.glibc.widget.XServerView;
+import com.winlator.glibc.winhandler.TaskManagerDialog;
+import com.winlator.glibc.winhandler.WinHandler;
+import com.winlator.glibc.xconnector.UnixSocketConfig;
+import com.winlator.glibc.xenvironment.EnvironmentComponent;
+import com.winlator.glibc.xenvironment.ImageFs;
+import com.winlator.glibc.xenvironment.XEnvironment;
+import com.winlator.glibc.xenvironment.components.ALSAServerComponent;
+import com.winlator.glibc.xenvironment.components.GlibcProgramLauncherComponent;
+import com.winlator.glibc.xenvironment.components.NetworkInfoUpdateComponent;
+import com.winlator.glibc.xenvironment.components.PulseAudioComponent;
+import com.winlator.glibc.xenvironment.components.SysVSharedMemoryComponent;
+import com.winlator.glibc.xenvironment.components.VirGLRendererComponent;
+import com.winlator.glibc.xenvironment.components.XServerComponent;
+import com.winlator.glibc.xserver.Property;
+import com.winlator.glibc.xserver.ScreenInfo;
+import com.winlator.glibc.xserver.Window;
+import com.winlator.glibc.xserver.WindowManager;
+import com.winlator.glibc.xserver.XServer;
+import com.winlator.glibc.xserverbridge.IXServerBridge;
+import com.winlator.glibc.xserverbridge.WinlatorXServerBridge;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -744,19 +744,66 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
         File rootDir = imageFs.getRootDir();
 
         if (changed) {
-            FileUtils.delete(new File(imageFs.getLib64Dir(), "libvulkan_freedreno.so"));
-            FileUtils.delete(new File(imageFs.getLib64Dir(), "libGL.so.1"));
+            // Remove old driver files based on stored file list or WCP profile
+            String oldFileListJson = container.getExtra("graphicsDriverFiles");
+            ContentProfile oldProfile = !cacheId.isEmpty() ? contentsManager.getProfileByEntryName(cacheId) : null;
+
+            if (oldProfile != null) {
+                // WCP installed driver - remove files via profile
+                contentsManager.removeContentFiles(oldProfile);
+            } else if (!oldFileListJson.isEmpty()) {
+                // Default/builtin driver - remove files via stored JSON file list
+                contentsManager.removeContentFilesByJsonString(oldFileListJson);
+            } else {
+                // Legacy fallback for containers created before this change
+                FileUtils.delete(new File(imageFs.getLib64Dir(), "libvulkan_freedreno.so"));
+                FileUtils.delete(new File(imageFs.getLib64Dir(), "libGL.so.1"));
+            }
+
             container.putExtra("graphicsDriver", graphicsDriver);
-            container.saveData();
         }
 
         String driverLower = graphicsDriver.toLowerCase();
+        JSONArray combinedFileList = new JSONArray();
 
-        if (driverLower.contains("turnip")) {
+        if (driverLower.contains("freedreno")) {
             if (dxwrapper.equals("dxvk"))
                 DXVKConfigDialog.setEnvVars(this, dxwrapperConfig, envVars);
 
-            // envVars.put("GALLIUM_DRIVER", "zink");
+            if (!envVars.has("MESA_LOADER_DRIVER_OVERRIDE")) envVars.put("MESA_LOADER_DRIVER_OVERRIDE", "kgsl");
+            envVars.put("TU_OVERRIDE_HEAP_SIZE", "4096");
+            if (!envVars.has("MESA_VK_WSI_PRESENT_MODE")) envVars.put("MESA_VK_WSI_PRESENT_MODE", "mailbox");
+            if (!envVars.has("vblank_mode")) envVars.put("vblank_mode", "0");
+
+            if (!GPUInformation.isAdreno6xx(this)) {
+                String tuDebug = new EnvVars(container.getEnvVars()).get("TU_DEBUG");
+                if (!tuDebug.contains("sysmem")) {
+                    envVars.put("TU_DEBUG", (!tuDebug.isEmpty() ? tuDebug + "," : "") + "sysmem");
+                }
+            }
+
+            boolean useDRI3 = preferences.getBoolean("use_dri3", true);
+            if (!useDRI3) {
+                envVars.put("MESA_VK_WSI_PRESENT_MODE", "immediate");
+                envVars.put("MESA_VK_WSI_DEBUG", "sw");
+            }
+
+            if (changed) {
+                ContentProfile profile = contentsManager.getProfileByEntryName(graphicsDriver);
+                if (profile != null) {
+                    contentsManager.applyContent(profile);
+                    container.putExtra("graphicsDriverFiles", ContentsManager.serializeFileList(profile));
+                } else {
+                    String version = graphicsDriver.contains("-") ? graphicsDriver.split("-")[1] : DefaultVersion.FREEDRENO;
+                    combinedFileList = extractDefaultDriverAsset("graphics_driver/Freedreno-" + version + ".tzst", rootDir, combinedFileList);
+                    container.putExtra("graphicsDriverFiles", combinedFileList.toString());
+                }
+            }
+        }
+        else if (driverLower.contains("turnip")) {
+            if (dxwrapper.equals("dxvk"))
+                DXVKConfigDialog.setEnvVars(this, dxwrapperConfig, envVars);
+
             if (!envVars.has("GALLIUM_DRIVER")) envVars.put("GALLIUM_DRIVER", "zink");
             envVars.put("TU_OVERRIDE_HEAP_SIZE", "4096");
             if (!envVars.has("MESA_VK_WSI_PRESENT_MODE")) envVars.put("MESA_VK_WSI_PRESENT_MODE", "mailbox");
@@ -779,10 +826,11 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
                 ContentProfile profile = contentsManager.getProfileByEntryName(graphicsDriver);
                 if (profile != null) {
                     contentsManager.applyContent(profile);
+                    container.putExtra("graphicsDriverFiles", ContentsManager.serializeFileList(profile));
                 } else {
                     String version = graphicsDriver.contains("-") ? graphicsDriver.split("-")[1] : DefaultVersion.TURNIP;
-                    TarCompressorUtils.extract(TarCompressorUtils.Type.ZSTD, this, "graphics_driver/turnip-" + version + ".tzst", rootDir);
-                    TarCompressorUtils.extract(TarCompressorUtils.Type.ZSTD, this, "graphics_driver/zink-" + DefaultVersion.ZINK + ".tzst", rootDir);
+                    combinedFileList = extractDefaultDriverAsset("graphics_driver/turnip-" + version + ".tzst", rootDir, combinedFileList);
+                    container.putExtra("graphicsDriverFiles", combinedFileList.toString());
                 }
             }
         }
@@ -795,14 +843,46 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
             if (!envVars.has("vblank_mode")) envVars.put("vblank_mode", "0");
             if (changed) {
                 ContentProfile profile = contentsManager.getProfileByEntryName(graphicsDriver);
-                if (profile != null)
+                if (profile != null) {
                     contentsManager.applyContent(profile);
-                else {
+                    container.putExtra("graphicsDriverFiles", ContentsManager.serializeFileList(profile));
+                } else {
                     String version = graphicsDriver.contains("-") ? graphicsDriver.split("-")[1] : DefaultVersion.VIRGL;
-                    TarCompressorUtils.extract(TarCompressorUtils.Type.ZSTD, this, "graphics_driver/virgl-" + version + ".tzst", rootDir);
+                    combinedFileList = extractDefaultDriverAsset("graphics_driver/virgl-" + version + ".tzst", rootDir, combinedFileList);
+                    container.putExtra("graphicsDriverFiles", combinedFileList.toString());
                 }
             }
         }
+
+        if (changed) container.saveData();
+    }
+
+    /**
+     * Extract a default/builtin driver tzst from assets to rootDir.
+     * If the archive contains a profile.json, read it and accumulate target paths
+     * into combinedFileList for future cleanup tracking. The profile.json is then
+     * removed from rootDir since it's metadata, not part of the runtime rootfs.
+     */
+    private JSONArray extractDefaultDriverAsset(String assetPath, File rootDir, JSONArray combinedFileList) {
+        TarCompressorUtils.extract(TarCompressorUtils.Type.ZSTD, this, assetPath, rootDir);
+
+        File profileFile = new File(rootDir, ContentsManager.PROFILE_NAME);
+        if (profileFile.exists() && profileFile.isFile()) {
+            try {
+                String json = FileUtils.readString(profileFile);
+                ContentProfile profile = contentsManager.createProfileFromJsonString(json);
+                if (profile != null && profile.fileList != null) {
+                    for (ContentProfile.ContentFile contentFile : profile.fileList) {
+                        combinedFileList.put(contentFile.target);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            FileUtils.delete(profileFile);
+        }
+
+        return combinedFileList;
     }
 
     private void showTouchpadHelpDialog() {
@@ -1076,6 +1156,7 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
         TarCompressorUtils.extract(TarCompressorUtils.Type.ZSTD, this, "pulseaudio.tzst", new File(getFilesDir(), "pulseaudio"));
         WineUtils.applySystemTweaks(this, wineInfo);
         container.putExtra("graphicsDriver", null);
+        container.putExtra("graphicsDriverFiles", null);
         container.putExtra("desktopTheme", null);
     }
 

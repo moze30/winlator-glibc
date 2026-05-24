@@ -1,7 +1,7 @@
-package com.winlator.sysvshm;
+package com.winlator.glibc.sysvshm;
 
-import com.winlator.xconnector.Client;
-import com.winlator.xconnector.ConnectionHandler;
+import com.winlator.glibc.xconnector.Client;
+import com.winlator.glibc.xconnector.ConnectionHandler;
 
 public class SysVSHMConnectionHandler implements ConnectionHandler {
     private final SysVSharedMemory sysVSharedMemory;

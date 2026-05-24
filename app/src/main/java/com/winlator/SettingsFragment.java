@@ -1,4 +1,4 @@
-package com.winlator;
+package com.winlator.glibc;
 
 import android.app.Activity;
 import android.content.Context;
@@ -27,30 +27,30 @@ import androidx.fragment.app.FragmentManager;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.navigation.NavigationView;
-import com.winlator.box64.Box64EditPresetDialog;
-import com.winlator.box64.Box64Preset;
-import com.winlator.box64.Box64PresetManager;
-import com.winlator.container.Container;
-import com.winlator.container.ContainerManager;
-import com.winlator.contentdialog.ContentDialog;
-import com.winlator.contents.ContentProfile;
-import com.winlator.contents.ContentsManager;
-import com.winlator.core.AppUtils;
-import com.winlator.core.ArrayUtils;
-import com.winlator.core.Callback;
-import com.winlator.core.DefaultVersion;
-import com.winlator.core.FileUtils;
-import com.winlator.core.PreloaderDialog;
-import com.winlator.core.StringUtils;
-import com.winlator.core.WineInfo;
-import com.winlator.core.WineUtils;
-import com.winlator.fex.FEXEditPresetDialog;
-import com.winlator.fex.FEXPreset;
-import com.winlator.fex.FEXPresetManager;
-import com.winlator.inputcontrols.ExternalController;
-import com.winlator.midi.MidiManager;
-import com.winlator.xenvironment.ImageFs;
-import com.winlator.xenvironment.ImageFsInstaller;
+import com.winlator.glibc.box64.Box64EditPresetDialog;
+import com.winlator.glibc.box64.Box64Preset;
+import com.winlator.glibc.box64.Box64PresetManager;
+import com.winlator.glibc.container.Container;
+import com.winlator.glibc.container.ContainerManager;
+import com.winlator.glibc.contentdialog.ContentDialog;
+import com.winlator.glibc.contents.ContentProfile;
+import com.winlator.glibc.contents.ContentsManager;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.ArrayUtils;
+import com.winlator.glibc.core.Callback;
+import com.winlator.glibc.core.DefaultVersion;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.core.PreloaderDialog;
+import com.winlator.glibc.core.StringUtils;
+import com.winlator.glibc.core.WineInfo;
+import com.winlator.glibc.core.WineUtils;
+import com.winlator.glibc.fex.FEXEditPresetDialog;
+import com.winlator.glibc.fex.FEXPreset;
+import com.winlator.glibc.fex.FEXPresetManager;
+import com.winlator.glibc.inputcontrols.ExternalController;
+import com.winlator.glibc.midi.MidiManager;
+import com.winlator.glibc.xenvironment.ImageFs;
+import com.winlator.glibc.xenvironment.ImageFsInstaller;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -170,9 +170,6 @@ public class SettingsFragment extends Fragment {
             cbUseXR.setVisibility(View.GONE);
         }
 
-        final CheckBox cbUseTX11 = view.findViewById(R.id.CBUseTX11);
-        cbUseTX11.setChecked(preferences.getBoolean("use_tx11", false));
-
         final CheckBox cbEnableWineDebug = view.findViewById(R.id.CBEnableWineDebug);
         cbEnableWineDebug.setChecked(preferences.getBoolean("enable_wine_debug", false));
 
@@ -235,7 +232,6 @@ public class SettingsFragment extends Fragment {
             editor.putBoolean("haptics", cbHaptics.isChecked());
             editor.putBoolean("use_dri3", cbUseDRI3.isChecked());
             editor.putBoolean("use_xr", cbUseXR.isChecked());
-            editor.putBoolean("use_tx11", cbUseTX11.isChecked());
             editor.putFloat("cursor_speed", sbCursorSpeed.getProgress() / 100.0f);
             editor.putBoolean("enable_wine_debug", cbEnableWineDebug.isChecked());
             editor.putBoolean("enable_box64_logs", cbEnableBox64Logs.isChecked());

@@ -1,4 +1,4 @@
-package com.winlator.math;
+package com.winlator.glibc.math;
 
 public abstract class Mathf {
     public static float clamp(float x, float min, float max) {

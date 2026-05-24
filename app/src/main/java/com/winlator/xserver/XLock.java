@@ -1,4 +1,4 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
 public interface XLock extends AutoCloseable {
     @Override

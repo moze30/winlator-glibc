@@ -1,15 +1,15 @@
-package com.winlator.xserver.requests;
+package com.winlator.glibc.xserver.requests;
 
-import com.winlator.xconnector.XInputStream;
-import com.winlator.xconnector.XOutputStream;
-import com.winlator.xserver.Drawable;
-import com.winlator.xserver.GraphicsContext;
-import com.winlator.xserver.Bitmask;
-import com.winlator.xserver.XClient;
-import com.winlator.xserver.errors.BadDrawable;
-import com.winlator.xserver.errors.BadGraphicsContext;
-import com.winlator.xserver.errors.BadIdChoice;
-import com.winlator.xserver.errors.XRequestError;
+import com.winlator.glibc.xconnector.XInputStream;
+import com.winlator.glibc.xconnector.XOutputStream;
+import com.winlator.glibc.xserver.Drawable;
+import com.winlator.glibc.xserver.GraphicsContext;
+import com.winlator.glibc.xserver.Bitmask;
+import com.winlator.glibc.xserver.XClient;
+import com.winlator.glibc.xserver.errors.BadDrawable;
+import com.winlator.glibc.xserver.errors.BadGraphicsContext;
+import com.winlator.glibc.xserver.errors.BadIdChoice;
+import com.winlator.glibc.xserver.errors.XRequestError;
 
 public abstract class GraphicsContextRequests {
     public static void createGC(XClient client, XInputStream inputStream, XOutputStream outputStream) throws XRequestError {

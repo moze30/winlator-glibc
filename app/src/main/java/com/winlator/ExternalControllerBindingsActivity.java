@@ -1,4 +1,4 @@
-package com.winlator;
+package com.winlator.glibc;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -26,13 +26,13 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.winlator.core.AppUtils;
-import com.winlator.inputcontrols.Binding;
-import com.winlator.inputcontrols.ControlsProfile;
-import com.winlator.inputcontrols.ExternalController;
-import com.winlator.inputcontrols.ExternalControllerBinding;
-import com.winlator.inputcontrols.InputControlsManager;
-import com.winlator.math.Mathf;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.inputcontrols.Binding;
+import com.winlator.glibc.inputcontrols.ControlsProfile;
+import com.winlator.glibc.inputcontrols.ExternalController;
+import com.winlator.glibc.inputcontrols.ExternalControllerBinding;
+import com.winlator.glibc.inputcontrols.InputControlsManager;
+import com.winlator.glibc.math.Mathf;
 
 public class ExternalControllerBindingsActivity extends AppCompatActivity {
     private TextView emptyTextView;

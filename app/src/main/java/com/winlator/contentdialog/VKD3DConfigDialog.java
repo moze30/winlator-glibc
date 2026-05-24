@@ -1,4 +1,4 @@
-package com.winlator.contentdialog;
+package com.winlator.glibc.contentdialog;
 
 import android.view.View;
 
@@ -11,7 +11,7 @@ public class VKD3DConfigDialog extends ContentDialog {
         super(anchor.getContext(), 0);
     }
 
-    public static void setEnvVars(android.content.Context context, com.winlator.core.KeyValueSet config, com.winlator.core.EnvVars envVars) {
+    public static void setEnvVars(android.content.Context context, com.winlator.glibc.core.KeyValueSet config, com.winlator.glibc.core.EnvVars envVars) {
         DXVKConfigDialog.setEnvVars(context, config, envVars);
     }
 }

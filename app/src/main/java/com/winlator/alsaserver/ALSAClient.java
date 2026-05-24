@@ -1,6 +1,6 @@
-package com.winlator.alsaserver;
+package com.winlator.glibc.alsaserver;
 
-import com.winlator.sysvshm.SysVSharedMemory;
+import com.winlator.glibc.sysvshm.SysVSharedMemory;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

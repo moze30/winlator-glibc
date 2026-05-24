@@ -1,17 +1,17 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
-import com.winlator.winhandler.MouseEventFlags;
-import com.winlator.winhandler.WinHandler;
-import com.winlator.xserver.events.ButtonPress;
-import com.winlator.xserver.events.ButtonRelease;
-import com.winlator.xserver.events.EnterNotify;
-import com.winlator.xserver.events.Event;
-import com.winlator.xserver.events.KeyPress;
-import com.winlator.xserver.events.KeyRelease;
-import com.winlator.xserver.events.LeaveNotify;
-import com.winlator.xserver.events.MappingNotify;
-import com.winlator.xserver.events.MotionNotify;
-import com.winlator.xserver.events.PointerWindowEvent;
+import com.winlator.glibc.winhandler.MouseEventFlags;
+import com.winlator.glibc.winhandler.WinHandler;
+import com.winlator.glibc.xserver.events.ButtonPress;
+import com.winlator.glibc.xserver.events.ButtonRelease;
+import com.winlator.glibc.xserver.events.EnterNotify;
+import com.winlator.glibc.xserver.events.Event;
+import com.winlator.glibc.xserver.events.KeyPress;
+import com.winlator.glibc.xserver.events.KeyRelease;
+import com.winlator.glibc.xserver.events.LeaveNotify;
+import com.winlator.glibc.xserver.events.MappingNotify;
+import com.winlator.glibc.xserver.events.MotionNotify;
+import com.winlator.glibc.xserver.events.PointerWindowEvent;
 
 public class InputDeviceManager implements Pointer.OnPointerMotionListener, Keyboard.OnKeyboardListener, WindowManager.OnWindowModificationListener, XResourceManager.OnResourceLifecycleListener {
     private static final byte MOUSE_WHEEL_DELTA = 120;

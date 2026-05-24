@@ -1,4 +1,4 @@
-package com.winlator.midi;
+package com.winlator.glibc.midi;
 
 public class RequestCodes {
     public static final byte MIDI_SHORT = 1;

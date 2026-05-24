@@ -1,4 +1,4 @@
-package com.winlator.xconnector;
+package com.winlator.glibc.xconnector;
 
 import java.io.IOException;
 

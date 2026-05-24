@@ -1,10 +1,10 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
 import androidx.collection.ArrayMap;
 
-import com.winlator.xconnector.XInputStream;
-import com.winlator.xconnector.XOutputStream;
-import com.winlator.xserver.events.Event;
+import com.winlator.glibc.xconnector.XInputStream;
+import com.winlator.glibc.xconnector.XOutputStream;
+import com.winlator.glibc.xserver.events.Event;
 
 import java.io.IOException;
 import java.util.ArrayList;

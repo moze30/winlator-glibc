@@ -13,7 +13,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
 
-import com.winlator.xenvironment.EnvironmentComponent;
+import com.winlator.glibc.xenvironment.EnvironmentComponent;
 
 import java.util.concurrent.CountDownLatch;
 

@@ -1,8 +1,8 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
 import android.util.SparseArray;
 
-import com.winlator.sysvshm.SysVSharedMemory;
+import com.winlator.glibc.sysvshm.SysVSharedMemory;
 
 import java.nio.ByteBuffer;
 

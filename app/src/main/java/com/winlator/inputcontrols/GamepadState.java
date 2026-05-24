@@ -1,4 +1,4 @@
-package com.winlator.inputcontrols;
+package com.winlator.glibc.inputcontrols;
 
 import java.nio.ByteBuffer;
 

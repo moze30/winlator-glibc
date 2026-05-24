@@ -1,4 +1,4 @@
-package com.winlator.xenvironment.components;
+package com.winlator.glibc.xenvironment.components;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,9 +7,9 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.winlator.core.FileUtils;
-import com.winlator.core.NetworkHelper;
-import com.winlator.xenvironment.EnvironmentComponent;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.core.NetworkHelper;
+import com.winlator.glibc.xenvironment.EnvironmentComponent;
 
 import java.io.File;
 

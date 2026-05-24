@@ -16,8 +16,8 @@ import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
-import com.winlator.R;
-import com.winlator.xenvironment.ImageFs;
+import com.winlator.glibc.R;
+import com.winlator.glibc.xenvironment.ImageFs;
 
 import java.io.File;
 

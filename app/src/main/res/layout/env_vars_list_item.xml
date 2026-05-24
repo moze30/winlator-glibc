@@ -24,7 +24,7 @@
             android:id="@+id/Spinner"
             android:visibility="gone" />
 
-        <com.winlator.widget.MultiSelectionComboBox
+        <com.winlator.glibc.widget.MultiSelectionComboBox
             style="@style/MultiSelectionComboBox"
             android:id="@+id/MultiSelectionComboBox"
             android:layout_width="match_parent"

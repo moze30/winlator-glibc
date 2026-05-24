@@ -1,8 +1,8 @@
-package com.winlator.xserver;
+package com.winlator.glibc.xserver;
 
 import android.util.SparseArray;
 
-import com.winlator.xserver.events.SelectionClear;
+import com.winlator.glibc.xserver.events.SelectionClear;
 
 public class SelectionManager implements XResourceManager.OnResourceLifecycleListener {
     private final SparseArray<Selection> selections = new SparseArray<>();

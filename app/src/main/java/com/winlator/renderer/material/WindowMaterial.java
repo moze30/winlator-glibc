@@ -1,4 +1,4 @@
-package com.winlator.renderer.material;
+package com.winlator.glibc.renderer.material;
 
 public class WindowMaterial extends ShaderMaterial {
     public WindowMaterial() {

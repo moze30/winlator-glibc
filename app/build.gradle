@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.winlator'
+    namespace 'com.winlator.glibc'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.winlator"
+        applicationId "com.winlator.glibc"
         minSdk 26
         targetSdk 28
         versionCode 1

@@ -1,4 +1,4 @@
-package com.winlator.fex;
+package com.winlator.glibc.fex;
 
 import androidx.annotation.NonNull;
 

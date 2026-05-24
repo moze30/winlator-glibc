@@ -1,4 +1,4 @@
-package com.winlator.contentdialog;
+package com.winlator.glibc.contentdialog;
 
 import android.content.Context;
 import android.graphics.drawable.Icon;
@@ -11,21 +11,21 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.Spinner;
 
-import com.winlator.ContainerDetailFragment;
-import com.winlator.R;
-import com.winlator.ShortcutsFragment;
-import com.winlator.box64.Box64PresetManager;
-import com.winlator.box64.rc.RCManager;
-import com.winlator.container.Shortcut;
-import com.winlator.contents.ContentsManager;
-import com.winlator.core.AppUtils;
-import com.winlator.core.EnvVars;
-import com.winlator.core.StringUtils;
-import com.winlator.inputcontrols.ControlsProfile;
-import com.winlator.inputcontrols.InputControlsManager;
-import com.winlator.midi.MidiManager;
-import com.winlator.widget.EnvVarsView;
-import com.winlator.winhandler.WinHandler;
+import com.winlator.glibc.ContainerDetailFragment;
+import com.winlator.glibc.R;
+import com.winlator.glibc.ShortcutsFragment;
+import com.winlator.glibc.box64.Box64PresetManager;
+import com.winlator.glibc.box64.rc.RCManager;
+import com.winlator.glibc.container.Shortcut;
+import com.winlator.glibc.contents.ContentsManager;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.EnvVars;
+import com.winlator.glibc.core.StringUtils;
+import com.winlator.glibc.inputcontrols.ControlsProfile;
+import com.winlator.glibc.inputcontrols.InputControlsManager;
+import com.winlator.glibc.midi.MidiManager;
+import com.winlator.glibc.widget.EnvVarsView;
+import com.winlator.glibc.winhandler.WinHandler;
 
 import java.io.File;
 import java.util.ArrayList;

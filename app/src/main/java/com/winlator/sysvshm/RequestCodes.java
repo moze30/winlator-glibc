@@ -1,4 +1,4 @@
-package com.winlator.sysvshm;
+package com.winlator.glibc.sysvshm;
 
 public abstract class RequestCodes {
     public static final byte SHMGET = 0;

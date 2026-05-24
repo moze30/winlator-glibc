@@ -1,4 +1,4 @@
-package com.winlator.contentdialog;
+package com.winlator.glibc.contentdialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -16,9 +16,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.winlator.R;
-import com.winlator.core.AppUtils;
-import com.winlator.core.Callback;
+import com.winlator.glibc.R;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.Callback;
 
 import java.util.ArrayList;
 

@@ -1,11 +1,11 @@
-package com.winlator.xenvironment.components;
+package com.winlator.glibc.xenvironment.components;
 
-import com.winlator.xenvironment.EnvironmentComponent;
-import com.winlator.xconnector.XConnectorEpoll;
-import com.winlator.xconnector.UnixSocketConfig;
-import com.winlator.xserver.XClientConnectionHandler;
-import com.winlator.xserver.XClientRequestHandler;
-import com.winlator.xserver.XServer;
+import com.winlator.glibc.xenvironment.EnvironmentComponent;
+import com.winlator.glibc.xconnector.XConnectorEpoll;
+import com.winlator.glibc.xconnector.UnixSocketConfig;
+import com.winlator.glibc.xserver.XClientConnectionHandler;
+import com.winlator.glibc.xserver.XClientRequestHandler;
+import com.winlator.glibc.xserver.XServer;
 
 public class XServerComponent extends EnvironmentComponent {
     private XConnectorEpoll connector;

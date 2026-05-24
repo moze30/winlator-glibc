@@ -1,6 +1,6 @@
-package com.winlator.renderer;
+package com.winlator.glibc.renderer;
 
-import com.winlator.xserver.Drawable;
+import com.winlator.glibc.xserver.Drawable;
 
 class RenderableWindow {
     final Drawable content;

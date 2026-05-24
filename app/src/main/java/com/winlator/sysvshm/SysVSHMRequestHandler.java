@@ -1,10 +1,10 @@
-package com.winlator.sysvshm;
+package com.winlator.glibc.sysvshm;
 
-import com.winlator.xconnector.Client;
-import com.winlator.xconnector.RequestHandler;
-import com.winlator.xconnector.XInputStream;
-import com.winlator.xconnector.XOutputStream;
-import com.winlator.xconnector.XStreamLock;
+import com.winlator.glibc.xconnector.Client;
+import com.winlator.glibc.xconnector.RequestHandler;
+import com.winlator.glibc.xconnector.XInputStream;
+import com.winlator.glibc.xconnector.XOutputStream;
+import com.winlator.glibc.xconnector.XStreamLock;
 
 import java.io.IOException;
 

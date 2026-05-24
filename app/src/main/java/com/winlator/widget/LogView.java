@@ -1,4 +1,4 @@
-package com.winlator.widget;
+package com.winlator.glibc.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -12,11 +12,11 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.winlator.R;
-import com.winlator.core.AppUtils;
-import com.winlator.core.FileUtils;
-import com.winlator.core.UnitUtils;
-import com.winlator.math.Mathf;
+import com.winlator.glibc.R;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.core.UnitUtils;
+import com.winlator.glibc.math.Mathf;
 
 import java.io.BufferedWriter;
 import java.io.File;

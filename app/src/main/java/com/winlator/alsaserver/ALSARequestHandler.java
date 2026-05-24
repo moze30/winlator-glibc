@@ -1,12 +1,12 @@
-package com.winlator.alsaserver;
+package com.winlator.glibc.alsaserver;
 
-import com.winlator.sysvshm.SysVSharedMemory;
-import com.winlator.xconnector.Client;
-import com.winlator.xconnector.RequestHandler;
-import com.winlator.xconnector.XConnectorEpoll;
-import com.winlator.xconnector.XInputStream;
-import com.winlator.xconnector.XOutputStream;
-import com.winlator.xconnector.XStreamLock;
+import com.winlator.glibc.sysvshm.SysVSharedMemory;
+import com.winlator.glibc.xconnector.Client;
+import com.winlator.glibc.xconnector.RequestHandler;
+import com.winlator.glibc.xconnector.XConnectorEpoll;
+import com.winlator.glibc.xconnector.XInputStream;
+import com.winlator.glibc.xconnector.XOutputStream;
+import com.winlator.glibc.xconnector.XStreamLock;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

@@ -18,13 +18,13 @@ import android.widget.FrameLayout;
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
-import com.winlator.R;
-import com.winlator.XServerDisplayActivity;
-import com.winlator.widget.FrameRating;
-import com.winlator.widget.XServerView;
-import com.winlator.xenvironment.EnvironmentComponent;
-import com.winlator.xserverbridge.IXServerBridge;
-import com.winlator.xserverbridge.TX11XServerBridge;
+import com.winlator.glibc.R;
+import com.winlator.glibc.XServerDisplayActivity;
+import com.winlator.glibc.widget.FrameRating;
+import com.winlator.glibc.widget.XServerView;
+import com.winlator.glibc.xenvironment.EnvironmentComponent;
+import com.winlator.glibc.xserverbridge.IXServerBridge;
+import com.winlator.glibc.xserverbridge.TX11XServerBridge;
 
 // native 中固定包名类名获取 java 函数，所以这个类不能移动或重命名
 public class MainActivity extends XServerDisplayActivity {

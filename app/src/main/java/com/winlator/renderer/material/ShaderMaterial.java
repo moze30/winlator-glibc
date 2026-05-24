@@ -1,4 +1,4 @@
-package com.winlator.renderer.material;
+package com.winlator.glibc.renderer.material;
 
 import android.opengl.GLES20;
 

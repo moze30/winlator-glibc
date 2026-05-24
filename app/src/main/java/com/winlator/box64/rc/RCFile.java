@@ -1,10 +1,10 @@
-package com.winlator.box64.rc;
+package com.winlator.glibc.box64.rc;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.winlator.core.FileUtils;
+import com.winlator.glibc.core.FileUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;

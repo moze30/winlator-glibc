@@ -1,6 +1,6 @@
-package com.winlator.xconnector;
+package com.winlator.glibc.xconnector;
 
-import com.winlator.core.FileUtils;
+import com.winlator.glibc.core.FileUtils;
 
 import java.io.File;
 

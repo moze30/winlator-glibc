@@ -1,4 +1,4 @@
-package com.winlator.contentdialog;
+package com.winlator.glibc.contentdialog;
 
 import android.content.Context;
 import android.view.View;
@@ -7,16 +7,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.ToggleButton;
 
-import com.winlator.R;
-import com.winlator.contents.ContentProfile;
-import com.winlator.contents.ContentsManager;
-import com.winlator.core.AppUtils;
-import com.winlator.core.DefaultVersion;
-import com.winlator.core.EnvVars;
-import com.winlator.core.FileUtils;
-import com.winlator.core.KeyValueSet;
-import com.winlator.core.StringUtils;
-import com.winlator.xenvironment.ImageFs;
+import com.winlator.glibc.R;
+import com.winlator.glibc.contents.ContentProfile;
+import com.winlator.glibc.contents.ContentsManager;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.DefaultVersion;
+import com.winlator.glibc.core.EnvVars;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.core.KeyValueSet;
+import com.winlator.glibc.core.StringUtils;
+import com.winlator.glibc.xenvironment.ImageFs;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -130,7 +130,7 @@ public class DXVKConfigDialog extends ContentDialog {
     }
 
     public static void setEnvVars(Context context, KeyValueSet config, EnvVars envVars) {
-        envVars.put("DXVK_STATE_CACHE_PATH", "/data/data/com.winlator/files/imagefs" + ImageFs.CACHE_PATH);
+        envVars.put("DXVK_STATE_CACHE_PATH", "/data/data/com.winlator.glibc/files/imagefs" + ImageFs.CACHE_PATH);
         envVars.put("DXVK_LOG_LEVEL", "none");
 
         File rootDir = ImageFs.find(context).getRootDir();

@@ -1,4 +1,4 @@
-package com.winlator.core;
+package com.winlator.glibc.core;
 
 import android.content.Context;
 import android.content.pm.ProviderInfo;
@@ -15,7 +15,7 @@ import android.webkit.MimeTypeMap;
 
 import androidx.preference.PreferenceManager;
 
-import com.winlator.R;
+import com.winlator.glibc.R;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package com.winlator;
+package com.winlator.glibc;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -28,17 +28,17 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.winlator.container.Container;
-import com.winlator.container.ContainerManager;
-import com.winlator.contentdialog.ContentDialog;
-import com.winlator.contentdialog.ContentInfoDialog;
-import com.winlator.contentdialog.ContentUntrustedDialog;
-import com.winlator.contents.ContentProfile;
-import com.winlator.contents.ContentsManager;
-import com.winlator.contents.Downloader;
-import com.winlator.core.AppUtils;
-import com.winlator.core.DownloadProgressDialog;
-import com.winlator.core.FileUtils;
+import com.winlator.glibc.container.Container;
+import com.winlator.glibc.container.ContainerManager;
+import com.winlator.glibc.contentdialog.ContentDialog;
+import com.winlator.glibc.contentdialog.ContentInfoDialog;
+import com.winlator.glibc.contentdialog.ContentUntrustedDialog;
+import com.winlator.glibc.contents.ContentProfile;
+import com.winlator.glibc.contents.ContentsManager;
+import com.winlator.glibc.contents.Downloader;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.DownloadProgressDialog;
+import com.winlator.glibc.core.FileUtils;
 
 import java.io.File;
 import java.util.ArrayList;

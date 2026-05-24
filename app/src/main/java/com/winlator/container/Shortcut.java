@@ -1,10 +1,10 @@
-package com.winlator.container;
+package com.winlator.glibc.container;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.winlator.core.FileUtils;
-import com.winlator.core.StringUtils;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.core.StringUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;

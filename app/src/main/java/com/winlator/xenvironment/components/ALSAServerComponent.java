@@ -1,10 +1,10 @@
-package com.winlator.xenvironment.components;
+package com.winlator.glibc.xenvironment.components;
 
-import com.winlator.alsaserver.ALSAClientConnectionHandler;
-import com.winlator.alsaserver.ALSARequestHandler;
-import com.winlator.xconnector.UnixSocketConfig;
-import com.winlator.xconnector.XConnectorEpoll;
-import com.winlator.xenvironment.EnvironmentComponent;
+import com.winlator.glibc.alsaserver.ALSAClientConnectionHandler;
+import com.winlator.glibc.alsaserver.ALSARequestHandler;
+import com.winlator.glibc.xconnector.UnixSocketConfig;
+import com.winlator.glibc.xconnector.XConnectorEpoll;
+import com.winlator.glibc.xenvironment.EnvironmentComponent;
 
 public class ALSAServerComponent extends EnvironmentComponent {
     private XConnectorEpoll connector;

@@ -1,4 +1,4 @@
-package com.winlator;
+package com.winlator.glibc;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -29,37 +29,37 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
-import com.winlator.box64.Box64Preset;
-import com.winlator.box64.Box64PresetManager;
-import com.winlator.box64.rc.RCManager;
-import com.winlator.container.Container;
-import com.winlator.container.ContainerManager;
-import com.winlator.contentdialog.AddEnvVarDialog;
-import com.winlator.contentdialog.ContentDialog;
-import com.winlator.contentdialog.DXVKConfigDialog;
-import com.winlator.contents.ContentProfile;
-import com.winlator.contents.ContentsManager;
-import com.winlator.core.AppUtils;
-import com.winlator.core.Callback;
-import com.winlator.core.DefaultVersion;
-import com.winlator.core.EnvVars;
-import com.winlator.core.FileUtils;
-import com.winlator.core.KeyValueSet;
-import com.winlator.core.PreloaderDialog;
-import com.winlator.core.StringUtils;
-import com.winlator.core.WineInfo;
-import com.winlator.core.WineRegistryEditor;
-import com.winlator.core.WineThemeManager;
-import com.winlator.core.WineUtils;
-import com.winlator.fex.FEXPreset;
-import com.winlator.fex.FEXPresetManager;
-import com.winlator.midi.MidiManager;
-import com.winlator.widget.CPUListView;
-import com.winlator.widget.ColorPickerView;
-import com.winlator.widget.EnvVarsView;
-import com.winlator.widget.ImagePickerView;
-import com.winlator.winhandler.WinHandler;
-import com.winlator.xserver.XKeycode;
+import com.winlator.glibc.box64.Box64Preset;
+import com.winlator.glibc.box64.Box64PresetManager;
+import com.winlator.glibc.box64.rc.RCManager;
+import com.winlator.glibc.container.Container;
+import com.winlator.glibc.container.ContainerManager;
+import com.winlator.glibc.contentdialog.AddEnvVarDialog;
+import com.winlator.glibc.contentdialog.ContentDialog;
+import com.winlator.glibc.contentdialog.DXVKConfigDialog;
+import com.winlator.glibc.contents.ContentProfile;
+import com.winlator.glibc.contents.ContentsManager;
+import com.winlator.glibc.core.AppUtils;
+import com.winlator.glibc.core.Callback;
+import com.winlator.glibc.core.DefaultVersion;
+import com.winlator.glibc.core.EnvVars;
+import com.winlator.glibc.core.FileUtils;
+import com.winlator.glibc.core.KeyValueSet;
+import com.winlator.glibc.core.PreloaderDialog;
+import com.winlator.glibc.core.StringUtils;
+import com.winlator.glibc.core.WineInfo;
+import com.winlator.glibc.core.WineRegistryEditor;
+import com.winlator.glibc.core.WineThemeManager;
+import com.winlator.glibc.core.WineUtils;
+import com.winlator.glibc.fex.FEXPreset;
+import com.winlator.glibc.fex.FEXPresetManager;
+import com.winlator.glibc.midi.MidiManager;
+import com.winlator.glibc.widget.CPUListView;
+import com.winlator.glibc.widget.ColorPickerView;
+import com.winlator.glibc.widget.EnvVarsView;
+import com.winlator.glibc.widget.ImagePickerView;
+import com.winlator.glibc.winhandler.WinHandler;
+import com.winlator.glibc.xserver.XKeycode;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -600,7 +600,7 @@ public class ContainerDetailFragment extends Fragment {
 
         Runnable update = () -> {
             String graphicsDriver = StringUtils.parseIdentifier(sGraphicsDriver.getSelectedItem());
-            boolean addAll = graphicsDriver.startsWith("turnip");
+            boolean addAll = graphicsDriver.startsWith("turnip") || graphicsDriver.startsWith("freedreno");
 
             ArrayList<String> items = new ArrayList<>();
             for (String value : dxwrapperEntries)
@@ -759,6 +759,8 @@ public class ContainerDetailFragment extends Fragment {
         for (ContentProfile profile : manager.getProfiles(ContentProfile.ContentType.CONTENT_TYPE_TURNIP))
             itemList.add(ContentsManager.getEntryName(profile));
         for (ContentProfile profile : manager.getProfiles(ContentProfile.ContentType.CONTENT_TYPE_VIRGL))
+            itemList.add(ContentsManager.getEntryName(profile));
+        for (ContentProfile profile : manager.getProfiles(ContentProfile.ContentType.CONTENT_TYPE_FREEDRENO))
             itemList.add(ContentsManager.getEntryName(profile));
         spinner.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, itemList));
     }

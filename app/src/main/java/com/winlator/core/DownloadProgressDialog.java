@@ -1,4 +1,4 @@
-package com.winlator.core;
+package com.winlator.glibc.core;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -8,8 +8,8 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.google.android.material.progressindicator.CircularProgressIndicator;
-import com.winlator.R;
-import com.winlator.math.Mathf;
+import com.winlator.glibc.R;
+import com.winlator.glibc.math.Mathf;
 
 public class DownloadProgressDialog {
     private final Activity activity;

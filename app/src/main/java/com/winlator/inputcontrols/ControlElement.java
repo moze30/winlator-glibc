@@ -1,4 +1,4 @@
-package com.winlator.inputcontrols;
+package com.winlator.glibc.inputcontrols;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -10,10 +10,10 @@ import android.graphics.RectF;
 
 import androidx.core.graphics.ColorUtils;
 
-import com.winlator.core.CubicBezierInterpolator;
-import com.winlator.math.Mathf;
-import com.winlator.widget.InputControlsView;
-import com.winlator.widget.TouchpadView;
+import com.winlator.glibc.core.CubicBezierInterpolator;
+import com.winlator.glibc.math.Mathf;
+import com.winlator.glibc.widget.InputControlsView;
+import com.winlator.glibc.widget.TouchpadView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
