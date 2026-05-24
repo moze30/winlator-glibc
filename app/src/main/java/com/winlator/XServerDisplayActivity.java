@@ -744,13 +744,27 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
         File rootDir = imageFs.getRootDir();
 
         if (changed) {
-            FileUtils.delete(new File(imageFs.getLib64Dir(), "libvulkan_freedreno.so"));
-            FileUtils.delete(new File(imageFs.getLib64Dir(), "libGL.so.1"));
+            // Remove old driver files based on stored file list or WCP profile
+            String oldFileListJson = container.getExtra("graphicsDriverFiles");
+            ContentProfile oldProfile = !cacheId.isEmpty() ? contentsManager.getProfileByEntryName(cacheId) : null;
+
+            if (oldProfile != null) {
+                // WCP installed driver - remove files via profile
+                contentsManager.removeContentFiles(oldProfile);
+            } else if (!oldFileListJson.isEmpty()) {
+                // Default/builtin driver - remove files via stored JSON file list
+                contentsManager.removeContentFilesByJsonString(oldFileListJson);
+            } else {
+                // Legacy fallback for containers created before this change
+                FileUtils.delete(new File(imageFs.getLib64Dir(), "libvulkan_freedreno.so"));
+                FileUtils.delete(new File(imageFs.getLib64Dir(), "libGL.so.1"));
+            }
+
             container.putExtra("graphicsDriver", graphicsDriver);
-            container.saveData();
         }
 
         String driverLower = graphicsDriver.toLowerCase();
+        JSONArray combinedFileList = new JSONArray();
 
         if (driverLower.contains("turnip")) {
             if (dxwrapper.equals("dxvk"))
@@ -779,10 +793,12 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
                 ContentProfile profile = contentsManager.getProfileByEntryName(graphicsDriver);
                 if (profile != null) {
                     contentsManager.applyContent(profile);
+                    container.putExtra("graphicsDriverFiles", ContentsManager.serializeFileList(profile));
                 } else {
                     String version = graphicsDriver.contains("-") ? graphicsDriver.split("-")[1] : DefaultVersion.TURNIP;
-                    TarCompressorUtils.extract(TarCompressorUtils.Type.ZSTD, this, "graphics_driver/turnip-" + version + ".tzst", rootDir);
-                    TarCompressorUtils.extract(TarCompressorUtils.Type.ZSTD, this, "graphics_driver/zink-" + DefaultVersion.ZINK + ".tzst", rootDir);
+                    combinedFileList = extractDefaultDriverAsset("graphics_driver/turnip-" + version + ".tzst", rootDir, combinedFileList);
+                    combinedFileList = extractDefaultDriverAsset("graphics_driver/zink-" + DefaultVersion.ZINK + ".tzst", rootDir, combinedFileList);
+                    container.putExtra("graphicsDriverFiles", combinedFileList.toString());
                 }
             }
         }
@@ -795,14 +811,46 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
             if (!envVars.has("vblank_mode")) envVars.put("vblank_mode", "0");
             if (changed) {
                 ContentProfile profile = contentsManager.getProfileByEntryName(graphicsDriver);
-                if (profile != null)
+                if (profile != null) {
                     contentsManager.applyContent(profile);
-                else {
+                    container.putExtra("graphicsDriverFiles", ContentsManager.serializeFileList(profile));
+                } else {
                     String version = graphicsDriver.contains("-") ? graphicsDriver.split("-")[1] : DefaultVersion.VIRGL;
-                    TarCompressorUtils.extract(TarCompressorUtils.Type.ZSTD, this, "graphics_driver/virgl-" + version + ".tzst", rootDir);
+                    combinedFileList = extractDefaultDriverAsset("graphics_driver/virgl-" + version + ".tzst", rootDir, combinedFileList);
+                    container.putExtra("graphicsDriverFiles", combinedFileList.toString());
                 }
             }
         }
+
+        if (changed) container.saveData();
+    }
+
+    /**
+     * Extract a default/builtin driver tzst from assets to rootDir.
+     * If the archive contains a profile.json, read it and accumulate target paths
+     * into combinedFileList for future cleanup tracking. The profile.json is then
+     * removed from rootDir since it's metadata, not part of the runtime rootfs.
+     */
+    private JSONArray extractDefaultDriverAsset(String assetPath, File rootDir, JSONArray combinedFileList) {
+        TarCompressorUtils.extract(TarCompressorUtils.Type.ZSTD, this, assetPath, rootDir);
+
+        File profileFile = new File(rootDir, ContentsManager.PROFILE_NAME);
+        if (profileFile.exists() && profileFile.isFile()) {
+            try {
+                String json = FileUtils.readString(profileFile);
+                ContentProfile profile = contentsManager.createProfileFromJsonString(json);
+                if (profile != null && profile.fileList != null) {
+                    for (ContentProfile.ContentFile contentFile : profile.fileList) {
+                        combinedFileList.put(contentFile.target);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            FileUtils.delete(profileFile);
+        }
+
+        return combinedFileList;
     }
 
     private void showTouchpadHelpDialog() {
@@ -1076,6 +1124,7 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
         TarCompressorUtils.extract(TarCompressorUtils.Type.ZSTD, this, "pulseaudio.tzst", new File(getFilesDir(), "pulseaudio"));
         WineUtils.applySystemTweaks(this, wineInfo);
         container.putExtra("graphicsDriver", null);
+        container.putExtra("graphicsDriverFiles", null);
         container.putExtra("desktopTheme", null);
     }
 
