@@ -27,6 +27,8 @@ public class ContentsManager {
     public static final String[] TURNIP_TRUST_FILES = {"${libdir}/libvulkan_freedreno.so", "${libdir}/libvulkan.so.1",
             "${sharedir}/vulkan/icd.d/freedreno_icd.aarch64.json", "${libdir}/libGL.so.1", "${libdir}/libglapi.so.0"};
     public static final String[] VIRGL_TRUST_FILES = {"${libdir}/libGL.so.1", "${libdir}/libglapi.so.0"};
+    public static final String[] FREEDRENO_TRUST_FILES = {"${libdir}/libvulkan_freedreno.so", "${libdir}/libvulkan.so.1",
+            "${sharedir}/vulkan/icd.d/freedreno_icd.aarch64.json", "${libdir}/libGL.so.1", "${libdir}/libglapi.so.0"};
     public static final String[] DXVK_TRUST_FILES = {"${system32}/d3d8.dll", "${system32}/d3d9.dll", "${system32}/d3d10.dll", "${system32}/d3d10_1.dll",
             "${system32}/d3d10core.dll", "${system32}/d3d11.dll", "${system32}/dxgi.dll", "${syswow64}/d3d8.dll", "${syswow64}/d3d9.dll", "${syswow64}/d3d10.dll",
             "${syswow64}/d3d10_1.dll", "${syswow64}/d3d10core.dll", "${syswow64}/d3d11.dll", "${syswow64}/dxgi.dll"};
@@ -57,7 +59,8 @@ public class ContentsManager {
         CONTENT_DXVK_DIR_NAME("dxvk"),
         CONTENT_VKD3D_DIR_NAME("vkd3d"),
         CONTENT_BOX64_DIR_NAME("box64"),
-        CONTENT_FEX_DIR_NAME("fex");
+        CONTENT_FEX_DIR_NAME("fex"),
+        CONTENT_FREEDRENO_DIR_NAME("freedreno");
 
         private String name;
 
@@ -357,6 +360,7 @@ public class ContentsManager {
                 String[] paths = switch (type) {
                     case CONTENT_TYPE_TURNIP -> TURNIP_TRUST_FILES;
                     case CONTENT_TYPE_VIRGL -> VIRGL_TRUST_FILES;
+                    case CONTENT_TYPE_FREEDRENO -> FREEDRENO_TRUST_FILES;
                     case CONTENT_TYPE_DXVK -> DXVK_TRUST_FILES;
                     case CONTENT_TYPE_VKD3D -> VKD3D_TRUST_FILES;
                     case CONTENT_TYPE_BOX64 -> BOX64_TRUST_FILES;

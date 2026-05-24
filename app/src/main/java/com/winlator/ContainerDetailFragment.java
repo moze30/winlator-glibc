@@ -600,7 +600,7 @@ public class ContainerDetailFragment extends Fragment {
 
         Runnable update = () -> {
             String graphicsDriver = StringUtils.parseIdentifier(sGraphicsDriver.getSelectedItem());
-            boolean addAll = graphicsDriver.startsWith("turnip");
+            boolean addAll = graphicsDriver.startsWith("turnip") || graphicsDriver.startsWith("freedreno");
 
             ArrayList<String> items = new ArrayList<>();
             for (String value : dxwrapperEntries)
@@ -759,6 +759,8 @@ public class ContainerDetailFragment extends Fragment {
         for (ContentProfile profile : manager.getProfiles(ContentProfile.ContentType.CONTENT_TYPE_TURNIP))
             itemList.add(ContentsManager.getEntryName(profile));
         for (ContentProfile profile : manager.getProfiles(ContentProfile.ContentType.CONTENT_TYPE_VIRGL))
+            itemList.add(ContentsManager.getEntryName(profile));
+        for (ContentProfile profile : manager.getProfiles(ContentProfile.ContentType.CONTENT_TYPE_FREEDRENO))
             itemList.add(ContentsManager.getEntryName(profile));
         spinner.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, itemList));
     }

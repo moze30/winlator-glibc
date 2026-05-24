@@ -766,7 +766,41 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
         String driverLower = graphicsDriver.toLowerCase();
         JSONArray combinedFileList = new JSONArray();
 
-        if (driverLower.contains("turnip")) {
+        if (driverLower.contains("freedreno")) {
+            if (dxwrapper.equals("dxvk"))
+                DXVKConfigDialog.setEnvVars(this, dxwrapperConfig, envVars);
+
+            if (!envVars.has("MESA_LOADER_DRIVER_OVERRIDE")) envVars.put("MESA_LOADER_DRIVER_OVERRIDE", "kgsl");
+            envVars.put("TU_OVERRIDE_HEAP_SIZE", "4096");
+            if (!envVars.has("MESA_VK_WSI_PRESENT_MODE")) envVars.put("MESA_VK_WSI_PRESENT_MODE", "mailbox");
+            if (!envVars.has("vblank_mode")) envVars.put("vblank_mode", "0");
+
+            if (!GPUInformation.isAdreno6xx(this)) {
+                String tuDebug = new EnvVars(container.getEnvVars()).get("TU_DEBUG");
+                if (!tuDebug.contains("sysmem")) {
+                    envVars.put("TU_DEBUG", (!tuDebug.isEmpty() ? tuDebug + "," : "") + "sysmem");
+                }
+            }
+
+            boolean useDRI3 = preferences.getBoolean("use_dri3", true);
+            if (!useDRI3) {
+                envVars.put("MESA_VK_WSI_PRESENT_MODE", "immediate");
+                envVars.put("MESA_VK_WSI_DEBUG", "sw");
+            }
+
+            if (changed) {
+                ContentProfile profile = contentsManager.getProfileByEntryName(graphicsDriver);
+                if (profile != null) {
+                    contentsManager.applyContent(profile);
+                    container.putExtra("graphicsDriverFiles", ContentsManager.serializeFileList(profile));
+                } else {
+                    String version = graphicsDriver.contains("-") ? graphicsDriver.split("-")[1] : DefaultVersion.FREEDRENO;
+                    combinedFileList = extractDefaultDriverAsset("graphics_driver/Freedreno-" + version + ".tzst", rootDir, combinedFileList);
+                    container.putExtra("graphicsDriverFiles", combinedFileList.toString());
+                }
+            }
+        }
+        else if (driverLower.contains("turnip")) {
             if (dxwrapper.equals("dxvk"))
                 DXVKConfigDialog.setEnvVars(this, dxwrapperConfig, envVars);
 
