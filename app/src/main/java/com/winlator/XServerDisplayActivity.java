@@ -770,7 +770,6 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
             if (dxwrapper.equals("dxvk"))
                 DXVKConfigDialog.setEnvVars(this, dxwrapperConfig, envVars);
 
-            // envVars.put("GALLIUM_DRIVER", "zink");
             if (!envVars.has("GALLIUM_DRIVER")) envVars.put("GALLIUM_DRIVER", "zink");
             envVars.put("TU_OVERRIDE_HEAP_SIZE", "4096");
             if (!envVars.has("MESA_VK_WSI_PRESENT_MODE")) envVars.put("MESA_VK_WSI_PRESENT_MODE", "mailbox");
@@ -797,7 +796,6 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
                 } else {
                     String version = graphicsDriver.contains("-") ? graphicsDriver.split("-")[1] : DefaultVersion.TURNIP;
                     combinedFileList = extractDefaultDriverAsset("graphics_driver/turnip-" + version + ".tzst", rootDir, combinedFileList);
-                    combinedFileList = extractDefaultDriverAsset("graphics_driver/zink-" + DefaultVersion.ZINK + ".tzst", rootDir, combinedFileList);
                     container.putExtra("graphicsDriverFiles", combinedFileList.toString());
                 }
             }

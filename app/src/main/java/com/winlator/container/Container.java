@@ -499,10 +499,7 @@ public class Container {
 
             if (data.has("graphicsDriver")) {
                 String graphicsDriver = data.getString("graphicsDriver");
-                if (graphicsDriver.equals("turnip-zink")) {
-                    data.put("graphicsDriver", "turnip");
-                }
-                else if (graphicsDriver.equals("llvmpipe")) {
+                if (graphicsDriver.equals("llvmpipe")) {
                     data.put("graphicsDriver", "virgl");
                 }
             }
