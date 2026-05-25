@@ -870,11 +870,11 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
         if (profileFile.exists() && profileFile.isFile()) {
             try {
                 String json = FileUtils.readString(profileFile);
-                ContentProfile profile = contentsManager.createProfileFromJsonString(json);
-                if (profile != null && profile.fileList != null) {
-                    for (ContentProfile.ContentFile contentFile : profile.fileList) {
-                        combinedFileList.put(contentFile.target);
-                    }
+                JSONObject jsonObject = new JSONObject(json);
+                JSONArray fileJSONArray = jsonObject.getJSONArray(ContentProfile.MARK_FILE_LIST);
+                for (int i = 0; i < fileJSONArray.length(); i++) {
+                    JSONObject contentFileJSONObject = fileJSONArray.getJSONObject(i);
+                    combinedFileList.put(contentFileJSONObject.getString(ContentProfile.MARK_FILE_TARGET));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
