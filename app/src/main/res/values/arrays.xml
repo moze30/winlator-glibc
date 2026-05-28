@@ -18,7 +18,6 @@
     <string-array name="graphics_driver_entries">
         <item>Turnip-26.2.0</item>
         <item>Turnip-26.1.0</item>
-        <item>Turnip-25.1.0</item>
         <item>Freedreno-26.1.0</item>
     </string-array>
     <string-array name="audio_driver_entries">

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,7 +39,6 @@ import com.winlator.glibc.contentdialog.NavigationDialog;
 import com.winlator.glibc.contents.ContentProfile;
 import com.winlator.glibc.contents.ContentsManager;
 import com.winlator.glibc.core.AppUtils;
-import com.winlator.glibc.core.Callback;
 import com.winlator.glibc.core.DefaultVersion;
 import com.winlator.glibc.core.EnvVars;
 import com.winlator.glibc.core.FileUtils;
@@ -95,7 +95,9 @@ import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import cn.sherlock.com.sun.media.sound.SF2Soundbank;
 
@@ -135,6 +137,7 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
     private String lc_all = "";
     protected PreloaderDialog preloaderDialog = null;
     private Runnable configChangedCallback = null;
+    private boolean isExiting = false;
 
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
@@ -157,6 +160,7 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
         AppUtils.hideSystemUI(this);
         AppUtils.keepScreenOn(this);
         setContentView(R.layout.xserver_display_activity);
+        ProcessHelper.listProcessesFromAndroid(this);
 
         preloaderDialog = new PreloaderDialog(this);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -207,8 +211,7 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
                 try {
                     shortcut = new Shortcut(container, new File(shortcutPath));
                 } catch (Exception e) {
-                    finish();
-                    System.exit(0);
+                    killWineAndExit();
                 }
             }
 
@@ -349,6 +352,27 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
         }
     }
 
+    /** 仅杀死 glibc 进程会导致 wine 残留，退出容器 2 秒左右再次启动会崩溃或显示无效句柄。通过 wineserver -k 确保 wine 完全退出。 */
+    private void killWineAndExit() {
+        if (isExiting) return;
+        isExiting = true;
+        runOnUiThread(() -> preloaderDialog.show(R.string.exiting));
+        CountDownLatch latch = new CountDownLatch(1);
+        Executors.newSingleThreadExecutor().execute(() -> {
+            try {
+                GlibcProgramLauncherComponent component = environment.getComponent(GlibcProgramLauncherComponent.class);
+                if (component == null) throw new RuntimeException("无法找到 glibc component ");
+                component.execGuestProgram("wineserver -k", false, status -> latch.countDown());
+                if (!latch.await(6, TimeUnit.SECONDS)) throw new RuntimeException("等待超时，强制关闭");
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                ProcessHelper.listProcessesFromAndroid(this);
+                runOnUiThread(this::finish);
+            }
+        });
+    }
+
     @Override
     protected void onDestroy() {
         winHandler.stop();
@@ -424,13 +448,14 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
                 break;
             case R.id.main_menu_logs:
                 debugDialog.show();
+                ProcessHelper.listProcessesFromAndroid(this);
                 drawerLayout.closeDrawers();
                 break;
             case R.id.main_menu_touchpad_help:
                 showTouchpadHelpDialog();
                 break;
             case R.id.main_menu_exit:
-                finish();
+                killWineAndExit();
                 break;
         }
         return true;
@@ -558,7 +583,7 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
         envVars.put("BOX64_RCFILE", file.getAbsolutePath());
 
         guestProgramLauncherComponent.setEnvVars(envVars);
-        guestProgramLauncherComponent.setTerminationCallback((status) -> finish());
+        guestProgramLauncherComponent.setTerminationCallback((status) -> killWineAndExit());
 
         boolean enableStartupDesktopLogs = preferences.getBoolean("enable_startup_desktop_logs", false);
         if (enableStartupDesktopLogs) {

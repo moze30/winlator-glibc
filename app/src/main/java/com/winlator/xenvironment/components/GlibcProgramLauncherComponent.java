@@ -48,7 +48,12 @@ public class GlibcProgramLauncherComponent extends EnvironmentComponent {
         synchronized (lock) {
             stop();
             extractBox64Files();
-            pid = execGuestProgram();
+            pid = execGuestProgram(guestExecutable, true, (status) -> {
+                synchronized (lock) {
+                    pid = -1;
+                }
+                if (terminationCallback != null) terminationCallback.call(status);
+            });
         }
     }
 
@@ -114,105 +119,112 @@ public class GlibcProgramLauncherComponent extends EnvironmentComponent {
         this.logFilePath = logFilePath;
     }
 
-    protected int execGuestProgram() {
-        Context context = environment.getContext();
-        ImageFs imageFs = environment.getImageFs();
-        File rootDir = imageFs.getRootDir();
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean enableBox64Logs = preferences.getBoolean("enable_box64_logs", false);
-
-        EnvVars envVars = new EnvVars();
-        
-        WineInfo wineInfo = WineInfo.fromIdentifier(context, wineVersion);
-        boolean isArm64EC = wineInfo.getArch().equalsIgnoreCase("arm64ec");
-
-        if (!isArm64EC) {
-            addBox64EnvVars(envVars, enableBox64Logs);
-        } else {
-            addFEXEnvVars(envVars);
-        }
-
-        envVars.put("HOME", imageFs.home_path);
-        envVars.put("USER", ImageFs.USER);
-        envVars.put("TMPDIR", imageFs.getRootDir().getPath() + "/tmp");
-        envVars.put("DISPLAY", ":0");
-        envVars.put("WINE_HOST_XDG_CURRENT_DESKTOP", "1");
-
-        ContentProfile profile = contentsManager.getProfileByEntryName(wineVersion);
-        File wineDirAbs;
-        File wineBinDirAbs;
-        File wineLibDirAbs;
-
-        if (profile != null && profile.type == ContentProfile.ContentType.CONTENT_TYPE_WINE) {
-            wineDirAbs = ContentsManager.getInstallDir(context, profile);
-            wineBinDirAbs = new File(wineDirAbs, profile.wineBinPath);
-            wineLibDirAbs = new File(wineDirAbs, profile.wineLibPath);
-        } else {
-            String winePathStr = wineInfo.path;
-            if (winePathStr != null && winePathStr.startsWith("/")) winePathStr = winePathStr.substring(1);
-            wineDirAbs = new File(rootDir, winePathStr != null ? winePathStr : "opt/wine");
-            wineBinDirAbs = new File(wineDirAbs, "bin");
-            wineLibDirAbs = new File(wineDirAbs, "lib");
-        }
-
-        envVars.put("PATH", wineBinDirAbs.getPath() + ":" +
-                new File(rootDir, "/usr/bin").getPath() + ":" +
-                new File(rootDir, "/usr/local/bin").getPath());
-
-        String ldLibraryPath = new File(rootDir, "/usr/lib").getPath();
-        File wineLib64Dir = new File(wineDirAbs, "lib64");
-        
-        if (isArm64EC) {
-            File wineUnixLibDir = new File(wineLibDirAbs, "wine/aarch64-unix");
-            ldLibraryPath = wineUnixLibDir.getPath() + ":" + wineLibDirAbs.getPath() + ":" + ldLibraryPath;
-            envVars.put("WINEDLLPATH", wineLibDirAbs.getPath() + "/wine");
-        } else {
-            ldLibraryPath = wineLib64Dir.getPath() + ":" + wineLibDirAbs.getPath() + ":" + ldLibraryPath;
-            File wineDllDir = new File(wineLibDirAbs, "wine");
-            if (!wineDllDir.exists()) wineDllDir = new File(wineLib64Dir, "wine");
-            
-            if (wineDllDir.exists()) {
-                envVars.put("WINEDLLPATH", wineDllDir.getPath());
-                File unix64 = new File(wineDllDir, "x86_64-unix");
-                if (unix64.exists()) ldLibraryPath = unix64.getPath() + ":" + ldLibraryPath;
+    /**
+     * @param isStart 是否为启动命令。内部 {@link #start()} 执行应传入 true, 外部执行应传入 false
+     */
+    public int execGuestProgram(String guestExecutable, boolean isStart, Callback<Integer> terminationCallback) {
+        synchronized (lock) {
+            if (!isStart && pid == -1) {
+                Log.e("GlibcProgramLauncherComponent", "execGuestProgram: 尚未启动，无法执行命令");
+                return -1;
             }
-        }
+            Context context = environment.getContext();
+            ImageFs imageFs = environment.getImageFs();
+            File rootDir = imageFs.getRootDir();
 
-        envVars.put("LD_LIBRARY_PATH", ldLibraryPath);
-        envVars.put("BOX64_LD_LIBRARY_PATH", new File(rootDir, "/usr/lib/x86_64-linux-gnu").getPath() + ":" + ldLibraryPath);
-        envVars.put("ANDROID_SYSVSHM_SERVER", new File(rootDir, UnixSocketConfig.SYSVSHM_SERVER_PATH).getPath());
-        envVars.put("FONTCONFIG_PATH", new File(rootDir, "/usr/etc/fonts").getPath());
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+            boolean enableBox64Logs = preferences.getBoolean("enable_box64_logs", false);
 
-        if ((new File(imageFs.getGlibc64Dir(), "libandroid-sysvshm.so")).exists())
-            envVars.put("LD_PRELOAD", "libandroid-sysvshm.so");
-            
-        if (this.envVars != null) envVars.putAll(this.envVars);
+            EnvVars envVars = new EnvVars();
 
-        String finalArgs = guestExecutable;
-        finalArgs = finalArgs.trim();
-        if (finalArgs.startsWith("wine64 ")) finalArgs = finalArgs.substring(7).trim();
-        else if (finalArgs.startsWith("wine ")) finalArgs = finalArgs.substring(5).trim();
+            WineInfo wineInfo = WineInfo.fromIdentifier(context, wineVersion);
+            boolean isArm64EC = wineInfo.getArch().equalsIgnoreCase("arm64ec");
 
-        String command = "";
-        if (!isArm64EC) {
-            File wineAbsPath = new File(wineBinDirAbs, "wine64");
-            if (!wineAbsPath.exists()) wineAbsPath = new File(wineBinDirAbs, "wine");
-            command = new File(rootDir, "/usr/local/bin/box64").getPath() + " " + wineAbsPath.getPath() + " " + finalArgs;
-        } else {
-            File ldLoader = new File(rootDir, "usr/lib/ld-linux-aarch64.so.1");
-            File wineAbsPath = new File(wineBinDirAbs, "wine");
-            command = ldLoader.getPath() + " " + wineAbsPath.getPath() + " " + finalArgs;
-        }
-
-        Log.d("Winlator", "Executing command: " + command);
-
-        return ProcessHelper.exec(command, envVars.toStringArray(), rootDir, (status) -> {
-            synchronized (lock) {
-                pid = -1;
+            if (!isArm64EC) {
+                addBox64EnvVars(envVars, enableBox64Logs);
+            } else {
+                addFEXEnvVars(envVars);
             }
-            if (terminationCallback != null) terminationCallback.call(status);
-        }, logFilePath);
+
+            envVars.put("HOME", imageFs.home_path);
+            envVars.put("USER", ImageFs.USER);
+            envVars.put("TMPDIR", imageFs.getRootDir().getPath() + "/tmp");
+            envVars.put("DISPLAY", ":0");
+            envVars.put("WINE_HOST_XDG_CURRENT_DESKTOP", "1");
+
+            ContentProfile profile = contentsManager.getProfileByEntryName(wineVersion);
+            File wineDirAbs;
+            File wineBinDirAbs;
+            File wineLibDirAbs;
+
+            if (profile != null && profile.type == ContentProfile.ContentType.CONTENT_TYPE_WINE) {
+                wineDirAbs = ContentsManager.getInstallDir(context, profile);
+                wineBinDirAbs = new File(wineDirAbs, profile.wineBinPath);
+                wineLibDirAbs = new File(wineDirAbs, profile.wineLibPath);
+            } else {
+                String winePathStr = wineInfo.path;
+                if (winePathStr != null && winePathStr.startsWith("/")) winePathStr = winePathStr.substring(1);
+                wineDirAbs = new File(rootDir, winePathStr != null ? winePathStr : "opt/wine");
+                wineBinDirAbs = new File(wineDirAbs, "bin");
+                wineLibDirAbs = new File(wineDirAbs, "lib");
+            }
+
+            envVars.put("PATH", wineBinDirAbs.getPath() + ":" +
+                    new File(rootDir, "/usr/bin").getPath() + ":" +
+                    new File(rootDir, "/usr/local/bin").getPath());
+
+            String ldLibraryPath = new File(rootDir, "/usr/lib").getPath();
+            File wineLib64Dir = new File(wineDirAbs, "lib64");
+
+            if (isArm64EC) {
+                File wineUnixLibDir = new File(wineLibDirAbs, "wine/aarch64-unix");
+                ldLibraryPath = wineUnixLibDir.getPath() + ":" + wineLibDirAbs.getPath() + ":" + ldLibraryPath;
+                envVars.put("WINEDLLPATH", wineLibDirAbs.getPath() + "/wine");
+            } else {
+                ldLibraryPath = wineLib64Dir.getPath() + ":" + wineLibDirAbs.getPath() + ":" + ldLibraryPath;
+                File wineDllDir = new File(wineLibDirAbs, "wine");
+                if (!wineDllDir.exists()) wineDllDir = new File(wineLib64Dir, "wine");
+
+                if (wineDllDir.exists()) {
+                    envVars.put("WINEDLLPATH", wineDllDir.getPath());
+                    File unix64 = new File(wineDllDir, "x86_64-unix");
+                    if (unix64.exists()) ldLibraryPath = unix64.getPath() + ":" + ldLibraryPath;
+                }
+            }
+
+            envVars.put("LD_LIBRARY_PATH", ldLibraryPath);
+            envVars.put("BOX64_LD_LIBRARY_PATH", new File(rootDir, "/usr/lib/x86_64-linux-gnu").getPath() + ":" + ldLibraryPath);
+            envVars.put("ANDROID_SYSVSHM_SERVER", new File(rootDir, UnixSocketConfig.SYSVSHM_SERVER_PATH).getPath());
+            envVars.put("FONTCONFIG_PATH", new File(rootDir, "/usr/etc/fonts").getPath());
+
+            if ((new File(imageFs.getGlibc64Dir(), "libandroid-sysvshm.so")).exists())
+                envVars.put("LD_PRELOAD", "libandroid-sysvshm.so");
+
+            if (this.envVars != null) envVars.putAll(this.envVars);
+
+            String finalArgs = guestExecutable;
+            // 如果不是执行的 wine 而是其他（如 wineserver），后续不进行替换
+            boolean isRunningWine = true;
+            finalArgs = finalArgs.trim();
+            if (finalArgs.startsWith("wine64 ")) finalArgs = finalArgs.substring(7).trim();
+            else if (finalArgs.startsWith("wine ")) finalArgs = finalArgs.substring(5).trim();
+            else isRunningWine = false;
+
+            String command = "";
+            if (!isArm64EC) {
+                File wineAbsPath = new File(wineBinDirAbs, "wine64");
+                if (!wineAbsPath.exists()) wineAbsPath = new File(wineBinDirAbs, "wine");
+                command = new File(rootDir, "/usr/local/bin/box64").getPath() + " " + (isRunningWine ? wineAbsPath.getPath() + " " : "") + finalArgs;
+            } else {
+                File ldLoader = new File(rootDir, "usr/lib/ld-linux-aarch64.so.1");
+                File wineAbsPath = new File(wineBinDirAbs, "wine");
+                command = ldLoader.getPath() + " " + (isRunningWine ? wineAbsPath.getPath() + " " : "") + finalArgs;
+            }
+
+            Log.d("Winlator", "Executing command: " + command);
+
+            return ProcessHelper.exec(command, envVars.toStringArray(), rootDir, terminationCallback, isStart ? logFilePath : null);
+        }
     }
 
     private void addFEXEnvVars(EnvVars envVars) {

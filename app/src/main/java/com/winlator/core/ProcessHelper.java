@@ -1,10 +1,12 @@
 package com.winlator.glibc.core;
 
+import android.content.Context;
 import android.os.Process;
 import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -66,7 +68,9 @@ public abstract class ProcessHelper {
 
             if (terminationCallback != null) createWaitForThread(process, terminationCallback);
         }
-        catch (Exception e) {}
+        catch (Exception e) {
+            e.printStackTrace();
+        }
         return pid;
     }
 
@@ -210,5 +214,51 @@ public abstract class ProcessHelper {
         int affinityMask = 0;
         for (int i = from; i < to; i++) affinityMask |= (int)Math.pow(2, i);
         return affinityMask;
+    }
+
+    /** 读取当前应用环境下的所有进程并打印日志 */
+    public static void listProcessesFromAndroid(Context context) {
+        new Thread(() -> {
+            Log.d("Winlator", "从安卓视角查看当前应用下的全部进程：");
+            int myUid = Process.myUid();
+            File[] pidDirs = new File("/proc").listFiles(
+                (dir, name) -> { try { Integer.parseInt(name); return true; } catch (NumberFormatException e) { return false; } });
+            if (pidDirs == null) return;
+            int total = 0;
+            for (File pidDir : pidDirs) {
+                try {
+                    int pid = Integer.parseInt(pidDir.getName());
+                    File statusFile = new File(pidDir, "status");
+                    if (!statusFile.canRead()) continue;
+                    int uid = -1; long vmRss = 0; String state = "";
+                    try (BufferedReader br = new BufferedReader(new FileReader(statusFile))) {
+                        String line;
+                        while ((line = br.readLine()) != null) {
+                            String[] parts = line.split("\\s+");
+                            if (line.startsWith("Uid:") && parts.length >= 2) uid = Integer.parseInt(parts[1]);
+                            else if (line.startsWith("VmRSS:") && parts.length >= 2) vmRss = Long.parseLong(parts[1]) * 1024;
+                            else if (line.startsWith("State:")) state = line.substring(6).trim();
+                        }
+                    }
+                    if (uid != myUid) continue;
+                    String name = "";
+                    File cmdlineFile = new File(pidDir, "cmdline");
+                    if (cmdlineFile.canRead()) {
+                        try (BufferedReader br = new BufferedReader(new FileReader(cmdlineFile))) {
+                            String line = br.readLine();
+                            if (line != null) {
+                                int nullIdx = line.indexOf('\0');
+                                name = nullIdx > 0 ? line.substring(0, nullIdx) : line;
+                                int sep = name.lastIndexOf('/');
+                                if (sep >= 0) name = name.substring(sep + 1);
+                            }
+                        }
+                    }
+                    if (name.isEmpty()) continue;
+                    Log.d("Winlator", "Process [" + (++total) + "] PID=" + pid + ", Name=" + name + ", State=" + state + ", VmRSS=" + vmRss);
+                } catch (Exception ignored) {}
+            }
+            Log.d("Winlator", "进程全部列出, 个数: " + total);
+        }).start();
     }
 }

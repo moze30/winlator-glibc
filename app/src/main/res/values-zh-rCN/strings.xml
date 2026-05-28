@@ -17,6 +17,7 @@
     <string name="installing_system_files">正在安装系统文件…</string>
     <string name="updating_system_files">正在更新系统文件…</string>
     <string name="starting_up">正在启动…</string>
+    <string name="exiting">正在关闭…</string>
     <string name="unable_to_install_system_files">无法安装系统文件</string>
     <string name="keyboard">键盘</string>
     <string name="toggle_fullscreen">切换全屏</string>
