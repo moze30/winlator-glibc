@@ -59,8 +59,7 @@ public class WineInfo implements Parcelable {
     }
 
     public String getExecutable(Context context, boolean wow64Mode) {
-        // 现代 Glibc Wine 统一使用 wine64 启动，WoW64 由 Wine 内部处理
-        return "wine64";
+        return "wine";
     }
 
     public boolean isDefaultWine() {

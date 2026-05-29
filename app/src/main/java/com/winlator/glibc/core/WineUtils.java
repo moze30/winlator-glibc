@@ -91,18 +91,17 @@ public abstract class WineUtils {
         }
 
         File wineBin = new File(binDir, "wine");
-        File wineBin64 = new File(binDir, "wine64");
 
         if (!wineBin.isFile()) {
             callback.call(null);
             return;
         }
 
-        final String arch = (wineBin64.isFile() && ElfHelper.is64Bit(wineBin64)) || ElfHelper.is64Bit(wineBin) ? "x86_64" : "x86";
+        final String arch = ElfHelper.is64Bit(wineBin) ? "x86_64" : "x86";
 
         ImageFs imageFs = ImageFs.find(context);
         File rootDir = imageFs.getRootDir();
-        String wineBinAbsPath = wineBin64.isFile() ? wineBin64.getPath() : wineBin.getPath();
+        String wineBinAbsPath = wineBin.getPath();
         String wineBinRelPath = FileUtils.toRelativePath(rootDir.getPath(), wineBinAbsPath);
         final String winePath = wineDir.getPath();
 

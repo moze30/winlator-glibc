@@ -206,14 +206,12 @@ public class GlibcProgramLauncherComponent extends EnvironmentComponent {
             // 如果不是执行的 wine 而是其他（如 wineserver），后续不进行替换
             boolean isRunningWine = true;
             finalArgs = finalArgs.trim();
-            if (finalArgs.startsWith("wine64 ")) finalArgs = finalArgs.substring(7).trim();
-            else if (finalArgs.startsWith("wine ")) finalArgs = finalArgs.substring(5).trim();
+            if (finalArgs.startsWith("wine ")) finalArgs = finalArgs.substring(5).trim();
             else isRunningWine = false;
 
             String command = "";
             if (!isArm64EC) {
-                File wineAbsPath = new File(wineBinDirAbs, "wine64");
-                if (!wineAbsPath.exists()) wineAbsPath = new File(wineBinDirAbs, "wine");
+                File wineAbsPath = new File(wineBinDirAbs, "wine");
                 command = new File(rootDir, "/usr/local/bin/box64").getPath() + " " + (isRunningWine ? wineAbsPath.getPath() + " " : "") + finalArgs;
             } else {
                 File ldLoader = new File(rootDir, "usr/lib/ld-linux-aarch64.so.1");
