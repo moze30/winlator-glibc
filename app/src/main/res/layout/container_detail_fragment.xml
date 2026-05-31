@@ -311,6 +311,28 @@
                                 android:layout_height="wrap_content"
                                 android:visibility="gone" />
                         </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cursor_theme" />
+
+                        <Spinner
+                            style="@style/ComboBox"
+                            android:id="@+id/SCursorTheme"
+                            android:layout_width="match_parent"
+                            android:entries="@array/cursor_theme_entries" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cursor_size" />
+
+                        <Spinner
+                            style="@style/ComboBox"
+                            android:id="@+id/SCursorSize"
+                            android:layout_width="match_parent"
+                            android:entries="@array/cursor_size_entries" />
                     </LinearLayout>
 
                     <TextView

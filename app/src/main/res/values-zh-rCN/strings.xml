@@ -315,4 +315,8 @@
     <string name="use_termux_x11_instead_of_built_in_xserver">使用 Termux-X11 代替内置 X Server</string>
     <string name="clear">清屏</string>
     <string name="enable_touchpad_mouse_clicks">启用触摸板鼠标点击</string>
+    <string name="cursor_theme">鼠标主题</string>
+    <string name="cursor_size">鼠标主题大小</string>
+    <string name="cursor_theme_disabled">关闭</string>
+    <string name="cursor_size_disabled">关闭</string>
 </resources>

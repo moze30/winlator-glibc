@@ -135,4 +135,32 @@
         <item>@string/left_controller</item>
         <item>@string/right_controller</item>
     </string-array>
+
+    <string-array name="cursor_theme_entries">
+        <item>@string/cursor_theme_disabled</item>
+        <item>BreezeX-Light</item>
+        <item>BreezeX-Dark</item>
+        <item>BreezeX-Black</item>
+        <item>Bibata-Modern-Amber</item>
+        <item>Bibata-Modern-Amber-Right</item>
+        <item>Bibata-Modern-Classic</item>
+        <item>Bibata-Modern-Classic-Right</item>
+        <item>Bibata-Modern-Ice</item>
+        <item>Bibata-Modern-Ice-Right</item>
+        <item>Bibata-Original-Amber</item>
+        <item>Bibata-Original-Amber-Right</item>
+        <item>Bibata-Original-Classic</item>
+        <item>Bibata-Original-Classic-Right</item>
+        <item>Bibata-Original-Ice</item>
+        <item>Bibata-Original-Ice-Right</item>
+    </string-array>
+
+    <string-array name="cursor_size_entries">
+        <item>@string/cursor_size_disabled</item>
+        <item>24</item>
+        <item>16</item>
+        <item>32</item>
+        <item>48</item>
+        <item>64</item>
+    </string-array>
 </resources>

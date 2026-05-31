@@ -370,4 +370,8 @@
     <string name="use_termux_x11_instead_of_built_in_xserver">Use Termux-X11 instead of built-in X Server</string>
     <string name="clear">Clear</string>
     <string name="enable_touchpad_mouse_clicks">Enable touchpad mouse clicks</string>
+    <string name="cursor_theme">Mouse Theme</string>
+    <string name="cursor_size">Mouse Theme Size</string>
+    <string name="cursor_theme_disabled">Disabled</string>
+    <string name="cursor_size_disabled">Disabled</string>
 </resources>

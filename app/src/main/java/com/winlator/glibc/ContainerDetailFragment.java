@@ -313,6 +313,12 @@ public class ContainerDetailFragment extends Fragment {
                 int primaryController = sPrimaryController.getSelectedItemPosition();
                 String controllerMapping = getControllerMapping(view);
 
+                Spinner sCursorTheme = view.findViewById(R.id.SCursorTheme);
+                String cursorTheme = sCursorTheme.getSelectedItemPosition() == 0 ? "" : sCursorTheme.getSelectedItem().toString();
+
+                Spinner sCursorSize = view.findViewById(R.id.SCursorSize);
+                String cursorSize = sCursorSize.getSelectedItemPosition() == 0 ? "" : sCursorSize.getSelectedItem().toString();
+
                 String box64Version = StringUtils.parseIdentifier(sBox64Version.getSelectedItem());
                 preferences.edit().putString("box64_version", box64Version).apply();
 
@@ -345,6 +351,8 @@ public class ContainerDetailFragment extends Fragment {
                     container.setLC_ALL(lc_all);
                     container.setPrimaryController(primaryController);
                     container.setControllerMapping(controllerMapping);
+                    container.setCursorTheme(cursorTheme);
+                    container.setCursorSize(cursorSize);
                     container.saveData();
                     saveWineRegistryKeys(view);
                     getActivity().onBackPressed();
@@ -374,6 +382,8 @@ public class ContainerDetailFragment extends Fragment {
                     data.put("lc_all", lc_all);
                     data.put("primaryController", primaryController);
                     data.put("controllerMapping", controllerMapping);
+                    data.put("cursorTheme", cursorTheme);
+                    data.put("cursorSize", cursorSize);
                     data.put("wineVersion", sWineVersion.getSelectedItem().toString());
 
                     preloaderDialog.show(R.string.creating_container);
@@ -461,6 +471,26 @@ public class ContainerDetailFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
         sDesktopBackgroundType.setSelection(desktopTheme.backgroundType.ordinal());
+
+        Spinner sCursorTheme = view.findViewById(R.id.SCursorTheme);
+        String[] cursorThemeEntries = getResources().getStringArray(R.array.cursor_theme_entries);
+        String currentCursorTheme = isEditMode() ? container.getCursorTheme() : Container.DEFAULT_CURSOR_THEME;
+        for (int i = 0; i < cursorThemeEntries.length; i++) {
+            if (cursorThemeEntries[i].equals(currentCursorTheme)) {
+                sCursorTheme.setSelection(i);
+                break;
+            }
+        }
+
+        Spinner sCursorSize = view.findViewById(R.id.SCursorSize);
+        String[] cursorSizeEntries = getResources().getStringArray(R.array.cursor_size_entries);
+        String currentCursorSize = isEditMode() ? container.getCursorSize() : Container.DEFAULT_CURSOR_SIZE;
+        for (int i = 0; i < cursorSizeEntries.length; i++) {
+            if (cursorSizeEntries[i].equals(currentCursorSize)) {
+                sCursorSize.setSelection(i);
+                break;
+            }
+        }
 
         File containerDir = isEditMode() ? container.getRootDir() : null;
         File userRegFile = new File(containerDir, ".wine/user.reg");

@@ -547,6 +547,16 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
             if (shortcut != null) envVars.putAll(shortcut.getExtra("envVars"));
             if (!envVars.has("WINEESYNC")) envVars.put("WINEESYNC", "1");
 
+            String cursorTheme = container.getCursorTheme();
+            if (!cursorTheme.isEmpty()) {
+                envVars.put("XCURSOR_THEME", cursorTheme);
+            }
+
+            String cursorSize = container.getCursorSize();
+            if (!cursorSize.isEmpty()) {
+                envVars.put("XCURSOR_SIZE", cursorSize);
+            }
+
             ArrayList<String> bindingPaths = new ArrayList<>();
             for (String[] drive : container.drivesIterator()) bindingPaths.add(drive[1]);
             guestProgramLauncherComponent.setBindingPaths(bindingPaths.toArray(new String[0]));

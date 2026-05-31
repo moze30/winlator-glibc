@@ -34,6 +34,8 @@ public class Container {
     public static final String DEFAULT_WINCOMPONENTS = "direct3d=1,directsound=1,directmusic=0,directshow=0,directplay=0,vcrun2010=1,wmdecoder=1";
     public static final String FALLBACK_WINCOMPONENTS = "direct3d=0,directsound=0,directmusic=0,directshow=0,directplay=0,vcrun2010=0,wmdecoder=0";
     public static final String DEFAULT_DRIVES = "D:"+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+"E:/data/data/com.winlator.glibc/storage";
+    public static final String DEFAULT_CURSOR_THEME = "BreezeX-Light";
+    public static final String DEFAULT_CURSOR_SIZE = "24";
     public static final byte STARTUP_SELECTION_NORMAL = 0;
     public static final byte STARTUP_SELECTION_ESSENTIAL = 1;
     public static final byte STARTUP_SELECTION_AGGRESSIVE = 2;
@@ -65,6 +67,8 @@ public class Container {
     private String lc_all = "";
     private int primaryController = 1;
     private String controllerMapping = new String(new char[XrControllerMapping.values().length]);
+    private String cursorTheme = DEFAULT_CURSOR_THEME;
+    private String cursorSize = DEFAULT_CURSOR_SIZE;
 
     public Container(int id) {
         this.id = id;
@@ -165,6 +169,22 @@ public class Container {
 
     public void setControllerMapping(String controllerMapping) {
         this.controllerMapping = controllerMapping;
+    }
+
+    public String getCursorTheme() {
+        return cursorTheme;
+    }
+
+    public void setCursorTheme(String cursorTheme) {
+        this.cursorTheme = cursorTheme != null ? cursorTheme : "";
+    }
+
+    public String getCursorSize() {
+        return cursorSize;
+    }
+
+    public void setCursorSize(String cursorSize) {
+        this.cursorSize = cursorSize != null ? cursorSize : "";
     }
 
     public boolean isShowFPS() {
@@ -383,6 +403,8 @@ public class Container {
             data.put("lc_all", lc_all);
             data.put("primaryController", primaryController);
             data.put("controllerMapping", controllerMapping);
+            data.put("cursorTheme", cursorTheme);
+            data.put("cursorSize", cursorSize);
             data.put("wineVersion", wineVersion);
 
             FileUtils.writeString(getConfigFile(), data.toString());
@@ -475,6 +497,12 @@ public class Container {
                     break;
                 case "controllerMapping" :
                     controllerMapping = data.getString(key);
+                    break;
+                case "cursorTheme" :
+                    setCursorTheme(data.getString(key));
+                    break;
+                case "cursorSize" :
+                    setCursorSize(data.getString(key));
                     break;
             }
         }
