@@ -185,7 +185,7 @@ public class InputControlsManager {
 
     public File exportProfile(ControlsProfile profile) {
         File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        File destination = new File(downloadsDir, "Winlator/profiles/"+profile.getName()+".icp");
+        File destination = new File(downloadsDir, "Winlator-Glibc/profiles/"+profile.getName()+".icp");
         FileUtils.copy(ControlsProfile.getProfileFile(context, profile.id), destination);
         MediaScannerConnection.scanFile(context, new String[]{destination.getAbsolutePath()}, null, null);
         return destination.isFile() ? destination : null;

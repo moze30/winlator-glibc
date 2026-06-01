@@ -99,8 +99,8 @@ public class TX11Service extends Service {
 
         Notification build = new NotificationCompat.Builder(this, "notification_channel_id")
                 .setSmallIcon(R.drawable.cursor)
-                .setContentText("Termux-x11 X Server for Winlator")
-                .setContentTitle("Winlator")
+                .setContentText("Termux-x11 X Server for Winlator-Glibc")
+                .setContentTitle("Winlator-Glibc")
                 .setContentIntent(PendingIntent.getActivity(this, 0, intent, 0))
                 .build();
         notificationManager.notify(2, build);

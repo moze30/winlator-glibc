@@ -183,7 +183,7 @@ public class LogView extends View {
     }
 
     private static File getLogFile() {
-        File winlatorDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "Winlator");
+        File winlatorDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "Winlator-Glibc");
         winlatorDir.mkdirs();
         return new File(winlatorDir, "logs.txt");
     }

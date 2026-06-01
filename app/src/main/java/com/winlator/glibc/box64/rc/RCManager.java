@@ -187,7 +187,7 @@ public class RCManager {
 
     public File exportRCFile(RCFile rcfile) {
         File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        File destination = new File(downloadsDir, "Winlator/rcfiles/" + rcfile.getName() + ".rcp");
+        File destination = new File(downloadsDir, "Winlator-Glibc/rcfiles/" + rcfile.getName() + ".rcp");
         FileUtils.copy(RCFile.getRCFile(context, rcfile.id), destination);
         MediaScannerConnection.scanFile(context, new String[]{destination.getAbsolutePath()}, null, null);
         return destination.isFile() ? destination : null;

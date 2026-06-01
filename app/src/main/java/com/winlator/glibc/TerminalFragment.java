@@ -87,7 +87,7 @@ public class TerminalFragment extends Fragment {
         // Initialize file paths
         File downloadDir = android.os.Environment.getExternalStoragePublicDirectory(
             android.os.Environment.DIRECTORY_DOWNLOADS);
-        File winlatorDir = new File(downloadDir, "Winlator");
+        File winlatorDir = new File(downloadDir, "Winlator-Glibc");
         
         outputFilePath = new File(winlatorDir, OUTPUT_FILE_NAME).getAbsolutePath();
         latestOutputFilePath = new File(winlatorDir, LATEST_OUTPUT_FILE_NAME).getAbsolutePath();
