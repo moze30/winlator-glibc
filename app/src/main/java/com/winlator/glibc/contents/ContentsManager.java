@@ -383,22 +383,24 @@ public class ContentsManager {
     }
 
     /**
-     * Remove files and directories from rootfs based on a ContentProfile's file list.
-     * Deletes exactly what the JSON lists - both files and directories.
+     * Remove files from rootfs based on a ContentProfile's file list.
+     * Only deletes files, skips directories.
      */
     public void removeContentFiles(ContentProfile profile) {
         if (profile == null || profile.fileList == null) return;
         for (ContentProfile.ContentFile contentFile : profile.fileList) {
             String realPath = getPathFromTemplate(contentFile.target);
             File targetFile = new File(realPath);
-            FileUtils.delete(targetFile);
+            if (targetFile.isFile()) {
+                targetFile.delete();
+            }
         }
     }
 
     /**
-     * Remove files and directories from rootfs based on a JSON-serialized file list string.
+     * Remove files from rootfs based on a JSON-serialized file list string.
      * The string format is a JSON array of target path templates.
-     * Deletes exactly what the JSON lists - both files and directories.
+     * Only deletes files, skips directories.
      */
     public void removeContentFilesByJsonString(String fileListJson) {
         if (fileListJson == null || fileListJson.isEmpty()) return;
@@ -408,7 +410,9 @@ public class ContentsManager {
                 String targetPath = jsonArray.getString(i);
                 String realPath = getPathFromTemplate(targetPath);
                 File targetFile = new File(realPath);
-                FileUtils.delete(targetFile);
+                if (targetFile.isFile()) {
+                    targetFile.delete();
+                }
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -518,9 +522,31 @@ public class ContentsManager {
                 File targetFile = new File(getPathFromTemplate(contentFile.target));
                 File sourceFile = new File(getInstallDir(context, profile), contentFile.source);
 
-                // Use FileUtils.delete to handle both files and directories (including non-empty dirs)
-                FileUtils.delete(targetFile);
-                FileUtils.copy(sourceFile, targetFile);
+                // Only delete if target is a file (not a directory)
+                if (targetFile.isFile()) {
+                    targetFile.delete();
+                }
+
+                if (FileUtils.isSymlink(sourceFile)) {
+                    // Preserve symbolic links by reading the link target and recreating the symlink
+                    String linkTarget = FileUtils.readSymlink(sourceFile);
+                    if (!linkTarget.isEmpty()) {
+                        // Ensure parent directory exists
+                        File parent = targetFile.getParentFile();
+                        if (parent != null && !parent.exists()) parent.mkdirs();
+                        FileUtils.symlink(linkTarget, targetFile.getAbsolutePath());
+                    }
+                } else if (sourceFile.isDirectory()) {
+                    // Create directory if source is a directory
+                    if (!targetFile.exists()) {
+                        targetFile.mkdirs();
+                    }
+                } else {
+                    // Ensure parent directory exists
+                    File parent = targetFile.getParentFile();
+                    if (parent != null && !parent.exists()) parent.mkdirs();
+                    FileUtils.copy(sourceFile, targetFile);
+                }
 
                 if (profile.type == ContentProfile.ContentType.CONTENT_TYPE_BOX64) {
                     FileUtils.chmod(targetFile, 0771);
