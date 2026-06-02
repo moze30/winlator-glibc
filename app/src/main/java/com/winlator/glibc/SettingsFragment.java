@@ -51,7 +51,6 @@ import com.winlator.glibc.inputcontrols.ExternalController;
 import com.winlator.glibc.midi.MidiManager;
 import com.winlator.glibc.xenvironment.ImageFs;
 import com.winlator.glibc.xenvironment.ImageFsInstaller;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -443,7 +442,9 @@ public class SettingsFragment extends Fragment {
             return;
         }
 
-        Intent intent = new Intent(context, XServerDisplayActivity.class);
+        Class<?> xserverCls = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("use_tx11", true)
+                ? com.termux.x11.MainActivity.class : XServerDisplayActivity.class;
+        Intent intent = new Intent(context, xserverCls);
         intent.putExtra("generate_wineprefix", true);
         intent.putExtra("wine_info", wineInfo);
         context.startActivity(intent);

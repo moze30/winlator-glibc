@@ -7,9 +7,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ShortcutInfo;
 import android.content.pm.ShortcutManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +21,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,6 +36,9 @@ import com.winlator.glibc.container.Shortcut;
 import com.winlator.glibc.contentdialog.ContentDialog;
 import com.winlator.glibc.contentdialog.ShortcutSettingsDialog;
 import com.winlator.glibc.core.AppUtils;
+import com.termux.x11.MainActivity;
+
+import androidx.preference.PreferenceManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -159,8 +166,11 @@ public class ShortcutsFragment extends Fragment {
     }
 
     private ShortcutInfo buildScreenShortCut(String shortLabel, String longLabel, int containerId, String shortcutPath, Icon icon, String uuid) {
-        Intent intent = new Intent(getActivity(), XServerDisplayActivity.class);
+        Class<?> xserverCls = PreferenceManager.getDefaultSharedPreferences(requireContext()).getBoolean("use_tx11", true)
+                ? MainActivity.class : XServerDisplayActivity.class;
+        Intent intent = new Intent(getActivity(), xserverCls);
         intent.setAction(Intent.ACTION_VIEW);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("container_id", containerId);
         intent.putExtra("shortcut_path", shortcutPath);
 
@@ -173,10 +183,43 @@ public class ShortcutsFragment extends Fragment {
     }
 
     private void addShortcutToScreen(Shortcut shortcut) {
-        ShortcutManager shortcutManager = getSystemService(requireContext(), ShortcutManager.class);
-        if (shortcutManager != null && shortcutManager.isRequestPinShortcutSupported())
-            shortcutManager.requestPinShortcut(buildScreenShortCut(shortcut.name, shortcut.name, shortcut.container.id,
-                    shortcut.file.getPath(), Icon.createWithBitmap(shortcut.icon), shortcut.getExtra("uuid")), null);
+        try {
+            ShortcutManager shortcutManager = getSystemService(requireContext(), ShortcutManager.class);
+            if (shortcutManager == null) {
+                Toast.makeText(requireContext(), R.string.shortcut_not_available, Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (!shortcutManager.isRequestPinShortcutSupported()) {
+                Toast.makeText(requireContext(), R.string.shortcut_not_available, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            Bitmap iconBitmap = shortcut.icon;
+            if (iconBitmap == null) {
+                iconBitmap = Bitmap.createBitmap(128, 128, Bitmap.Config.ARGB_8888);
+                Canvas canvas = new Canvas(iconBitmap);
+                canvas.drawColor(0xFF4CAF50);
+            }
+
+            String uuid = shortcut.getExtra("uuid");
+            ShortcutInfo shortcutInfo = buildScreenShortCut(shortcut.name, shortcut.name, shortcut.container.id,
+                    shortcut.file.getPath(), Icon.createWithBitmap(iconBitmap), uuid);
+
+            // Register as dynamic shortcut first (required for Android 12+)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
+                try {
+                    shortcutManager.addDynamicShortcuts(java.util.Collections.singletonList(shortcutInfo));
+                } catch (Exception e) {
+                    Log.w("ShortcutsFragment", "Failed to add dynamic shortcut", e);
+                }
+            }
+
+            shortcutManager.requestPinShortcut(shortcutInfo, null);
+            Toast.makeText(requireContext(), R.string.add_to_home_screen, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.e("ShortcutsFragment", "Failed to add shortcut to home screen", e);
+            Toast.makeText(requireContext(), R.string.shortcut_not_available, Toast.LENGTH_SHORT).show();
+        }
     }
 
     public static void disableShortcutOnScreen(Context context, Shortcut shortcut) {
