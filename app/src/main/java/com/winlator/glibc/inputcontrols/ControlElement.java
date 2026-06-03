@@ -6,7 +6,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
 import android.graphics.Rect;
-import android.graphics.RectF; 
 
 import androidx.core.graphics.ColorUtils;
 
@@ -584,19 +583,7 @@ public class ControlElement {
                 if (pressed) {
                     paint.setStyle(Paint.Style.FILL);
                     paint.setColor(ColorUtils.setAlphaComponent(selected ? secondaryColor : primaryColor, 100));
-                    RectF oval = new RectF(cx - radius, cy - radius, cx + radius, cy + radius);
-                    for (int i = 0; i < 4; i++) {
-                        if (states[i]) {
-                            float startAngle = 0;
-                            switch (i) {
-                                case 0: startAngle = 225; break; // Up
-                                case 1: startAngle = 315; break; // Right
-                                case 2: startAngle = 45; break;  // Down
-                                case 3: startAngle = 135; break; // Left
-                            }
-                            canvas.drawArc(oval, startAngle, 90, true, paint);
-                        }
-                    }
+                    canvas.drawCircle(cx, cy, radius, paint);
                     paint.setStyle(Paint.Style.STROKE);
                     paint.setColor(oldColor);
                 }
@@ -623,42 +610,7 @@ public class ControlElement {
                 if (pressed) {
                     paint.setStyle(Paint.Style.FILL);
                     paint.setColor(ColorUtils.setAlphaComponent(selected ? secondaryColor : primaryColor, 100));
-
-                    canvas.save();
-                    Path clipPath = inputControlsView.getPath();
-                    clipPath.reset();
-                    clipPath.addRoundRect(new RectF(boundingBox), radius, radius, Path.Direction.CW);
-                    canvas.clipPath(clipPath);
-
-                    float cx = boundingBox.centerX();
-                    float cy = boundingBox.centerY();
-                    for (int i = 0; i < 4; i++) {
-                        if (states[i]) {
-                            Path sectorPath = new Path();
-                            sectorPath.moveTo(cx, cy);
-                            switch (i) {
-                                case 0: // Up
-                                    sectorPath.lineTo(boundingBox.left, boundingBox.top);
-                                    sectorPath.lineTo(boundingBox.right, boundingBox.top);
-                                    break;
-                                case 1: // Right
-                                    sectorPath.lineTo(boundingBox.right, boundingBox.top);
-                                    sectorPath.lineTo(boundingBox.right, boundingBox.bottom);
-                                    break;
-                                case 2: // Down
-                                    sectorPath.lineTo(boundingBox.right, boundingBox.bottom);
-                                    sectorPath.lineTo(boundingBox.left, boundingBox.bottom);
-                                    break;
-                                case 3: // Left
-                                    sectorPath.lineTo(boundingBox.left, boundingBox.bottom);
-                                    sectorPath.lineTo(boundingBox.left, boundingBox.top);
-                                    break;
-                            }
-                            sectorPath.close();
-                            canvas.drawPath(sectorPath, paint);
-                        }
-                    }
-                    canvas.restore();
+                    canvas.drawRoundRect(boundingBox.left, boundingBox.top, boundingBox.right, boundingBox.bottom, radius, radius, paint);
 
                     paint.setStyle(Paint.Style.STROKE);
                     paint.setColor(selected ? secondaryColor : primaryColor);
