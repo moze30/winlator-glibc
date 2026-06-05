@@ -149,6 +149,7 @@ public class ContainerManager {
         dstContainer.setShowFPS(srcContainer.isShowFPS());
         dstContainer.setStartupSelection(srcContainer.getStartupSelection());
         dstContainer.setBox64Preset(srcContainer.getBox64Preset());
+        dstContainer.setBox64Version(srcContainer.getBox64Version());
         dstContainer.setFexVersion(srcContainer.getFexVersion());
         dstContainer.setFexPreset(srcContainer.getFexPreset());
         dstContainer.setFexPresetCustom(srcContainer.getFexPresetCustom());

@@ -536,6 +536,7 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
         GlibcProgramLauncherComponent guestProgramLauncherComponent = new GlibcProgramLauncherComponent(contentsManager, container.getWineVersion());
         guestProgramLauncherComponent.setFexPreset(container.getFexPreset());
         guestProgramLauncherComponent.setFexPresetCustom(container.getFexPresetCustom());
+        guestProgramLauncherComponent.setBox64Version(container.getBox64Version());
 
         if (container != null) {
             if (container.getStartupSelection() == Container.STARTUP_SELECTION_AGGRESSIVE) winHandler.killProcess("services.exe");

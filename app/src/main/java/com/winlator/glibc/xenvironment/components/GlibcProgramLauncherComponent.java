@@ -34,6 +34,7 @@ public class GlibcProgramLauncherComponent extends EnvironmentComponent {
     protected String[] bindingPaths;
     protected EnvVars envVars;
     protected String box64Preset = Box64Preset.COMPATIBILITY;
+    protected String box64Version = DefaultVersion.BOX64;
     protected Callback<Integer> terminationCallback;
     protected static final Object lock = new Object();
     protected String logFilePath;
@@ -113,6 +114,10 @@ public class GlibcProgramLauncherComponent extends EnvironmentComponent {
 
     public void setBox64Preset(String box64Preset) {
         this.box64Preset = box64Preset;
+    }
+
+    public void setBox64Version(String box64Version) {
+        this.box64Version = box64Version != null ? box64Version : DefaultVersion.BOX64;
     }
 
     public void setLogFilePath(String logFilePath) {
@@ -243,7 +248,6 @@ public class GlibcProgramLauncherComponent extends EnvironmentComponent {
         ImageFs imageFs = environment.getImageFs();
         Context context = environment.getContext();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        String box64Version = preferences.getString("box64_version", DefaultVersion.BOX64);
         String currentBox64Version = preferences.getString("current_box64_version", "");
         File rootDir = imageFs.getRootDir();
 

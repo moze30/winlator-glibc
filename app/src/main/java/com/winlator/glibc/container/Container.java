@@ -5,6 +5,7 @@ import android.os.Environment;
 import com.winlator.glibc.XrActivity;
 import com.winlator.glibc.box64.Box64Preset;
 import com.winlator.glibc.fex.FEXPreset;
+import com.winlator.glibc.core.DefaultVersion;
 import com.winlator.glibc.core.EnvVars;
 import com.winlator.glibc.core.FileUtils;
 import com.winlator.glibc.core.KeyValueSet;
@@ -56,6 +57,7 @@ public class Container {
     private String cpuList;
     private String desktopTheme = WineThemeManager.DEFAULT_DESKTOP_THEME;
     private String box64Preset = Box64Preset.COMPATIBILITY;
+    private String box64Version = DefaultVersion.BOX64;
     private int fexPreset = 0;
     private String fexPresetCustom = FEXPreset.COMPATIBILITY;
     private String fexVersion = DEFAULT_FEX_VERSION;
@@ -235,6 +237,14 @@ public class Container {
         this.box64Preset = box64Preset;
     }
 
+    public String getBox64Version() {
+        return box64Version;
+    }
+
+    public void setBox64Version(String box64Version) {
+        this.box64Version = box64Version != null ? box64Version : DefaultVersion.BOX64;
+    }
+
     public int getFexPreset() {
         return fexPreset;
     }
@@ -393,6 +403,7 @@ public class Container {
             data.put("inputType", inputType);
             data.put("startupSelection", startupSelection);
             data.put("box64Preset", box64Preset);
+            data.put("box64Version", box64Version);
             data.put("fexPreset", fexPreset);
             data.put("fexPresetCustom", fexPresetCustom);
             data.put("fexVersion", fexVersion);
@@ -468,6 +479,9 @@ public class Container {
                 case "box64Preset" :
                     setBox64Preset(data.getString(key));
                     break;
+                case "box64Version" :
+                    setBox64Version(data.getString(key));
+                    break;
                 case "fexPreset" :
                     setFexPreset(data.getInt(key));
                     break;
@@ -532,16 +546,9 @@ public class Container {
                 }
             }
 
-            if (data.has("envVars") && data.has("extraData")) {
-                JSONObject extraData = data.getJSONObject("extraData");
-                int appVersion = Integer.parseInt(extraData.optString("appVersion", "0"));
-                if (appVersion < 16) {
-                    EnvVars defaultEnvVars = new EnvVars(DEFAULT_ENV_VARS);
-                    EnvVars envVars = new EnvVars(data.getString("envVars"));
-                    for (String name : defaultEnvVars) if (!envVars.has(name)) envVars.put(name, defaultEnvVars.get(name));
-                    data.put("envVars", envVars.toString());
-                }
-            }
+            // 已移除：不再自动添加缺失的默认环境变量
+            // 之前的逻辑会在appVersion < 16时自动添加缺失的默认环境变量，
+            // 但这会导致用户删除的环境变量在下次加载时又出现
 
             KeyValueSet wincomponents1 = new KeyValueSet(DEFAULT_WINCOMPONENTS);
             KeyValueSet wincomponents2 = new KeyValueSet(data.getString("wincomponents"));

@@ -233,7 +233,7 @@ public class ContainerDetailFragment extends Fragment {
 
         final Spinner sBox64Version = view.findViewById(R.id.SBox64Version);
         SettingsFragment.loadBox64VersionSpinner(context, contentsManager, sBox64Version);
-        String currentBox64Version = preferences.getString("box64_version", DefaultVersion.BOX64);
+        String currentBox64Version = isEditMode() ? container.getBox64Version() : DefaultVersion.BOX64;
         if (!AppUtils.setSpinnerSelectionFromIdentifier(sBox64Version, currentBox64Version)) {
             AppUtils.setSpinnerSelectionFromIdentifier(sBox64Version, DefaultVersion.BOX64);
         }
@@ -320,7 +320,6 @@ public class ContainerDetailFragment extends Fragment {
                 String cursorSize = sCursorSize.getSelectedItemPosition() == 0 ? "" : sCursorSize.getSelectedItem().toString();
 
                 String box64Version = StringUtils.parseIdentifier(sBox64Version.getSelectedItem());
-                preferences.edit().putString("box64_version", box64Version).apply();
 
                 int finalInputType = 0;
                 finalInputType |= cbEnableXInput.isChecked() ? WinHandler.FLAG_INPUT_TYPE_XINPUT : 0;
@@ -342,6 +341,7 @@ public class ContainerDetailFragment extends Fragment {
                     container.setInputType(finalInputType);
                     container.setStartupSelection(startupSelection);
                     container.setBox64Preset(box64Preset);
+                    container.setBox64Version(box64Version);
                     container.setFexVersion(fexVersion);
                     container.setFexPreset(fexPreset);
                     container.setFexPresetCustom(fexPresetCustom);
@@ -373,6 +373,7 @@ public class ContainerDetailFragment extends Fragment {
                     data.put("inputType", finalInputType);
                     data.put("startupSelection", startupSelection);
                     data.put("box64Preset", box64Preset);
+                    data.put("box64Version", box64Version);
                     data.put("fexVersion", fexVersion);
                     data.put("fexPreset", fexPreset);
                     data.put("fexPresetCustom", fexPresetCustom);
