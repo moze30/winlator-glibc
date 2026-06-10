@@ -237,7 +237,9 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
                 if (!inputType.isEmpty()) winHandler.setInputType(Byte.parseByte(inputType));
             }
 
-            if (dxwrapper.equals("dxvk") || dxwrapper.startsWith("dxvk-")) this.dxwrapperConfig = DXVKConfigDialog.parseConfig(dxwrapperConfig);
+            if ("dxvk".equals(dxwrapper) || (dxwrapper != null && dxwrapper.startsWith("dxvk-"))) {
+                this.dxwrapperConfig = DXVKConfigDialog.parseConfig(dxwrapperConfig);
+            }
 
             // 智能路径识别监听器：确保解压路径精准指向容器内部
             onExtractFileListener = (file, size) -> {
@@ -474,8 +476,8 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
         }
 
         String dxwrapper = this.dxwrapper;
-        if (dxwrapper.equals("dxvk") && dxwrapperConfig != null)
-            dxwrapper = "dxvk-"+dxwrapperConfig.get("version");
+        if ("dxvk".equals(dxwrapper) && dxwrapperConfig != null)
+            dxwrapper = "dxvk-" + dxwrapperConfig.get("version");
 
         if (!dxwrapper.equals(container.getExtra("dxwrapper"))) {
             extractDXWrapperFiles(dxwrapper);
@@ -1041,6 +1043,11 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
             WineUtils.setDirect3DLibOverrides(container, true);
         }
         else if (dxwrapper.startsWith("dxvk")) {
+            // Ensure dxwrapperConfig is initialized before use
+            if (dxwrapperConfig == null) {
+                dxwrapperConfig = DXVKConfigDialog.parseConfig(null);
+            }
+
             // 1. Apply DXVK (D3D9/10/11)
             ContentProfile dxvkProfile = contentsManager.getProfileByEntryName(dxwrapper);
             if (dxvkProfile != null)
