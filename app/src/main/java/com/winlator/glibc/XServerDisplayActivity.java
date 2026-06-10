@@ -237,7 +237,7 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
                 if (!inputType.isEmpty()) winHandler.setInputType(Byte.parseByte(inputType));
             }
 
-            if (dxwrapper.equals("dxvk")) this.dxwrapperConfig = DXVKConfigDialog.parseConfig(dxwrapperConfig);
+            if (dxwrapper.equals("dxvk") || dxwrapper.startsWith("dxvk-")) this.dxwrapperConfig = DXVKConfigDialog.parseConfig(dxwrapperConfig);
 
             // 智能路径识别监听器：确保解压路径精准指向容器内部
             onExtractFileListener = (file, size) -> {
@@ -474,7 +474,7 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
         }
 
         String dxwrapper = this.dxwrapper;
-        if (dxwrapper.equals("dxvk"))
+        if (dxwrapper.equals("dxvk") && dxwrapperConfig != null)
             dxwrapper = "dxvk-"+dxwrapperConfig.get("version");
 
         if (!dxwrapper.equals(container.getExtra("dxwrapper"))) {
