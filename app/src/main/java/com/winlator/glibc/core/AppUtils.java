@@ -16,6 +16,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
@@ -79,10 +80,7 @@ public abstract class AppUtils {
 
     public static void showKeyboard(AppCompatActivity activity) {
         final InputMethodManager imm = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
-            activity.getWindow().getDecorView().postDelayed(() -> imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0), 500L);
-        }
-        else imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+        imm.showSoftInput(activity.getCurrentFocus(), 0);
     }
 
     public static void hideSystemUI(final Activity activity) {
@@ -341,5 +339,17 @@ public abstract class AppUtils {
         intent.putExtra("container_id", containerId);
         intent.putExtra("shortcut_path", shortcutPath);
         context.startActivity(intent);
+    }
+
+    /** 仅触发一次的 {@link android.view.ViewTreeObserver.OnWindowFocusChangeListener} */
+    public static void setOnetimeViewTreeObserverWindowFocusChangeListener(View view, Callback<Boolean> onFocusChanged) {
+        ViewTreeObserver observer = view.getViewTreeObserver();
+        observer.addOnWindowFocusChangeListener(new ViewTreeObserver.OnWindowFocusChangeListener() {
+            @Override
+            public void onWindowFocusChanged(boolean hasFocus) {
+                observer.removeOnWindowFocusChangeListener(this);
+                onFocusChanged.call(hasFocus);
+            }
+        });
     }
 }

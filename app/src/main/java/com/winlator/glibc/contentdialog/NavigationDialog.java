@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import com.google.android.material.navigation.NavigationView;
 import com.winlator.glibc.R;
 import com.winlator.glibc.XServerDisplayActivity;
+import com.winlator.glibc.core.AppUtils;
 
 public class NavigationDialog extends ContentDialog {
 
@@ -47,7 +48,11 @@ public class NavigationDialog extends ContentDialog {
             layout.setPadding(padding, padding, padding, padding);
             layout.setOrientation(LinearLayout.VERTICAL);
             layout.setOnClickListener(view -> {
-                context.onNavigationItemSelected(item);
+                View content = context.getInputControlsView().getRootView().findViewById(android.R.id.content);
+                AppUtils.setOnetimeViewTreeObserverWindowFocusChangeListener(content, (hasFocus) -> {
+                    content.post(() -> context.onNavigationItemSelected(item));
+                });
+                content.requestFocus();
                 dismiss();
             });
 
@@ -72,7 +77,7 @@ public class NavigationDialog extends ContentDialog {
         }
     }
 
-    public int dpToPx(float dp, Context context){
+    public int dpToPx(float dp, Context context) {
         return (int) (dp * context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
     }
 }
